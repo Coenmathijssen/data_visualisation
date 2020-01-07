@@ -28967,10 +28967,14 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-d3.json('./data/amsterdam_NO2_20190102.json').then(function (data) {
+d3.json('./data/amsterdam_NO2_20190101.json').then(function (data) {
   console.log('raw data: ', data);
   var transformedData = transformData(data);
   console.log('transformedData: ', transformedData);
+  var maximumAverage = calcMaximumAverage(transformedData);
+  console.log('maximumAverage: ', maximumAverage);
+  var dayAverage = calcDayAverage(transformedData);
+  console.log('dayAverage: ', dayAverage);
 });
 
 var transformData = function transformData(data) {
@@ -29000,7 +29004,7 @@ var transformData = function transformData(data) {
           'id': index / 100 + 1,
           'long': item,
           'lat': data.lat[index],
-          'conc_ana': concChunkArray[_i - 1][index]
+          'concAna': concChunkArray[_i - 1][index]
         };
         hour.dataArray.push(obj);
       }
@@ -29015,6 +29019,39 @@ var transformData = function transformData(data) {
   transformedDataArray.push(day);
   return transformedDataArray;
 };
+
+function calcMaximumAverage(transformedData) {
+  // transformedData[0].forEach(hour => {
+  //   console.log('hour: ', hour)
+  //   let maxValue = Math.max.apply(Math, hour.dataArray.map(function(o) { return o.concAna }))
+  //   let index = hour.dataArray.indexOf(maxValue)
+  //   console.log('value: ', maxValue)
+  // })
+  var maximumArray = transformedData[0].map(function (hour) {
+    return hour.dataArray[359].concAna;
+  });
+  return getAvg(maximumArray);
+}
+
+function calcDayAverage(transformedData) {
+  var hourAvarage = [];
+  transformedData[0].forEach(function (hour) {
+    // const total = hour.dataArray.concAna.reduce((acc, c) => acc + c, 0)
+    var hourConcAna = hour.dataArray.map(function (item) {
+      return item.concAna;
+    });
+    var hourConcAnaAverage = getAvg(hourConcAna);
+    hourAvarage.push(hourConcAnaAverage);
+  });
+  return getAvg(hourAvarage);
+}
+
+function getAvg(array) {
+  var total = array.reduce(function (acc, c) {
+    return acc + c;
+  }, 0);
+  return total / array.length;
+}
 },{"d3":"../node_modules/d3/index.js","../styles/main.scss":"styles/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -29043,7 +29080,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60780" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52165" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
