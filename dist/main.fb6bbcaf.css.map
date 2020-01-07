@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles/main.scss"],"names":[],"mappings":"AAEA;EACC,OAHK","file":"main.fb6bbcaf.css","sourceRoot":"../src","sourcesContent":["$sup: blue;\n\nh1 {\n color: $sup;\n}\n"]}
