@@ -28956,8 +28956,16 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/main.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/transformData.js":[function(require,module,exports) {
 "use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.transformData = transformData;
+exports.calcMaximumAverage = calcMaximumAverage;
+exports.calcDayAverage = calcDayAverage;
+exports.getAvg = getAvg;
 
 var d3 = _interopRequireWildcard(require("d3"));
 
@@ -28967,58 +28975,66 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-d3.json('./data/amsterdam_NO2_20190101.json').then(function (data) {
-  console.log('raw data: ', data);
-  var transformedData = transformData(data);
-  console.log('transformedData: ', transformedData);
-  var maximumAverage = calcMaximumAverage(transformedData);
-  console.log('maximumAverage: ', maximumAverage);
-  var dayAverage = calcDayAverage(transformedData);
-  console.log('dayAverage: ', dayAverage);
+// d3.json('./data/amsterdam_NO2_20190101.json').then(data => {
+//   console.log('raw data: ', data)
+//   let transformedData = transformData(data)
+//   console.log('transformedData: ', transformedData)
+//   let maximumAverageDay = calcMaximumAverage(transformedData)
+//   console.log('maximumAverage: ', maximumAverageDay)
+//   let dayAverage = calcDayAverage(transformedData)
+//   console.log('dayAverage: ', dayAverage)
+// })
+Promise.all([d3.json('./data/amsterdam_NO2_20190101.json'), d3.json('./data/amsterdam_NO2_20190102.json'), d3.json('./data/amsterdam_NO2_20190103.json'), d3.json('./data/amsterdam_NO2_20190104.json'), d3.json('./data/amsterdam_NO2_20190105.json'), d3.json('./data/amsterdam_NO2_20190106.json'), d3.json('./data/amsterdam_NO2_20190107.json')]).then(function (data) {
+  console.log(data[0], data[1]);
+}).catch(function (err) {
+  console.log('Error loading data!, ', err);
 });
 
-var transformData = function transformData(data) {
+function transformData(data) {
   var transformedDataArray = [];
   var chunck = 42128;
   var concChunkArray = [];
 
   for (var i = 1; i <= 24; i++) {
-    var concChunk = data.conc_ana.slice(i - 1, chunck * i);
+    var concChunk = data[0].conc_ana.slice(i - 1, chunck * i);
     concChunkArray.push(concChunk);
   }
 
-  var day = [];
+  data.forEach(function (data) {
+    var day = [];
 
-  var _loop = function _loop(_i) {
-    var hour = {
-      'id': _i,
-      'time': data.time[_i - 1],
-      'temperature': data.temperature[_i - 1],
-      'uWind': data.uWind[_i - 1],
-      'vWind': data.vWind[_i - 1],
-      'dataArray': []
+    var _loop = function _loop(_i) {
+      var hour = {
+        'id': _i,
+        'time': data.time[_i - 1],
+        'temperature': data.temperature[_i - 1],
+        'uWind': data.uWind[_i - 1],
+        'vWind': data.vWind[_i - 1],
+        'dataArray': []
+      };
+      data.lon.forEach(function (item, index) {
+        if (index % 100 === 0) {
+          var obj = {
+            'id': index / 100 + 1,
+            'long': item,
+            'lat': data.lat[index],
+            'concAna': concChunkArray[_i - 1][index]
+          };
+          hour.dataArray.push(obj);
+        }
+      });
+      day.push(hour);
     };
-    data.lon.forEach(function (item, index) {
-      if (index % 100 === 0) {
-        var obj = {
-          'id': index / 100 + 1,
-          'long': item,
-          'lat': data.lat[index],
-          'concAna': concChunkArray[_i - 1][index]
-        };
-        hour.dataArray.push(obj);
-      }
-    });
-    day.push(hour);
-  };
 
-  for (var _i = 1; _i <= 24; _i++) {
-    _loop(_i);
-  }
+    for (var _i = 1; _i <= 24; _i++) {
+      _loop(_i);
+    }
 
-  transformedDataArray.push(day);
+    transformedDataArray.push(day);
+  });
+  console.log('all data: ', transformedDataArray);
   return transformedDataArray;
-};
+}
 
 function calcMaximumAverage(transformedData) {
   // transformedData[0].forEach(hour => {
@@ -29036,7 +29052,6 @@ function calcMaximumAverage(transformedData) {
 function calcDayAverage(transformedData) {
   var hourAvarage = [];
   transformedData[0].forEach(function (hour) {
-    // const total = hour.dataArray.concAna.reduce((acc, c) => acc + c, 0)
     var hourConcAna = hour.dataArray.map(function (item) {
       return item.concAna;
     });
@@ -29052,7 +29067,19 @@ function getAvg(array) {
   }, 0);
   return total / array.length;
 }
-},{"d3":"../node_modules/d3/index.js","../styles/main.scss":"styles/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"d3":"../node_modules/d3/index.js","../styles/main.scss":"styles/main.scss"}],"js/main.js":[function(require,module,exports) {
+"use strict";
+
+var d3 = _interopRequireWildcard(require("d3"));
+
+require("../styles/main.scss");
+
+var _transformData = require("./transformData.js");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+},{"d3":"../node_modules/d3/index.js","../styles/main.scss":"styles/main.scss","./transformData.js":"js/transformData.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29080,7 +29107,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52165" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59584" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
