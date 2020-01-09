@@ -29075,7 +29075,67 @@ function getAvg(array) {
   }, 0);
   return total / array.length;
 }
-},{"../styles/main.scss":"styles/main.scss"}],"js/main.js":[function(require,module,exports) {
+},{"../styles/main.scss":"styles/main.scss"}],"js/barChart.js":[function(require,module,exports) {
+"use strict";
+
+var d3 = _interopRequireWildcard(require("d3"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var svg = d3.select('#viz'),
+    margin = {
+  top: 20,
+  right: 20,
+  bottom: 30,
+  left: 50
+},
+    width = +svg.attr('width') - margin.left - margin.right,
+    height = +svg.attr('height') - margin.top - margin.bottom,
+    g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+g.append('g').attr('class', 'x axis');
+g.append('g').attr('class', 'y axis');
+var myData = [{
+  name: 'John',
+  age: 23,
+  height: 1.93
+}, {
+  name: 'Mafe',
+  age: 22,
+  height: 1.70
+}];
+var x = d3.scaleBand().padding(0.2).range([0, width]);
+var y = d3.scaleLinear().range([height, 0]);
+
+function update(myData) {
+  x.domain(myData.map(function (d) {
+    return d.name;
+  }));
+  y.domain([0, d3.max(myData, function (d) {
+    return d.height;
+  })]);
+  var points = g.selectAll('.point').data(myData); // Update
+
+  var pointsEnter = points.enter().append('rect').attr('class', 'point');
+  points.merge(pointsEnter) // Enter + Update
+  .attr('x', function (d) {
+    return x(d.name);
+  }).attr('y', function (d) {
+    return y(d.height);
+  }).attr('width', function (d) {
+    return x.bandwidth();
+  }).attr('height', function (d) {
+    return height - y(d.height);
+  }).style('fill', 'steelblue');
+  points.exit().remove();
+  g.select('.x.axis').call(d3.axisBottom(x)).attr('transform', 'translate(0, ' + height + ')');
+  g.select('.y.axis').call(d3.axisLeft(y));
+}
+
+update(myData);
+console.log('w', width, ' h', height);
+},{"d3":"../node_modules/d3/index.js"}],"js/main.js":[function(require,module,exports) {
 "use strict";
 
 var d3 = _interopRequireWildcard(require("d3"));
@@ -29083,6 +29143,8 @@ var d3 = _interopRequireWildcard(require("d3"));
 require("../styles/main.scss");
 
 var _transformData = require("./transformData.js");
+
+require("./barChart.js");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -29103,7 +29165,7 @@ Promise.all([d3.json('./data/amsterdam_NO2_20190101.json'), d3.json('./data/amst
 }).catch(function (err) {
   console.log('Error loading data!, ', err);
 });
-},{"d3":"../node_modules/d3/index.js","../styles/main.scss":"styles/main.scss","./transformData.js":"js/transformData.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"d3":"../node_modules/d3/index.js","../styles/main.scss":"styles/main.scss","./transformData.js":"js/transformData.js","./barChart.js":"js/barChart.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

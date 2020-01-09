@@ -1,1 +1,1 @@
-{"version":3,"sources":["styles/main.scss"],"names":[],"mappings":"AAEA;EACC,OAHK","file":"main.fb6bbcaf.css","sourceRoot":"../src","sourcesContent":["$sup: blue;\n\nh1 {\n color: $sup;\n}\n"]}
+{"version":3,"sources":["styles/main.scss"],"names":[],"mappings":"AAEA;EACC,OAHK;;;AAMN;EACI","file":"main.fb6bbcaf.css","sourceRoot":"../src","sourcesContent":["$sup: blue;\n\nh1 {\n color: $sup;\n}\n\n.bar-chart {\n    background-color: #C7D9D9;\n}\n"]}
