@@ -29078,13 +29078,19 @@ function getAvg(array) {
 },{"../styles/main.scss":"styles/main.scss"}],"js/barChart.js":[function(require,module,exports) {
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.update = update;
+
 var d3 = _interopRequireWildcard(require("d3"));
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-var svg = d3.select('#viz'),
+// https://bl.ocks.org/TamayoValencia/996ca33b7d42d7dff4d69ed00a5fd571
+var svg = d3.selectAll('.viz'),
     margin = {
   top: 20,
   right: 20,
@@ -29096,16 +29102,7 @@ var svg = d3.select('#viz'),
     g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 g.append('g').attr('class', 'x axis');
 g.append('g').attr('class', 'y axis');
-var myData = [{
-  name: 'John',
-  age: 23,
-  height: 1.93
-}, {
-  name: 'Mafe',
-  age: 22,
-  height: 1.70
-}];
-var x = d3.scaleBand().padding(0.2).range([0, width]);
+var x = d3.scaleBand().padding(0.1).range([0, width]);
 var y = d3.scaleLinear().range([height, 0]);
 
 function update(myData) {
@@ -29113,7 +29110,7 @@ function update(myData) {
     return d.name;
   }));
   y.domain([0, d3.max(myData, function (d) {
-    return d.height;
+    return d.avg;
   })]);
   var points = g.selectAll('.point').data(myData); // Update
 
@@ -29122,18 +29119,18 @@ function update(myData) {
   .attr('x', function (d) {
     return x(d.name);
   }).attr('y', function (d) {
-    return y(d.height);
+    return y(d.avg);
   }).attr('width', function (d) {
     return x.bandwidth();
   }).attr('height', function (d) {
-    return height - y(d.height);
+    return height - y(d.avg);
   }).style('fill', 'steelblue');
   points.exit().remove();
   g.select('.x.axis').call(d3.axisBottom(x)).attr('transform', 'translate(0, ' + height + ')');
   g.select('.y.axis').call(d3.axisLeft(y));
+  g.append("text").attr("y", -15).attr("x", 7).attr("dy", "0.5em").attr("text-anchor", "end").text("No2");
 }
 
-update(myData);
 console.log('w', width, ' h', height);
 },{"d3":"../node_modules/d3/index.js"}],"js/main.js":[function(require,module,exports) {
 "use strict";
@@ -29144,7 +29141,7 @@ require("../styles/main.scss");
 
 var _transformData = require("./transformData.js");
 
-require("./barChart.js");
+var _barChart = require("./barChart.js");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -29162,6 +29159,14 @@ Promise.all([d3.json('./data/amsterdam_NO2_20190101.json'), d3.json('./data/amst
   console.log('maximumAverageWeek', maximumAverageWeek);
   var maximumAverageDay = (0, _transformData.calcMaximumAverage)(transformedData[0]);
   console.log('maximumAverageDay', maximumAverageDay);
+  var myData = [{
+    name: 'Amsterdams gemiddelde',
+    avg: dayAverage
+  }, {
+    name: 'Woonplaats',
+    avg: maximumAverageDay
+  }];
+  (0, _barChart.update)(myData);
 }).catch(function (err) {
   console.log('Error loading data!, ', err);
 });
@@ -29193,7 +29198,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49537" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61145" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

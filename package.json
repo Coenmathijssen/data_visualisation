@@ -5,8 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel src/index.html",
-    "prod": "parcel build src/index.html"
+    "dev": "parcel src/*.html",
+    "prod": "parcel build src/*.html"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
-    "d3": "^5.15.0"
+    "d3": "^5.15.0",
+    "gsap": "^3.0.5"
   }
 }
