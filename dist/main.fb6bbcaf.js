@@ -28956,7 +28956,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/transformData.js":[function(require,module,exports) {
+},{"./fonts/Barlow-Bold.ttf":[["Barlow-Bold.2ae782b3.ttf","styles/fonts/Barlow-Bold.ttf"],"styles/fonts/Barlow-Bold.ttf"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/transformData.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29124,7 +29124,7 @@ function update(myData) {
     return x.bandwidth();
   }).attr('height', function (d) {
     return height - y(d.avg);
-  }).style('fill', 'steelblue');
+  });
   points.exit().remove();
   g.select('.x.axis').call(d3.axisBottom(x)).attr('transform', 'translate(0, ' + height + ')');
   g.select('.y.axis').call(d3.axisLeft(y));
@@ -29137,7 +29137,7 @@ console.log('w', width, ' h', height);
 
 var d3 = _interopRequireWildcard(require("d3"));
 
-require("../styles/main.scss");
+require("../styles/main");
 
 var _transformData = require("./transformData.js");
 
@@ -29147,6 +29147,7 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+console.log('joejoe');
 Promise.all([d3.json('./data/amsterdam_NO2_20190101.json'), d3.json('./data/amsterdam_NO2_20190102.json'), d3.json('./data/amsterdam_NO2_20190103.json'), d3.json('./data/amsterdam_NO2_20190104.json'), d3.json('./data/amsterdam_NO2_20190105.json'), d3.json('./data/amsterdam_NO2_20190106.json'), d3.json('./data/amsterdam_NO2_20190107.json')]).then(function (data) {
   // data.forEach(dataDay => { console.log('raw data: ', dataDay) })
   var transformedData = (0, _transformData.transformData)(data);
@@ -29170,7 +29171,7 @@ Promise.all([d3.json('./data/amsterdam_NO2_20190101.json'), d3.json('./data/amst
 }).catch(function (err) {
   console.log('Error loading data!, ', err);
 });
-},{"d3":"../node_modules/d3/index.js","../styles/main.scss":"styles/main.scss","./transformData.js":"js/transformData.js","./barChart.js":"js/barChart.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"d3":"../node_modules/d3/index.js","../styles/main":"styles/main.scss","./transformData.js":"js/transformData.js","./barChart.js":"js/barChart.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29198,7 +29199,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61145" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51406" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
