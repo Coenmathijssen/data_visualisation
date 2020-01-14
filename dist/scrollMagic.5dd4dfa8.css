@@ -28,6 +28,7 @@ p {
   height: 100vh;
   padding: 5vh 0;
   background-color: #EEE8D7;
+  overflow: hidden;
 }
 .section-inhaler h1, .section-inhaler h2, .section-inhaler h3, .section-inhaler h4, .section-inhaler h5, .section-inhaler h6, .section-inhaler p {
   color: #E73A4D;
@@ -120,9 +121,9 @@ p {
   content: "";
   transform: rotate(-20deg);
   right: 10px;
-  bottom: -20px;
+  bottom: -200px;
   width: 630px;
-  height: 400px;
+  height: 700px;
   overflow: hidden;
 }
 .section-inhaler .container .flex .animation .spray-reveal {
