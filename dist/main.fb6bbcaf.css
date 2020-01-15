@@ -2,9 +2,17 @@
   font-family: barlow-bold;
   src: url(/Barlow-Bold.2ae782b3.ttf);
 }
+@font-face {
+  font-family: malayalam;
+  src: url(/Malayalam.c47a24d6.ttf);
+}
 h1, h2, h3, h4, h5, h6 {
   font-family: barlow-bold;
   text-transform: uppercase;
+}
+
+.count span {
+  font-family: malayalam;
 }
 
 h1 {
@@ -24,118 +32,191 @@ p {
   margin: 0;
 }
 
-.section-inhaler {
+.practice {
+  height: 200vh;
+}
+
+.chapter-trigger {
+  height: 5vh;
+}
+
+.section-decease {
   height: 100vh;
   padding: 5vh 0;
-  background-color: #EEE8D7;
   overflow: hidden;
 }
-.section-inhaler h1, .section-inhaler h2, .section-inhaler h3, .section-inhaler h4, .section-inhaler h5, .section-inhaler h6, .section-inhaler p {
-  color: #E73A4D;
+.section-decease .header {
+  z-index: 10;
+  position: relative;
 }
-.section-inhaler p {
+.section-decease p {
   margin-top: 10px;
+  color: #000;
 }
-.section-inhaler .letter {
+.section-decease .letter {
   position: relative;
   display: inline-block;
+  color: #E73A4D;
 }
-.section-inhaler .body {
+.section-decease .body-text {
   display: block;
 }
-.section-inhaler .container {
+.section-decease .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 5vw;
 }
-.section-inhaler .container .flex {
+.section-decease .container .flex {
   padding: 10vh 0;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
 }
-.section-inhaler .container .flex .text-block {
+.section-decease .container .flex .text-block {
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  z-index: 10;
 }
-.section-inhaler .container .flex .animation {
-  width: 400px;
+.section-decease .container .flex .animation {
+  width: 50%;
   height: 400px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 0;
 }
-.section-inhaler .container .flex .animation .text-block-2 {
+.section-decease .container .flex .animation .text-block {
   width: 100%;
   opacity: 0;
 }
-.section-inhaler .container .flex .animation .text-block-2 .chance {
+.section-decease .container .flex .animation .text-block .chance {
   display: flex;
   align-items: flex-start;
 }
-.section-inhaler .container .flex .animation .text-block-2 .chance h2 {
+.section-decease .container .flex .animation .text-block .chance h2 {
   background-color: #000;
   padding: 0 10px 3px 10px;
   margin-left: 10px;
 }
-.section-inhaler .container .flex .animation .text-block-2 .chance p {
+.section-decease .container .flex .animation .text-block .chance p {
   font-weight: 900;
   transform: translateY(4px);
+  color: #E73A4D;
 }
-.section-inhaler .container .flex .animation .text-block-2 .explain-text {
+.section-decease .container .flex .animation .text-block .explain-text {
   max-width: 400px;
   margin-right: 0;
 }
-.section-inhaler .container .flex .animation .inhaler-container {
+
+.chapter-container {
+  min-height: 100vh;
+  width: calc(100vw - 10vw);
+  overflow: hidden;
+  padding: 0 5vw;
+  background: #EEE8D7;
+  position: relative;
+}
+.chapter-container .chapter {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 0;
+  height: 80px;
+  width: 100vw;
+  font-family: barlow-bold;
+  color: #E73A4D;
+  z-index: 10;
+}
+.chapter-container .chapter .chapter-appear {
+  position: absolute;
+  z-index: 99;
+  top: 100px;
+  left: 0;
+}
+.chapter-container .count {
+  position: fixed;
+  top: -50px;
+  right: 50px;
+  z-index: 9;
+}
+.chapter-container .count span {
+  color: #E73A4D;
+  opacity: 0.1;
+  position: relative;
+  user-select: none;
+}
+.chapter-container .count span:first-of-type {
+  left: 30px;
+  font-size: 14em;
+}
+.chapter-container .count span:nth-of-type(2) {
+  top: 50px;
+  margin: 0;
+  font-size: 8em;
+  position: relative;
+}
+.chapter-container .count span:last-of-type {
+  top: 53px;
+  right: 10px;
+  font-size: 5em;
+  position: relative;
+}
+
+.astma h2 {
+  color: #E73A4D;
+}
+.astma .explain-text {
+  max-width: 400px;
+  margin-right: 0;
+}
+.astma .inhaler-container {
   position: absolute;
   top: 0;
-  z-index: 99;
+  z-index: 10;
 }
-.section-inhaler .container .flex .animation .inhaler-container .inhaler-top {
+.astma .inhaler-container .inhaler-top {
   position: absolute;
   content: "";
   left: 0;
   top: 0;
   width: 100px;
 }
-.section-inhaler .container .flex .animation .inhaler-container .inhaler {
+.astma .inhaler-container .inhaler {
   position: absolute;
   content: "";
   left: 11px;
   top: 40px;
   width: 165px;
 }
-.section-inhaler .container .flex .animation .spray {
-  width: 600px;
+.astma .spray {
+  width: 800px;
   position: absolute;
   content: "";
   transform: rotate(-20deg);
-  left: -240px;
-  bottom: -20px;
+  left: -290px;
+  bottom: -185px;
 }
-.section-inhaler .container .flex .animation .spray-container {
+.astma .spray-container {
   position: absolute;
   content: "";
   transform: rotate(-20deg);
-  right: 10px;
-  bottom: -200px;
-  width: 630px;
-  height: 700px;
+  right: 0;
+  bottom: -150px;
+  width: 830px;
+  height: 760px;
   overflow: hidden;
+  border-radius: 0px 200px 200px 0px;
+  -moz-border-radius: 0px 200px 200px 0px;
+  -webkit-border-radius: 0px 200px 200px 0px;
+  border: 0px solid #000000;
 }
-.section-inhaler .container .flex .animation .spray-reveal {
+.astma .spray-reveal {
   position: absolute;
   content: "";
   width: 100%;
   height: 100%;
   background: #EEE8D7;
-}
-
-.practice {
-  height: 200vh;
 }
 
 body {

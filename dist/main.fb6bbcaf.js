@@ -28956,7 +28956,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts/Barlow-Bold.ttf":[["Barlow-Bold.2ae782b3.ttf","styles/fonts/Barlow-Bold.ttf"],"styles/fonts/Barlow-Bold.ttf"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/transformData.js":[function(require,module,exports) {
+},{"./fonts/Barlow-Bold.ttf":[["Barlow-Bold.2ae782b3.ttf","styles/fonts/Barlow-Bold.ttf"],"styles/fonts/Barlow-Bold.ttf"],"./fonts/Malayalam.ttf":[["Malayalam.c47a24d6.ttf","styles/fonts/Malayalam.ttf"],"styles/fonts/Malayalam.ttf"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/transformData.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29199,7 +29199,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60480" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59982" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
