@@ -184,63 +184,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"styles/_animation.scss":[function(require,module,exports) {
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"styles/_scrollmagic.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts/Barlow-Bold.ttf":[["Barlow-Bold.2ae782b3.ttf","styles/fonts/Barlow-Bold.ttf"],"styles/fonts/Barlow-Bold.ttf"],"./../images/gif/powered.gif":[["powered.15b3fcb3.gif","images/gif/powered.gif"],"images/gif/powered.gif"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/openingAnimation.js":[function(require,module,exports) {
-"use strict";
-
-require("../styles/_animation.scss");
-
-// import { gsap } from "gsap/all"
-var tl = new TimelineMax({});
-tl.staggerTo('.hide', 1.5, {
-  delay: 1,
-  y: -120,
-  ease: Power4.easeOut
-}, 0.3).staggerTo('.hide', 1, {
-  delay: 3,
-  opacity: 0,
-  ease: Power4.easeOut
-}, 0.3).to('.reveal-first', 0.8, {
-  delay: 1,
-  width: '450px',
-  ease: Power4.easeIn
-}, 1).to('.reveal-second', 0.8, {
-  delay: 1,
-  width: '195px',
-  ease: Power4.easeIn
-}, 2).to('.creators', 0, {
-  delay: 1,
-  visibility: 'visible',
-  ease: Power1.easeIn
-}, 2).to('.knmi', 0, {
-  delay: 1,
-  visibility: 'visible',
-  ease: Power1.easeIn
-}, 3).to('.reveal-first', 0.8, {
-  delay: 1,
-  x: '100%',
-  ease: Power4.easeOut
-}, 2).to('.reveal-second', 0.8, {
-  delay: 1,
-  x: '100%',
-  ease: Power4.easeOut
-}, 3).to('.page', 1.5, {
-  y: '-100%',
-  ease: Power3.easeIn
-}, 7.5) // 6.5
-.to('.second-color-slide-up', 1.6, {
-  y: '-100%',
-  ease: Power4.easeIn
-}, 8) // 8
-.to('.page', 1.5, {
-  visibility: 'hidden',
-  ease: Power3.easeIn
-}, 11); // 11
-},{"../styles/_animation.scss":"styles/_animation.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./../images/running_man.png":[["running_man.654e32c7.png","images/running_man.png"],"images/running_man.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -268,7 +217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50817" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58514" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -444,5 +393,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/openingAnimation.js"], null)
-//# sourceMappingURL=/openingAnimation.bc1f9ef1.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/_scrollmagic.184e4bdb.js.map

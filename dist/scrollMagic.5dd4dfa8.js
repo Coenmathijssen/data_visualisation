@@ -9428,7 +9428,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts/Barlow-Bold.ttf":[["Barlow-Bold.2ae782b3.ttf","styles/fonts/Barlow-Bold.ttf"],"styles/fonts/Barlow-Bold.ttf"],"./fonts/Malayalam.ttf":[["Malayalam.c47a24d6.ttf","styles/fonts/Malayalam.ttf"],"styles/fonts/Malayalam.ttf"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/scrollMagic.js":[function(require,module,exports) {
+},{"./fonts/Barlow-Bold.ttf":[["Barlow-Bold.2ae782b3.ttf","styles/fonts/Barlow-Bold.ttf"],"styles/fonts/Barlow-Bold.ttf"],"./fonts/Malayalam.ttf":[["Malayalam.c47a24d6.ttf","styles/fonts/Malayalam.ttf"],"styles/fonts/Malayalam.ttf"],"./../images/gif/powered.gif":[["powered.15b3fcb3.gif","images/gif/powered.gif"],"images/gif/powered.gif"],"./../images/running_man.png":[["running_man.654e32c7.png","images/running_man.png"],"images/running_man.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/scrollMagic.js":[function(require,module,exports) {
 "use strict";
 
 require("scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap");
@@ -9443,6 +9443,7 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+// Chapter
 var tlChapter = new TimelineMax({});
 var controllerChapter = new ScrollMagic.Controller({});
 tlChapter.to('.chapter-appear', {
@@ -9485,7 +9486,83 @@ var sceneAstma = new ScrollMagic.Scene({
   triggerElement: '.astma',
   triggerHook: 'onLeave',
   duration: '100%'
-}).setPin('.astma').setTween(tlAstma).addTo(controllerAstma); // COPD
+}).setPin('.astma').setTween(tlAstma).addTo(controllerAstma); // HEART
+
+var tlHeart = new TimelineMax({});
+var controllerHeart = new ScrollMagic.Controller();
+tlHeart.staggerFrom('.letter-heart', 0.3, {
+  y: -20,
+  opacity: 0,
+  ease: Power1.easeIn
+}, 0.1).staggerFrom('.body-text-heart', 0.8, {
+  x: '100vw',
+  ease: Power1.easeIn
+}, 0.3).fromTo('.heart-full', 2, {
+  opacity: 1
+}, {
+  opacity: 0
+}).to('.heart-in-2', 1, {
+  scale: 1.2,
+  opacity: 1
+}, 'first').to('.heart-in-3', 1, {
+  scale: 1.2,
+  opacity: 1
+}, 'first').to('.heart-container', 1, {
+  opacity: 0
+}, 'second').to('.text-block-heart', 1, {
+  delay: 0.5,
+  opacity: 1
+}, 'second');
+var sceneHeart = new ScrollMagic.Scene({
+  triggerElement: '.heart',
+  triggerHook: 'onLeave',
+  duration: '100%'
+}).setPin('.heart').setTween(tlHeart).addTo(controllerHeart); // HEART
+
+var tlLung = new TimelineMax({});
+var controllerLung = new ScrollMagic.Controller();
+tlLung.staggerFrom('.letter-lung', 0.3, {
+  y: -20,
+  opacity: 0,
+  ease: Power1.easeIn
+}, 0.1).staggerFrom('.body-text-lung', 0.8, {
+  x: '100vw',
+  ease: Power1.easeIn
+}, 0.3).to('.horizontal', 2, {
+  x: '-100vw',
+  ease: Power1.easeIn
+}).to('.lung-color', 1, {
+  delay: 0.5,
+  opacity: 0
+}).to('.lung-color', 1, {
+  visibility: 'hidden'
+}).to('.lungs-container', 2, {
+  scale: 8,
+  x: '-75vw'
+}).to('.lung', 1, {
+  backgroundColor: '#ee5d8b'
+}).to('.lungs-container', 2, {
+  visibility: 'hidden'
+}).to('.no2', 1, {
+  opacity: 1
+}, 'first').to('#bubble', 1, {
+  opacity: 1
+}, 'first').to('.no2', 2, {
+  delay: 1,
+  x: 640,
+  top: '140px',
+  rotate: '-15deg'
+}).set('#bubble', {
+  className: 'infected'
+}).to('.text-block-lung', 1, {
+  delay: 0.5,
+  opacity: 1
+});
+var sceneLung = new ScrollMagic.Scene({
+  triggerElement: '.lung',
+  triggerHook: 'onLeave',
+  duration: '100%'
+}).setPin('.lung').setTween(tlLung).addTo(controllerLung); // COPD
 
 var tlCopd = new TimelineMax({});
 var controllerCopd = new ScrollMagic.Controller({});
@@ -9502,6 +9579,22 @@ var sceneCopd = new ScrollMagic.Scene({
   triggerHook: 'onLeave',
   duration: '100%'
 }).setPin('.copd').setTween(tlCopd).addTo(controllerCopd);
+var tlCopd2 = new TimelineMax({});
+var controllerCopd2 = new ScrollMagic.Controller({});
+tlCopd2.to('.running-man-container', {
+  opacity: 1
+}, 'first').to('.running-man-container', 7, {
+  left: '60vw'
+}, 'first').to('.text-block-copd', 1, {
+  delay: 3,
+  opacity: 1
+}, 'first');
+var sceneCopd2 = new ScrollMagic.Scene({
+  offset: 950,
+  triggerElement: '.copd'
+}).setTween(tlCopd2).addTo(controllerCopd2).setClassToggle('#running-man', 'play').on('start', function (event) {
+  tlCopd2.time(0);
+});
 },{"scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap":"../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js","scrollmagic":"../node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js","scrollmagic-plugin-gsap":"../node_modules/scrollmagic-plugin-gsap/index.js","../styles/main":"styles/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -9530,7 +9623,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59982" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50817" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

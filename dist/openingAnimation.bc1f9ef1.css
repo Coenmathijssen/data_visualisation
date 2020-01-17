@@ -8,6 +8,7 @@ body {
   background: #80A2D0;
   position: relative;
   height: 100vh;
+  width: calc(100vw - 10vw);
 }
 
 .page {
