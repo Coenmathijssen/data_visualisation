@@ -28951,12 +28951,63 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"styles/main.scss":[function(require,module,exports) {
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"styles/_animation.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts/Barlow-Bold.ttf":[["Barlow-Bold.2ae782b3.ttf","styles/fonts/Barlow-Bold.ttf"],"styles/fonts/Barlow-Bold.ttf"],"./fonts/Malayalam.ttf":[["Malayalam.c47a24d6.ttf","styles/fonts/Malayalam.ttf"],"styles/fonts/Malayalam.ttf"],"./../images/gif/powered.gif":[["powered.15b3fcb3.gif","images/gif/powered.gif"],"images/gif/powered.gif"],"./../images/running_man.png":[["running_man.654e32c7.png","images/running_man.png"],"images/running_man.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/gsap/gsap-core.js":[function(require,module,exports) {
+},{"./fonts/Barlow-Bold.ttf":[["Barlow-Bold.2ae782b3.ttf","styles/fonts/Barlow-Bold.ttf"],"styles/fonts/Barlow-Bold.ttf"],"./../images/gif/powered.gif":[["powered.15b3fcb3.gif","images/gif/powered.gif"],"images/gif/powered.gif"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/openingAnimation.js":[function(require,module,exports) {
+"use strict";
+
+require("../styles/_animation.scss");
+
+// import { gsap } from "gsap/all"
+var tl = new TimelineMax({});
+tl.staggerTo('.hide', 1.5, {
+  delay: 1,
+  y: -120,
+  ease: Power4.easeOut
+}, 0.3).staggerTo('.hide', 1, {
+  delay: 3,
+  opacity: 0,
+  ease: Power4.easeOut
+}, 0.3).to('.reveal-first', 0.8, {
+  delay: 1,
+  width: '450px',
+  ease: Power4.easeIn
+}, 1).to('.reveal-second', 0.8, {
+  delay: 1,
+  width: '195px',
+  ease: Power4.easeIn
+}, 2).to('.creators', 0, {
+  delay: 1,
+  visibility: 'visible',
+  ease: Power1.easeIn
+}, 2).to('.knmi', 0, {
+  delay: 1,
+  visibility: 'visible',
+  ease: Power1.easeIn
+}, 3).to('.reveal-first', 0.8, {
+  delay: 1,
+  x: '100%',
+  ease: Power4.easeOut
+}, 2).to('.reveal-second', 0.8, {
+  delay: 1,
+  x: '100%',
+  ease: Power4.easeOut
+}, 3).to('.page', 1.5, {
+  y: '-100%',
+  ease: Power3.easeIn
+}, 7.5) // 6.5
+.to('.second-color-slide-up', 1.6, {
+  y: '-100%',
+  ease: Power4.easeIn
+}, 8) // 8
+.to('.page', 1.5, {
+  visibility: 'hidden',
+  ease: Power3.easeIn
+}, 11); // 11
+},{"../styles/_animation.scss":"styles/_animation.scss"}],"../node_modules/gsap/gsap-core.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38195,7 +38246,7 @@ var ScrollMagicPluginGsap = function(ScrollMagic, TweenMax, Timeline) {
 
 module.exports = { ScrollMagicPluginGsap : ScrollMagicPluginGsap };
 
-},{}],"js/scrollMagic.js":[function(require,module,exports) {
+},{}],"js/backgroundChange.js":[function(require,module,exports) {
 "use strict";
 
 require("scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap");
@@ -38204,22 +38255,124 @@ var ScrollMagic = _interopRequireWildcard(require("scrollmagic"));
 
 var _scrollmagicPluginGsap = require("scrollmagic-plugin-gsap");
 
-require("../styles/main");
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var tlIntroChange = new TimelineMax({});
+var controllerIntroChange = new ScrollMagic.Controller({});
+tlIntroChange.to('.body', 0.3, {
+  backgroundColor: '#80A2D0'
+}).call(changeNumber, ['01', '#223984']);
+var sceneIntroChange = new ScrollMagic.Scene({
+  triggerElement: '.intro'
+}).setTween(tlIntroChange).addTo(controllerIntroChange); // Chapter Amsterdam
+
+var tlAmsterdamChange = new TimelineMax({});
+var controllerAmsterdamChange = new ScrollMagic.Controller({});
+tlAmsterdamChange.to('.body', 0.3, {
+  backgroundColor: '#ED6A63'
+}).call(changeNumber, ['02', '#000000']);
+var sceneAmsterdamChange = new ScrollMagic.Scene({
+  triggerElement: '.amsterdam'
+}).setTween(tlAmsterdamChange).addTo(controllerAmsterdamChange); // Chapter air pollution
+
+var tlAirPollutionChange = new TimelineMax({});
+var controllerAirPollutionChange = new ScrollMagic.Controller({});
+tlAirPollutionChange.to('.body', 0.3, {
+  backgroundColor: '#ECBFD8'
+}).call(changeNumber, ['03', '#3F4A9A']);
+var sceneAirPollutionChange = new ScrollMagic.Scene({
+  triggerElement: '.air-pollution'
+}).setTween(tlAirPollutionChange).addTo(controllerAirPollutionChange); // Chapter effects
+
+var tlEffectsChange = new TimelineMax({});
+var controllerEffectsChange = new ScrollMagic.Controller({});
+tlEffectsChange.to('.body', 0.3, {
+  backgroundColor: '#EEE8D7'
+}).call(changeNumber, ['04', '#E73A4D']);
+var sceneEffectsChange = new ScrollMagic.Scene({
+  offset: -100,
+  triggerElement: '.decease'
+}).setTween(tlEffectsChange).addTo(controllerEffectsChange);
+
+function changeNumber(num, color) {
+  document.getElementById('number-change').textContent = num;
+  document.getElementById('count').style.color = color;
+}
+},{"scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap":"../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js","scrollmagic":"../node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js","scrollmagic-plugin-gsap":"../node_modules/scrollmagic-plugin-gsap/index.js"}],"js/form.js":[function(require,module,exports) {
+
+},{}],"js/titlesAppear.js":[function(require,module,exports) {
+"use strict";
+
+require("scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap");
+
+var ScrollMagic = _interopRequireWildcard(require("scrollmagic"));
+
+var _scrollmagicPluginGsap = require("scrollmagic-plugin-gsap");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-// Chapter
-var tlChapter = new TimelineMax({});
-var controllerChapter = new ScrollMagic.Controller({});
-tlChapter.to('.chapter-appear', {
+var tlChapterIntro = new TimelineMax({});
+var controllerChapterIntro = new ScrollMagic.Controller({});
+tlChapterIntro.to('.pollution-adam', 1, {
   y: -100,
   ease: Power4.easeOut
-}, 1);
-var sceneChapter = new ScrollMagic.Scene({
-  triggerElement: '.chapter-trigger'
-}).setTween(tlChapter).addTo(controllerChapter); // ASTMA
+}).to('.explain-text-appear-1', 1, {
+  top: 0,
+  ease: Power4.easeOut
+}, 'second').to('.explain-text-appear-2', 1, {
+  delay: 0.5,
+  top: 0,
+  ease: Power4.easeOut
+}, 'second');
+var sceneChapterIntro = new ScrollMagic.Scene({
+  triggerElement: '.chapter-trigger-intro'
+}).setTween(tlChapterIntro).addTo(controllerChapterIntro); // Chapter Amsterdam - fill in your details
+
+var tlChapterAmsterdam = new TimelineMax({});
+var controllerChapterAmsterdam = new ScrollMagic.Controller({});
+tlChapterAmsterdam.to('.adam', 1, {
+  y: -100,
+  ease: Power4.easeOut
+});
+var sceneChapterAmsterdam = new ScrollMagic.Scene({
+  triggerElement: '.chapter-trigger-amsterdam'
+}).setTween(tlChapterAmsterdam).addTo(controllerChapterAmsterdam); // Chapter air pollution
+
+var tlChapterPollution = new TimelineMax({});
+var controllerChapterPollution = new ScrollMagic.Controller({});
+tlChapterPollution.to('.pollution', 1, {
+  y: -100,
+  ease: Power4.easeOut
+});
+var sceneChapterPollution = new ScrollMagic.Scene({
+  triggerElement: '.chapter-trigger-pollution'
+}).setTween(tlChapterPollution).addTo(controllerChapterPollution); // Chapter effects
+
+var tlChapterEffects = new TimelineMax({});
+var controllerChapterEffects = new ScrollMagic.Controller({});
+tlChapterEffects.to('.effects', 1, {
+  y: -100,
+  ease: Power4.easeOut
+});
+var sceneChapterEffects = new ScrollMagic.Scene({
+  triggerElement: '.chapter-trigger-effects'
+}).setTween(tlChapterEffects).addTo(controllerChapterEffects);
+},{"scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap":"../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js","scrollmagic":"../node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js","scrollmagic-plugin-gsap":"../node_modules/scrollmagic-plugin-gsap/index.js"}],"js/scrollMagic.js":[function(require,module,exports) {
+"use strict";
+
+require("scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap");
+
+var ScrollMagic = _interopRequireWildcard(require("scrollmagic"));
+
+var _scrollmagicPluginGsap = require("scrollmagic-plugin-gsap");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var tlAstma = new TimelineMax({});
 var controllerAstma = new ScrollMagic.Controller({});
@@ -38227,7 +38380,11 @@ tlAstma.staggerFrom('.letter-astma', 0.3, {
   y: -20,
   opacity: 0,
   ease: Power1.easeIn
-}, 0.1).staggerFrom('.body-text-astma', 0.8, {
+}, 0.1).to('.spray-container', {
+  opacity: 1
+}).to('.spray', {
+  opacity: 1
+}).staggerFrom('.body-text-astma', 0.8, {
   x: '-100vw',
   ease: Power1.easeIn
 }, 0.3, 'second').to('.inhaler-container', 0.8, {
@@ -38292,10 +38449,10 @@ tlLung.staggerFrom('.letter-lung', 0.3, {
   y: -20,
   opacity: 0,
   ease: Power1.easeIn
-}, 0.1).staggerFrom('.body-text-lung', 0.8, {
+}, 0.1).staggerFrom('.body-text-lung', 1.6, {
   x: '100vw',
   ease: Power1.easeIn
-}, 0.3).to('.horizontal', 2, {
+}, 0.3).to('.horizontal', 3, {
   x: '-100vw',
   ease: Power1.easeIn
 }).to('.lung-color', 1, {
@@ -38303,7 +38460,7 @@ tlLung.staggerFrom('.letter-lung', 0.3, {
   opacity: 0
 }).to('.lung-color', 1, {
   visibility: 'hidden'
-}).to('.lungs-container', 2, {
+}).to('.lungs-container', 3, {
   scale: 8,
   x: '-75vw'
 }).to('.lung', 1, {
@@ -38316,8 +38473,8 @@ tlLung.staggerFrom('.letter-lung', 0.3, {
   opacity: 1
 }, 'first').to('.no2', 2, {
   delay: 1,
-  x: 640,
-  top: '140px',
+  x: '58vw',
+  top: '22vh',
   rotate: '-15deg'
 }).set('#bubble', {
   className: 'infected'
@@ -38328,7 +38485,7 @@ tlLung.staggerFrom('.letter-lung', 0.3, {
 var sceneLung = new ScrollMagic.Scene({
   triggerElement: '.lung',
   triggerHook: 'onLeave',
-  duration: '100%'
+  duration: '200%'
 }).setPin('.lung').setTween(tlLung).addTo(controllerLung); // COPD
 
 var tlCopd = new TimelineMax({});
@@ -38362,7 +38519,194 @@ var sceneCopd2 = new ScrollMagic.Scene({
 }).setTween(tlCopd2).addTo(controllerCopd2).setClassToggle('#running-man', 'play').on('start', function (event) {
   tlCopd2.time(0);
 });
-},{"scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap":"../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js","scrollmagic":"../node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js","scrollmagic-plugin-gsap":"../node_modules/scrollmagic-plugin-gsap/index.js","../styles/main":"styles/main.scss"}],"js/transformData.js":[function(require,module,exports) {
+},{"scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap":"../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js","scrollmagic":"../node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js","scrollmagic-plugin-gsap":"../node_modules/scrollmagic-plugin-gsap/index.js"}],"../node_modules/smoke-effect/dist/smoke.js":[function(require,module,exports) {
+var define;
+parcelRequire = function (e, r, n, t) {
+  var i = "function" == typeof parcelRequire && parcelRequire,
+      o = "function" == typeof require && require;
+
+  function u(n, t) {
+    if (!r[n]) {
+      if (!e[n]) {
+        var f = "function" == typeof parcelRequire && parcelRequire;
+        if (!t && f) return f(n, !0);
+        if (i) return i(n, !0);
+        if (o && "string" == typeof n) return o(n);
+        var c = new Error("Cannot find module '" + n + "'");
+        throw c.code = "MODULE_NOT_FOUND", c;
+      }
+
+      p.resolve = function (r) {
+        return e[n][1][r] || r;
+      }, p.cache = {};
+      var l = r[n] = new u.Module(n);
+      e[n][0].call(l.exports, p, l, l.exports, this);
+    }
+
+    return r[n].exports;
+
+    function p(e) {
+      return u(p.resolve(e));
+    }
+  }
+
+  u.isParcelRequire = !0, u.Module = function (e) {
+    this.id = e, this.bundle = u, this.exports = {};
+  }, u.modules = e, u.cache = r, u.parent = i, u.register = function (r, n) {
+    e[r] = [function (e, r) {
+      r.exports = n;
+    }, {}];
+  };
+
+  for (var f = 0; f < n.length; f++) u(n[f]);
+
+  if (n.length) {
+    var c = u(n[n.length - 1]);
+    "object" == typeof exports && "undefined" != typeof module ? module.exports = c : "function" == typeof define && define.amd ? define(function () {
+      return c;
+    }) : t && (this[t] = c);
+  }
+
+  return u;
+}({
+  "bagd": [function (require, module, exports) {
+    "use strict";
+
+    function e(e, t) {
+      if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }
+
+    function t(e, t) {
+      for (var a = 0; a < t.length; a++) {
+        var i = t[a];
+        i.enumerable = i.enumerable || !1, i.configurable = !0, "value" in i && (i.writable = !0), Object.defineProperty(e, i.key, i);
+      }
+    }
+
+    function a(e, a, i) {
+      return a && t(e.prototype, a), i && t(e, i), e;
+    }
+
+    function i(e, t, a) {
+      return t in e ? Object.defineProperty(e, t, {
+        value: a,
+        enumerable: !0,
+        configurable: !0,
+        writable: !0
+      }) : e[t] = a, e;
+    }
+
+    Object.defineProperty(exports, "__esModule", {
+      value: !0
+    }), exports.default = void 0;
+
+    var n = function () {
+      function t(a, n) {
+        var r = this;
+        e(this, t), i(this, "opacities", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 5, 5, 7, 4, 4, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 17, 27, 41, 52, 56, 34, 23, 15, 11, 4, 9, 5, 1, 0, 0, 0, 0, 0, 0, 1, 45, 63, 57, 45, 78, 66, 52, 41, 34, 37, 23, 20, 0, 1, 0, 0, 0, 0, 1, 43, 62, 66, 64, 67, 115, 112, 114, 56, 58, 47, 33, 18, 12, 10, 0, 0, 0, 0, 39, 50, 63, 76, 87, 107, 105, 112, 128, 104, 69, 64, 29, 18, 21, 15, 0, 0, 0, 7, 42, 52, 85, 91, 103, 126, 153, 128, 124, 82, 57, 52, 52, 24, 1, 0, 0, 0, 2, 17, 41, 67, 84, 100, 122, 136, 159, 127, 78, 69, 60, 50, 47, 25, 7, 1, 0, 0, 0, 34, 33, 66, 82, 113, 138, 149, 168, 175, 82, 142, 133, 70, 62, 41, 25, 6, 0, 0, 0, 18, 39, 55, 113, 111, 137, 141, 139, 141, 128, 102, 130, 90, 96, 65, 37, 0, 0, 0, 2, 15, 27, 71, 104, 129, 129, 158, 140, 154, 146, 150, 131, 92, 100, 67, 26, 3, 0, 0, 0, 0, 46, 73, 104, 124, 145, 135, 122, 107, 120, 122, 101, 98, 96, 35, 38, 7, 2, 0, 0, 0, 50, 58, 91, 124, 127, 139, 118, 121, 177, 156, 88, 90, 88, 28, 43, 3, 0, 0, 0, 0, 30, 62, 68, 91, 83, 117, 89, 139, 139, 99, 105, 77, 32, 1, 1, 0, 0, 0, 0, 0, 16, 21, 8, 45, 101, 125, 118, 87, 110, 86, 64, 39, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 28, 79, 79, 117, 122, 88, 84, 54, 46, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 6, 55, 61, 68, 71, 30, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 23, 25, 20, 12, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 12, 9, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0]), i(this, "smokeSpriteSize", 20), i(this, "particles", []), i(this, "running", !1), i(this, "smokeParticleImage", null), i(this, "lastframe", null), i(this, "preDrawCallback", function () {}), i(this, "context", null), i(this, "polyfillAnimFrame", window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame), i(this, "frame", function (e) {
+          if (r.running) {
+            var t = e - r.lastframe;
+            r.lastframe = e, r.updateAndDrawParticles(t), r.polyfillAnimFrame.call(window, r.frame);
+          }
+        }), i(this, "addSmoke", this.addParticles), this.context = a, this.smokeParticleImage = this.makeSmokeSprite(n), this.lastframe = performance.now();
+      }
+
+      return a(t, [{
+        key: "floatInRange",
+        value: function (e, t) {
+          return e + Math.random() * (t - e);
+        }
+      }, {
+        key: "makeSmokeSprite",
+        value: function () {
+          for (var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : [24, 46.8, 48.2], t = document.createElement("canvas"), a = t.getContext("2d"), i = a.createImageData(this.smokeSpriteSize, this.smokeSpriteSize), n = i.data, r = 0; r < n.length; r += 4) n[r] = e[0], n[r + 1] = e[1], n[r + 2] = e[2], n[r + 3] = this.opacities[r / 4];
+
+          return t.width = this.smokeSpriteSize, t.height = this.smokeSpriteSize, a.putImageData(i, 0, 0), t;
+        }
+      }, {
+        key: "createParticle",
+        value: function (e, t, a) {
+          a = a || {};
+          var i = {
+            x: e,
+            y: t,
+            vx: this.floatInRange(a.minVx || -.08, a.maxVx || .08),
+            startvy: this.floatInRange(a.minVy || -.4, a.maxVy || .1),
+            scale: this.floatInRange(a.minScale || 0, a.maxScale || .5),
+            lifetime: this.floatInRange(a.minLifetime || 2e3, a.maxLifetime || 8e3),
+            age: 0
+          };
+          return i.finalScale = this.floatInRange(a.minScale || 25 + i.scale, a.maxScale || 30 + i.scale), i.vy = i.startvy, i;
+        }
+      }, {
+        key: "updateParticle",
+        value: function (e, t) {
+          e.x += e.vx * t, e.y += e.vy * t;
+          var a = Math.sqrt(e.age / e.lifetime);
+          e.vy = (1 - a) * e.startvy, e.age += t, e.scale = a * e.finalScale;
+        }
+      }, {
+        key: "drawParticle",
+        value: function (e, t) {
+          this.context.globalAlpha = (1 - Math.abs(1 - 2 * e.age / e.lifetime)) / 8;
+          var a = e.scale * this.smokeSpriteSize / 2,
+              i = e.x - a,
+              n = i + 3 * a,
+              r = e.y - a,
+              s = r + 2 * a;
+          this.context.drawImage(t, i, r, n - i, s - r);
+        }
+      }, {
+        key: "addParticles",
+        value: function (e, t, a, i) {
+          if ((a = a || 10) < 1) return Math.random() <= a && this.particles.push(this.createParticle(e, t, i));
+
+          for (var n = 0; n < a; n++) this.particles.push(this.createParticle(e, t, i));
+        }
+      }, {
+        key: "updateAndDrawParticles",
+        value: function (e) {
+          var t = this;
+          this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height), this.particles.forEach(function (a) {
+            t.updateParticle(a, e);
+          }), this.particles = this.particles.filter(function (e) {
+            return e.age < e.lifetime;
+          }), this.preDrawCallback(e, this.particles), this.particles.forEach(function (e) {
+            t.drawParticle(e, t.smokeParticleImage, t.context);
+          });
+        }
+      }, {
+        key: "setPreDrawCallback",
+        value: function (e) {
+          this.preDrawCallback = e;
+        }
+      }, {
+        key: "step",
+        value: function (e) {
+          e = e || 16, this.updateAndDrawParticles(e);
+        }
+      }, {
+        key: "start",
+        value: function () {
+          this.running = !0, this.lastframe = performance.now(), this.polyfillAnimFrame.call(window, this.frame);
+        }
+      }, {
+        key: "stop",
+        value: function () {
+          this.running = !1;
+        }
+      }]), t;
+    }();
+
+    exports.default = n;
+  }, {}]
+}, {}, ["bagd"], null);
+},{}],"styles/main.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"./fonts/Barlow-Bold.ttf":[["Barlow-Bold.2ae782b3.ttf","styles/fonts/Barlow-Bold.ttf"],"styles/fonts/Barlow-Bold.ttf"],"./fonts/Malayalam.ttf":[["Malayalam.c47a24d6.ttf","styles/fonts/Malayalam.ttf"],"styles/fonts/Malayalam.ttf"],"./../images/gif/powered.gif":[["powered.15b3fcb3.gif","images/gif/powered.gif"],"images/gif/powered.gif"],"./../images/running_man.png":[["running_man.654e32c7.png","images/running_man.png"],"images/running_man.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/transformData.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38496,6 +38840,7 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 // https://bl.ocks.org/TamayoValencia/996ca33b7d42d7dff4d69ed00a5fd571
+// D3 code
 var svg = d3.selectAll('.viz'),
     margin = {
   top: 20,
@@ -38534,7 +38879,7 @@ function update(myData) {
   points.exit().remove();
   g.select('.x.axis').call(d3.axisBottom(x)).attr('transform', 'translate(0, ' + height + ')');
   g.select('.y.axis').call(d3.axisLeft(y));
-  g.append("text").attr("y", -15).attr("x", 7).attr("dy", "0.5em").attr("text-anchor", "end").text("No2");
+  g.append('text').attr('y', -15).attr('x', 7).attr('dy', '0.5em').attr('text-anchor', 'end').attr('class', 'graph-text').text('No2');
 }
 
 console.log('w', width, ' h', height);
@@ -38543,20 +38888,46 @@ console.log('w', width, ' h', height);
 
 var d3 = _interopRequireWildcard(require("d3"));
 
-require("../styles/main");
+require("./openingAnimation.js");
+
+require("./backgroundChange.js");
+
+require("./form.js");
+
+require("./titlesAppear.js");
 
 require("./scrollMagic.js");
+
+var _smokeEffect = _interopRequireDefault(require("smoke-effect"));
 
 var _transformData = require("./transformData.js");
 
 var _barChart = require("./barChart.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 // Importing whole files
-// Importing functions
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+var smoke = new _smokeEffect.default(context, [34, 57, 132]); // context canvas, smoke color
+
+smoke.start();
+smoke.step(800);
+addSmoke(smoke); // Make run smoke run indefinitely
+
+function addSmoke() {
+  smoke.addSmoke(0, 400, 0);
+  smoke.addSmoke(1300, 400, 0);
+  setTimeout(function () {
+    addSmoke();
+  }, 1000);
+} // Importing functions
+
+
 Promise.all([d3.json('./data/amsterdam_NO2_20190101.json'), d3.json('./data/amsterdam_NO2_20190102.json'), d3.json('./data/amsterdam_NO2_20190103.json'), d3.json('./data/amsterdam_NO2_20190104.json'), d3.json('./data/amsterdam_NO2_20190105.json'), d3.json('./data/amsterdam_NO2_20190106.json'), d3.json('./data/amsterdam_NO2_20190107.json')]).then(function (data) {
   // data.forEach(dataDay => { console.log('raw data: ', dataDay) })
   var transformedData = (0, _transformData.transformData)(data);
@@ -38580,7 +38951,7 @@ Promise.all([d3.json('./data/amsterdam_NO2_20190101.json'), d3.json('./data/amst
 }).catch(function (err) {
   console.log('Error loading data!, ', err);
 });
-},{"d3":"../node_modules/d3/index.js","../styles/main":"styles/main.scss","./scrollMagic.js":"js/scrollMagic.js","./transformData.js":"js/transformData.js","./barChart.js":"js/barChart.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"d3":"../node_modules/d3/index.js","./openingAnimation.js":"js/openingAnimation.js","./backgroundChange.js":"js/backgroundChange.js","./form.js":"js/form.js","./titlesAppear.js":"js/titlesAppear.js","./scrollMagic.js":"js/scrollMagic.js","smoke-effect":"../node_modules/smoke-effect/dist/smoke.js","./transformData.js":"js/transformData.js","./barChart.js":"js/barChart.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -38608,7 +38979,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50817" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52054" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
