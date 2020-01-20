@@ -238,7 +238,7 @@ p {
   overflow: hidden;
   height: 80px;
   margin-bottom: 5vh;
-  width: calc(100% - 10vw);
+  width: 100%;
   font-family: barlow-bold;
   z-index: 10;
 }
@@ -374,8 +374,8 @@ p {
   position: absolute;
   top: 0;
   right: 0;
-  border-top: 50px solid #ED6A63;
-  border-left: 50px solid #f3f2f0;
+  border-top: 40px solid #ED6A63;
+  border-left: 40px solid #f3f2f0;
   width: 0;
 }
 .form-container #contact input[type=text], .form-container #contact input[type=email], .form-container #contact input[type=tel], .form-container #contact input[type=url], .form-container #contact textarea, .form-container #contact button[type=submit] {
