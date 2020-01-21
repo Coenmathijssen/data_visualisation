@@ -46745,7 +46745,7 @@ function transformData(data) {
   return transformedDataArray;
 }
 
-function calcMaximumAverage(transformedData) {
+function calcMaximumAverage(transformedData, index) {
   // Calculate the highest value in the array
   // transformedData[0].forEach(hour => {
   //   console.log('hour: ', hour)
@@ -46757,13 +46757,13 @@ function calcMaximumAverage(transformedData) {
 
   if (transformedData.length === 24) {
     var maximumDay = transformedData.map(function (hour) {
-      return hour.dataArray[359].concAna;
+      return hour.dataArray[index - 1].concAna;
     });
     return getAvg(maximumDay);
   } else {
     transformedData.forEach(function (dataDay) {
       var maximumDay = dataDay.map(function (hour) {
-        return hour.dataArray[359].concAna;
+        return hour.dataArray[index - 1].concAna;
       });
       maximumDay = getAvg(maximumDay);
       maximumArray.push(maximumDay);
@@ -46805,13 +46805,87 @@ function getAvg(array) {
   }, 0);
   return total / array.length;
 }
+},{}],"js/fetchAndFind.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.matchData = matchData;
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function matchData(streets, data) {
+  var dataHour = data[0][0].dataArray;
+  var foundItems = streets.map(function (street) {
+    return getAddress(street).then(function (data) {
+      console.log('found address: ', data);
+      var lat = Number(data.geometry.location.lat.toString().slice(0, -1));
+      var long = Number(data.geometry.location.lng.toString().slice(0, -1));
+      var foundItem = dataHour.filter(function (item, i) {
+        if (item.long > long - 0.001 && item.long < long + 0.001 && item.lat > lat - 0.001 && item.lat < lat) {
+          return item;
+        }
+      });
+      return foundItem[0];
+    });
+  });
+  console.log(foundItems);
+  return foundItems;
+} // Google Geocoding async fetch
+
+
+function getAddress(_x) {
+  return _getAddress.apply(this, arguments);
+}
+
+function _getAddress() {
+  _getAddress = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee(address) {
+    var data, returnedData;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return response.json();
+
+          case 2:
+            data = _context.sent;
+            returnedData = data.results[0];
+
+            if (returnedData.address_components[6]) {
+              _context.next = 9;
+              break;
+            }
+
+            window.alert('Adres niet gevonden. Zorg dat het adres goed is geschreven en zich binnen Amsterdam bevindt.');
+            return _context.abrupt("return", null);
+
+          case 9:
+            return _context.abrupt("return", returnedData);
+
+          case 10:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _getAddress.apply(this, arguments);
+}
 },{}],"js/barChart.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.update = update;
+exports.update1 = update1;
+exports.update2 = update2;
+exports.update3 = update3;
 
 var d3 = _interopRequireWildcard(require("d3"));
 
@@ -46821,45 +46895,130 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 // https://bl.ocks.org/TamayoValencia/996ca33b7d42d7dff4d69ed00a5fd571
 // D3 code
-var svg = d3.selectAll('.viz'),
-    margin = {
+// FIRST BAR CHART
+var svg1 = d3.selectAll('.viz1'),
+    margin1 = {
   top: 20,
   right: 20,
   bottom: 30,
   left: 50
 },
-    width = +svg.attr('width') - margin.left - margin.right,
-    height = +svg.attr('height') - margin.top - margin.bottom,
-    g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-g.append('g').attr('class', 'x axis');
-g.append('g').attr('class', 'y axis');
-var x = d3.scaleBand().padding(0.1).range([0, width]);
-var y = d3.scaleLinear().range([height, 0]);
+    width1 = +svg1.attr('width') - margin1.left - margin1.right,
+    height1 = +svg1.attr('height') - margin1.top - margin1.bottom,
+    g1 = svg1.append('g').attr('transform', 'translate(' + margin1.left + ',' + margin1.top + ')');
+g1.append('g').attr('class', 'x axis');
+g1.append('g').attr('class', 'y axis');
+var x1 = d3.scaleBand().padding(0.1).range([0, width1]);
+var y1 = d3.scaleLinear().range([height1, 0]);
 
-function update(myData) {
-  x.domain(myData.map(function (d) {
+function update1(myData) {
+  x1.domain(myData.map(function (d) {
     return d.name;
   }));
-  y.domain([0, d3.max(myData, function (d) {
+  y1.domain([0, d3.max(myData, function (d) {
     return d.avg;
   })]);
-  var points = g.selectAll('.point').data(myData); // Update
+  var points = g1.selectAll('.point').data(myData); // Update
 
   var pointsEnter = points.enter().append('rect').attr('class', 'point');
   points.merge(pointsEnter) // Enter + Update
   .attr('x', function (d) {
-    return x(d.name);
+    return x1(d.name);
   }).attr('y', function (d) {
-    return y(d.avg);
+    return y1(d.avg);
   }).attr('width', function (d) {
-    return x.bandwidth();
+    return x1.bandwidth();
   }).attr('height', function (d) {
-    return height - y(d.avg);
+    return height1 - y1(d.avg);
   });
   points.exit().remove();
-  g.select('.x.axis').call(d3.axisBottom(x)).attr('transform', 'translate(0, ' + height + ')');
-  g.select('.y.axis').call(d3.axisLeft(y));
-  g.append('text').attr('y', -15).attr('x', 7).attr('dy', '0.5em').attr('text-anchor', 'end').attr('class', 'graph-text').text('No2');
+  g1.select('.x.axis').call(d3.axisBottom(x1)).attr('transform', 'translate(0, ' + height1 + ')');
+  g1.select('.y.axis').call(d3.axisLeft(y1));
+  g1.append('text').attr('y', -15).attr('x', 7).attr('dy', '0.5em').attr('text-anchor', 'end').attr('class', 'graph-text').text('No2');
+} // SECOND BAR CHART
+
+
+var svg2 = d3.selectAll('.viz2'),
+    margin2 = {
+  top: 20,
+  right: 20,
+  bottom: 30,
+  left: 50
+},
+    width2 = +svg2.attr('width') - margin2.left - margin2.right,
+    height2 = +svg2.attr('height') - margin2.top - margin2.bottom,
+    g2 = svg2.append('g').attr('transform', 'translate(' + margin2.left + ',' + margin2.top + ')');
+g2.append('g').attr('class', 'x axis');
+g2.append('g').attr('class', 'y axis');
+var x2 = d3.scaleBand().padding(0.1).range([0, width2]);
+var y2 = d3.scaleLinear().range([height2, 0]);
+
+function update2(myData) {
+  x2.domain(myData.map(function (d) {
+    return d.name;
+  }));
+  y2.domain([0, d3.max(myData, function (d) {
+    return d.avg;
+  })]);
+  var points2 = g2.selectAll('.point').data(myData); // Update
+
+  var pointsEnter2 = points2.enter().append('rect').attr('class', 'point');
+  points2.merge(pointsEnter2) // Enter + Update
+  .attr('x', function (d) {
+    return x2(d.name);
+  }).attr('y', function (d) {
+    return y2(d.avg);
+  }).attr('width', function (d) {
+    return x2.bandwidth();
+  }).attr('height', function (d) {
+    return height2 - y2(d.avg);
+  });
+  points2.exit().remove();
+  g2.select('.x.axis').call(d3.axisBottom(x2)).attr('transform', 'translate(0, ' + height2 + ')');
+  g2.select('.y.axis').call(d3.axisLeft(y2));
+  g2.append('text').attr('y', -15).attr('x', 7).attr('dy', '0.5em').attr('text-anchor', 'end').attr('class', 'graph-text').text('No2');
+} // THIRD BAR CHART
+
+
+var svg3 = d3.selectAll('.viz3'),
+    margin3 = {
+  top: 20,
+  right: 20,
+  bottom: 30,
+  left: 50
+},
+    width3 = +svg3.attr('width') - margin3.left - margin3.right,
+    height3 = +svg3.attr('height') - margin3.top - margin3.bottom,
+    g3 = svg3.append('g').attr('transform', 'translate(' + margin3.left + ',' + margin3.top + ')');
+g3.append('g').attr('class', 'x axis');
+g3.append('g').attr('class', 'y axis');
+var x3 = d3.scaleBand().padding(0.1).range([0, width3]);
+var y3 = d3.scaleLinear().range([height3, 0]);
+
+function update3(myData) {
+  x3.domain(myData.map(function (d) {
+    return d.name;
+  }));
+  y3.domain([0, d3.max(myData, function (d) {
+    return d.avg;
+  })]);
+  var points3 = g3.selectAll('.point').data(myData); // Update
+
+  var pointsEnter3 = points3.enter().append('rect').attr('class', 'point');
+  points3.merge(pointsEnter3) // Enter + Update
+  .attr('x', function (d) {
+    return x3(d.name);
+  }).attr('y', function (d) {
+    return y3(d.avg);
+  }).attr('width', function (d) {
+    return x3.bandwidth();
+  }).attr('height', function (d) {
+    return height3 - y3(d.avg);
+  });
+  points3.exit().remove();
+  g3.select('.x.axis').call(d3.axisBottom(x3)).attr('transform', 'translate(0, ' + height3 + ')');
+  g3.select('.y.axis').call(d3.axisLeft(y3));
+  g3.append('text').attr('y', -15).attr('x', 7).attr('dy', '0.5em').attr('text-anchor', 'end').attr('class', 'graph-text').text('No2');
 }
 },{"d3":"../node_modules/d3/index.js"}],"js/main.js":[function(require,module,exports) {
 "use strict";
@@ -46880,6 +47039,8 @@ require("babel-polyfill");
 
 var _transformData = require("./transformData.js");
 
+var _fetchAndFind = require("./fetchAndFind.js");
+
 var _barChart = require("./barChart.js");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -46890,94 +47051,95 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-Promise.all([d3.json('./data/amsterdam_NO2_20190101.json'), d3.json('./data/amsterdam_NO2_20190102.json'), d3.json('./data/amsterdam_NO2_20190103.json'), d3.json('./data/amsterdam_NO2_20190104.json'), d3.json('./data/amsterdam_NO2_20190105.json'), d3.json('./data/amsterdam_NO2_20190106.json'), d3.json('./data/amsterdam_NO2_20190107.json')]).then(function (data) {
-  // data.forEach(dataDay => { console.log('raw data: ', dataDay) })
-  var transformedData = (0, _transformData.transformData)(data); // console.log('all data transformed: ', transformedData)
-
-  matchData(transformedData);
-  var weekAverage = (0, _transformData.calcAverage)(transformedData); // console.log('weekAverage: ', weekAverage)
-
-  var dayAverage = (0, _transformData.calcAverage)(transformedData[0]); // console.log('dayAverage: ', dayAverage)
-
-  var maximumAverageWeek = (0, _transformData.calcMaximumAverage)(transformedData); // console.log('maximumAverageWeek', maximumAverageWeek)
-
-  var maximumAverageDay = (0, _transformData.calcMaximumAverage)(transformedData[0]); // console.log('maximumAverageDay', maximumAverageDay)
-
-  var myData = [{
-    name: 'Amsterdams gemiddelde',
-    avg: dayAverage
-  }, {
-    name: 'Woonplaats',
-    avg: maximumAverageDay
-  }];
-  (0, _barChart.update)(myData);
-}).catch(function (err) {
-  console.log('Error loading data!, ', err);
-});
-
-function matchData(data) {
-  var dataHour = data[0][0].dataArray;
-  console.log(dataHour);
-  getAddress('kinkerstraat').then(function (data) {
-    console.log('found address: ', data);
-    var lat = Number(data.geometry.location.lat.toString().slice(0, -1));
-    var long = Number(data.geometry.location.lng.toString().slice(0, -1));
-    var foundItem = dataHour.filter(function (item, i) {
-      if (item.long > long - 0.001 && item.long < long + 0.001 && item.lat > lat - 0.001 && item.lat < lat) {
-        return item;
-      }
-    });
-    console.log('found item(s): ', foundItem);
-  });
-} // Google Geocoding async fetch
-
-
-function getAddress(_x) {
-  return _getAddress.apply(this, arguments);
+function fetchAndTransformData() {
+  return _fetchAndTransformData.apply(this, arguments);
 }
 
-function _getAddress() {
-  _getAddress = _asyncToGenerator(
+function _fetchAndTransformData() {
+  _fetchAndTransformData = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee(address) {
-    var response, data, returnedData;
+  regeneratorRuntime.mark(function _callee() {
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
-            return fetch("https://maps.googleapis.com/maps/api/geocode/json?address=".concat(address, ",Amsterdam&key=AIzaSyBdnUS_nOQpLxzrqgqTujJx-Kq6-JaNd6Y\n  "));
+            return _context.abrupt("return", Promise.all([d3.json('./data/amsterdam_NO2_20190101.json'), d3.json('./data/amsterdam_NO2_20190102.json'), d3.json('./data/amsterdam_NO2_20190103.json'), d3.json('./data/amsterdam_NO2_20190104.json'), d3.json('./data/amsterdam_NO2_20190105.json'), d3.json('./data/amsterdam_NO2_20190106.json'), d3.json('./data/amsterdam_NO2_20190107.json')]).then(function (data) {
+              var transformedData = (0, _transformData.transformData)(data);
+              return transformedData;
+            }).catch(function (err) {
+              console.log('Error loading data!, ', err);
+            }));
 
-          case 2:
-            response = _context.sent;
-            _context.next = 5;
-            return response.json();
-
-          case 5:
-            data = _context.sent;
-            returnedData = data.results[0];
-
-            if (returnedData.address_components[6]) {
-              _context.next = 12;
-              break;
-            }
-
-            window.alert('Adres niet gevonden. Zorg dat het adres goed is geschreven en zich binnen Amsterdam bevindt.');
-            return _context.abrupt("return", null);
-
-          case 12:
-            return _context.abrupt("return", returnedData);
-
-          case 13:
+          case 1:
           case "end":
             return _context.stop();
         }
       }
     }, _callee);
   }));
-  return _getAddress.apply(this, arguments);
+  return _fetchAndTransformData.apply(this, arguments);
 }
-},{"d3":"../node_modules/d3/index.js","./intro.js":"js/intro.js","./backgroundChange.js":"js/backgroundChange.js","./titlesAppear.js":"js/titlesAppear.js","./scrollMagic.js":"js/scrollMagic.js","./form.js":"js/form.js","babel-polyfill":"../node_modules/babel-polyfill/lib/index.js","./transformData.js":"js/transformData.js","./barChart.js":"js/barChart.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+var transformedData = fetchAndTransformData();
+
+function calcAnaValues(streets) {
+  transformedData.then(function (transformedData) {
+    console.log(transformedData);
+    var foundData = (0, _fetchAndFind.matchData)(streets, transformedData);
+    console.log('test ', foundData);
+    var weekAverageAmsterdam = (0, _transformData.calcAverage)(transformedData);
+    console.log('week average Amsterdam', weekAverageAmsterdam);
+    var dayAverageAmsterdam = (0, _transformData.calcAverage)(transformedData[0]);
+    console.log('day average Amsterdam', dayAverageAmsterdam); // foundData.then(result => {
+    //   console.log('matching data: ', result)
+    //   let locationAverageWeek = calcMaximumAverage(transformedData, result[0].id)
+    //   let locationAverageDay = calcMaximumAverage(transformedData[0], result[0].id)
+    //   console.log('locationAverageWeek', locationAverageWeek)
+    //   console.log('locationAverageDay', locationAverageDay)
+    //   let myData = [
+    //     {
+    //       name: 'Amsterdams gemiddelde',
+    //       avg: dayAverageAmsterdam
+    //     },
+    //     { name: 'Woonplaats',
+    //       avg: locationAverageDay
+    //     }
+    //   ]
+    //   update(myData)
+    // })
+
+    var barChartFunctionArray = [_barChart.update1, _barChart.update2, _barChart.update3];
+    foundData.forEach(function (item, i) {
+      item.then(function (result) {
+        console.log('matching data: ', result);
+        var locationAverageWeek = (0, _transformData.calcMaximumAverage)(transformedData, result.id);
+        var locationAverageDay = (0, _transformData.calcMaximumAverage)(transformedData[0], result.id);
+        console.log('locationAverageWeek', locationAverageWeek);
+        console.log('locationAverageDay', locationAverageDay);
+        var myData = [{
+          name: 'Amsterdams gemiddelde',
+          avg: dayAverageAmsterdam
+        }, {
+          name: "Locatie ".concat(i + 1),
+          avg: locationAverageDay
+        }];
+        console.log('werkt? ', myData);
+        barChartFunctionArray[i](myData);
+      });
+    });
+  });
+}
+
+document.getElementById('form-button').addEventListener('click', calculateData);
+
+function calculateData() {
+  var inputField1 = document.getElementById('street-1');
+  var inputField2 = document.getElementById('street-2');
+  var inputField3 = document.getElementById('street-3');
+  var streets = [inputField1.value, inputField2.value, inputField3.value];
+  calcAnaValues(streets);
+}
+},{"d3":"../node_modules/d3/index.js","./intro.js":"js/intro.js","./backgroundChange.js":"js/backgroundChange.js","./titlesAppear.js":"js/titlesAppear.js","./scrollMagic.js":"js/scrollMagic.js","./form.js":"js/form.js","babel-polyfill":"../node_modules/babel-polyfill/lib/index.js","./transformData.js":"js/transformData.js","./fetchAndFind.js":"js/fetchAndFind.js","./barChart.js":"js/barChart.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -47005,7 +47167,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53035" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52621" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
