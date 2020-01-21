@@ -755,6 +755,191 @@ p {
     background-position: 100%;
   }
 }
+.bottom-section {
+  height: 100%;
+  background-color: #80A2D0;
+  min-width: 100vh;
+  margin: 0 auto;
+  box-sizing: border-box;
+  /* container for panels */
+  /* entire container, keeps perspective */
+  /* flip the pane when hovered */
+  /* flip speed goes here */
+  /* hide back of pane during swap */
+  /* front pane, placed above back */
+  /* back, initially hidden pane */
+  /*  UPDATED! front pane, placed above back */
+  /* back, initially hidden pane */
+}
+.bottom-section .button {
+  margin: 0 auto;
+  background-color: #80A2D0;
+  display: inline-block;
+  cursor: pointer;
+  color: #FFF;
+  font-family: barlow-bold, open-sans, arial;
+  font-size: 1em;
+  text-align: center;
+  padding: 10px 14px;
+  text-decoration: none;
+  position: relative;
+  width: 60%;
+  transition: all 0.3s;
+}
+.bottom-section .button:hover {
+  background-color: #223984;
+}
+.bottom-section .container-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+.bottom-section .panel-container {
+  /* text-align: center; */
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.bottom-section .panel-item {
+  display: inline-block;
+  position: relative;
+  flex: 0 0 100%;
+  color: #DADEDC;
+  margin: 4em;
+  max-width: 300px;
+}
+.bottom-section .front img {
+  margin: 0 auto;
+  height: 60%;
+  padding-top: 3em;
+  display: block;
+}
+.bottom-section .front h2 {
+  font-family: sans-serif;
+  font-size: 1.5em;
+  color: #000;
+  text-align: center;
+}
+.bottom-section .back h2 {
+  font-family: sans-serif;
+  font-size: 1.5em;
+  color: #000;
+  text-align: center;
+}
+.bottom-section .back li {
+  font-family: open-sans, arial, sans-serif;
+  font-size: 1em;
+  line-height: 1.5em;
+  color: #000;
+}
+.bottom-section .back ul {
+  margin: 1em;
+  padding: 0;
+  text-align: center;
+  list-style: none;
+}
+.bottom-section .flip-container {
+  perspective: 1000px;
+  cursor: pointer;
+}
+.bottom-section .flip-container:hover .flipper, .bottom-section .flip-container.hover:active .flipper {
+  transform: rotateY(180deg);
+}
+.bottom-section .flip-container, .bottom-section .front, .bottom-section .back {
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+}
+.bottom-section .flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.bottom-section .front, .bottom-section .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.bottom-section .front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+  background-color: #EFE8D8;
+}
+.bottom-section .back {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: rotateY(180deg);
+  background-color: #EFE8D8;
+}
+.bottom-section .vertical.flip-container {
+  position: relative;
+}
+.bottom-section .vertical .back {
+  transform: rotateX(180deg);
+}
+.bottom-section .vertical.flip-container .flipper {
+  transform-origin: 100% 190px;
+  /* half of height */
+}
+.bottom-section .vertical.flip-container:hover .flipper {
+  transform: rotateX(-180deg);
+}
+.bottom-section .front, .bottom-section .back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.bottom-section .front {
+  z-index: 2;
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+.bottom-section .back {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+.bottom-section .eyes {
+  /* position: absolute; */
+  top: 50%;
+  width: 100%;
+  text-align: center;
+}
+.bottom-section .eye {
+  width: 240px;
+  height: 120px;
+  background: #ffff;
+  display: inline-block;
+  margin: 40px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+.bottom-section .ball {
+  width: 40px;
+  height: 40px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 15px solid #57BB90;
+}
+
 body {
   position: relative;
   margin: 0;
