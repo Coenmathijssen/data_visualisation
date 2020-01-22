@@ -52,9 +52,6 @@ De website live zetten kan via GitHub Pages.
 2. Ga naar instellingen (rechter tab in je repo).
 3. Scroll naar Github Pages en activeer dit.
 
-Hier komt de volgende opgeschoonde array met objecten uit voort:
-![Screenshot 2019-11-27 at 23 25 59](https://user-images.githubusercontent.com/43337909/69763412-5bf34b00-116d-11ea-933f-debcc055ddba.png)
-
 ## Credits
 - Credits naar het KNMI voor het kunnen gebruiken van hun waardevolle dataset en ondersteuning tijdens de opdracht.
 
