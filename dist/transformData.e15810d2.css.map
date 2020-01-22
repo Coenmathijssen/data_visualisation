@@ -1,1 +1,0 @@
-{"version":3,"sources":["styles/main.scss"],"names":[],"mappings":"AAEA;EACC,OAHK","file":"transformData.e15810d2.css","sourceRoot":"../src","sourcesContent":["$sup: blue;\n\nh1 {\n color: $sup;\n}\n"]}
