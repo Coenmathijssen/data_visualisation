@@ -1,0 +1,277 @@
+.astma h2 {
+  color: #E73A4D;
+}
+.astma .explain-text {
+  max-width: 400px;
+  margin-right: 0;
+}
+.astma .inhaler-container {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}
+.astma .inhaler-container .inhaler-top {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100px;
+}
+.astma .inhaler-container .inhaler {
+  position: absolute;
+  content: "";
+  left: 11px;
+  top: 40px;
+  width: 165px;
+}
+.astma .spray {
+  width: 800px;
+  position: absolute;
+  content: "";
+  transform: rotate(-20deg);
+  left: -290px;
+  bottom: -185px;
+}
+.astma .spray-container {
+  position: absolute;
+  content: "";
+  transform: rotate(-20deg);
+  right: 0;
+  bottom: -150px;
+  width: 830px;
+  height: 760px;
+  overflow: hidden;
+  border-radius: 0px 200px 200px 0px;
+  -moz-border-radius: 0px 200px 200px 0px;
+  -webkit-border-radius: 0px 200px 200px 0px;
+  border: 0px solid #000000;
+}
+.astma .spray-reveal {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #EEE8D7;
+}
+
+.heart .heart-container {
+  display: block;
+  position: absolute;
+  right: 15vw;
+  margin: 0 auto;
+  width: 250px;
+  height: 380px;
+}
+.heart .heart-container .heart-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9;
+}
+.heart .heart-container .heart-in {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 8;
+}
+.heart .heart-container .heart-in-2 {
+  position: absolute;
+  top: 110px;
+  left: 15px;
+  width: 70px;
+}
+.heart .heart-container .heart-in-3 {
+  position: absolute;
+  top: 130px;
+  right: 25px;
+  width: 70px;
+}
+.heart .text-block-copd {
+  padding-left: 3vw;
+}
+
+.lung .container {
+  max-width: 200vw;
+  width: calc(200vw - 10vw);
+}
+.lung .container .flex .text-block-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 10;
+}
+.lung .container .flex .animation {
+  width: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 0;
+}
+.lung .container .flex .animation .text-block-lung {
+  padding-left: 5vw;
+  width: 50%;
+}
+.lung .container .flex .animation .lungs-container {
+  width: 500px;
+  height: 600px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.lung .container .flex .animation .lung {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  opacity: 1;
+}
+.lung .container .flex .animation .lung-flat {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.lung .container .flex .animation .no2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.lung .container .flex .animation .no2 .n {
+  position: absolute;
+  top: 0px;
+  left: 165px;
+}
+.lung .container .flex .animation .no2 .n p {
+  font-size: 2em;
+  font-weight: bold;
+}
+.lung .container .flex .animation .no2 .streep1 {
+  position: absolute;
+  top: 65px;
+  left: 150px;
+  transform: rotate(40deg);
+  border-left: 3px solid black;
+  height: 60px;
+}
+.lung .container .flex .animation .no2 .streep2 {
+  position: absolute;
+  top: 65px;
+  left: 195px;
+  transform: rotate(-40deg);
+  border-left: 3px solid black;
+  height: 60px;
+}
+.lung .container .flex .animation .no2 .streep2:before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: 2px;
+  left: 3px;
+  right: 5px;
+  bottom: -2px;
+  border: 1.5px solid black;
+}
+.lung .container .flex .animation .no2 .o1, .lung .container .flex .animation .no2 .o2 {
+  position: absolute;
+  top: 130px;
+  width: 20px;
+  height: 20px;
+  border-style: solid;
+  border-color: black;
+  border-width: 4px;
+  border-radius: 50%;
+}
+.lung .container .flex .animation .no2 .o1 {
+  left: 100px;
+}
+.lung .container .flex .animation .no2 .o2 {
+  left: 225px;
+}
+.lung .container .flex .animation .no2 .o {
+  position: absolute;
+}
+.lung .container .flex .animation #bubble {
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  background: linear-gradient(to left, #EEE8D7, #FFFFFF);
+  border-radius: 52% 48% 70% 30%/41% 47% 53% 59%;
+  border: solid 5px black;
+  animation: bubble ease-in-out infinite;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.lung .container .flex .animation #bubble.not-infected {
+  background: linear-gradient(to left, #EEE8D7, #FFFFFF);
+  animation-duration: 12s;
+}
+.lung .container .flex .animation #bubble.infected {
+  background: linear-gradient(to left, #870000, #190A05);
+  animation-duration: 6s;
+}
+@keyframes bubble {
+  25% {
+    border-radius: 45% 55% 58% 42%/30% 49% 51% 70%;
+  }
+  50% {
+    transform: translateY(-46px);
+    border-radius: 36% 64% 29% 71%/63% 71% 29% 37%;
+  }
+  75% {
+    border-radius: 29% 71% 44% 56%/32% 49% 51% 68%;
+  }
+}
+
+.copd .animation {
+  position: relative;
+}
+.copd .animation .running-man-container {
+  position: absolute;
+  overflow: hidden;
+  left: -30vw;
+  bottom: 0;
+  opacity: 0;
+  min-height: 250px;
+  height: 250px;
+  min-width: 180px;
+  width: 180px;
+  visibility: visible;
+}
+.copd .animation .running-man-container #running-man {
+  margin: 0 auto;
+  display: block;
+  height: 220px;
+  width: 350px;
+  position: absolute;
+  top: 30px;
+  background: url(/running_man.654e32c7.png) 0 0 no-repeat;
+  background-size: 3200%;
+}
+.copd .animation .running-man-container #running-man.play {
+  animation: gif steps(63) 7s 1 both;
+}
+
+.testing {
+  height: 100vh;
+}
+
+@keyframes gif {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+/*# sourceMappingURL=/_scrollmagic.184e4bdb.css.map */

@@ -1,6 +1,7 @@
 import * as d3 from 'd3'
 
 // Importing whole files
+import './openingAnimation.js'
 import './intro.js'
 import './backgroundChange.js'
 import './titlesAppear.js'

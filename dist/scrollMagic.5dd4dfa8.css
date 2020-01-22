@@ -1,0 +1,576 @@
+@font-face {
+  font-family: barlow-bold;
+  src: url(/Barlow-Bold.2ae782b3.ttf);
+}
+@font-face {
+  font-family: malayalam;
+  src: url(/Malayalam.c47a24d6.ttf);
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: barlow-bold;
+  text-transform: uppercase;
+}
+
+.count span {
+  font-family: malayalam;
+}
+
+h1 {
+  font-size: 4em;
+  margin: 0;
+}
+
+h2 {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+p {
+  font-family: open-sans, arial, sans-serif;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 0;
+}
+
+@font-face {
+  font-family: barlow-bold;
+  src: url(/Barlow-Bold.2ae782b3.ttf);
+}
+body {
+  margin: 0;
+  box-sizing: border-box;
+  background: #80A2D0;
+  position: relative;
+  height: 100vh;
+  width: calc(100vw - 10vw);
+}
+
+.page {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: #0c0c0c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.powered-container {
+  margin-bottom: 50px;
+  width: calc(100% - 10vw);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.powered-container .reveal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  z-index: 5;
+  position: relative;
+  overflow: hidden;
+}
+.powered-container .reveal-container:first-of-type {
+  width: 450px;
+}
+.powered-container .reveal-container:last-of-type {
+  width: 195px;
+}
+.powered-container .reveal-container .reveal-first, .powered-container .reveal-container .reveal-second {
+  width: 0;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #E7174C;
+}
+.powered-container .reveal-container .credits {
+  display: inline;
+  position: relative;
+  font-family: barlow-bold;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 5px 0;
+  z-index: 0;
+  visibility: hidden;
+}
+.powered-container .reveal-container .credits.knmi {
+  margin-left: 30px;
+  margin-right: 5px;
+}
+.powered-container .reveal-container .credits.knmi::after {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 0;
+  background: url("/powered.15b3fcb3.gif") no-repeat;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  background-size: 20px;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex .container {
+  padding: 0 5vw;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.flex .container h1 {
+  position: relative;
+  overflow: hidden;
+  height: 120px;
+  width: 100vw;
+  margin: 0;
+  font-size: 90px;
+  color: #E7174C;
+  font-family: barlow-bold;
+  text-transform: uppercase;
+}
+.flex .container h1 .hide {
+  position: absolute;
+  z-index: 99;
+  top: 120px;
+  left: 0;
+}
+
+.second-color-slide-up {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ED6A63;
+}
+
+.practice {
+  height: 200vh;
+}
+
+.chapter-trigger {
+  height: 5vh;
+}
+
+.section-decease {
+  height: 100vh;
+  padding: 5vh 5vw;
+  width: calc(100% - 10vw);
+  overflow: hidden;
+}
+.section-decease .header {
+  z-index: 10;
+  position: relative;
+}
+.section-decease p {
+  margin-top: 10px;
+  color: #000;
+}
+.section-decease .letter {
+  position: relative;
+  display: inline-block;
+  color: #E73A4D;
+}
+.section-decease .body-text {
+  display: block;
+}
+.section-decease .container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.section-decease .container .flex {
+  padding: 10vh 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.section-decease .container .flex .text-block {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  z-index: 10;
+}
+.section-decease .container .flex .animation {
+  width: 50%;
+  height: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 0;
+}
+.section-decease .container .flex .animation .text-block {
+  width: 100%;
+  opacity: 0;
+}
+.section-decease .container .flex .animation .text-block .chance {
+  display: flex;
+  align-items: flex-start;
+}
+.section-decease .container .flex .animation .text-block .chance h2 {
+  background-color: #000;
+  padding: 0 10px 3px 10px;
+  margin-left: 10px;
+  color: #E73A4D;
+}
+.section-decease .container .flex .animation .text-block .chance p {
+  font-weight: 900;
+  transform: translateY(4px);
+  color: #E73A4D;
+}
+.section-decease .container .flex .animation .text-block .explain-text {
+  max-width: 400px;
+  margin-right: 0;
+}
+
+.chapter-container {
+  min-height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: #EEE8D7;
+  position: relative;
+}
+.chapter-container .chapter {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 5vw;
+  height: 80px;
+  width: calc(100% - 10vw);
+  font-family: barlow-bold;
+  color: #E73A4D;
+  z-index: 10;
+}
+.chapter-container .chapter .chapter-appear {
+  position: absolute;
+  padding: 10px 5vw;
+  width: calc(100% - 10vw);
+  z-index: 99;
+  top: 100px;
+  left: 0;
+}
+.chapter-container .count {
+  position: fixed;
+  top: -50px;
+  right: 50px;
+  z-index: 9;
+}
+.chapter-container .count span {
+  color: #E73A4D;
+  opacity: 0.1;
+  position: relative;
+  user-select: none;
+}
+.chapter-container .count span:first-of-type {
+  left: 30px;
+  font-size: 14em;
+}
+.chapter-container .count span:nth-of-type(2) {
+  top: 50px;
+  margin: 0;
+  font-size: 8em;
+  position: relative;
+}
+.chapter-container .count span:last-of-type {
+  top: 53px;
+  right: 10px;
+  font-size: 5em;
+  position: relative;
+}
+
+.astma h2 {
+  color: #E73A4D;
+}
+.astma .explain-text {
+  max-width: 400px;
+  margin-right: 0;
+}
+.astma .inhaler-container {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}
+.astma .inhaler-container .inhaler-top {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100px;
+}
+.astma .inhaler-container .inhaler {
+  position: absolute;
+  content: "";
+  left: 11px;
+  top: 40px;
+  width: 165px;
+}
+.astma .spray {
+  width: 800px;
+  position: absolute;
+  content: "";
+  transform: rotate(-20deg);
+  left: -290px;
+  bottom: -185px;
+}
+.astma .spray-container {
+  position: absolute;
+  content: "";
+  transform: rotate(-20deg);
+  right: 0;
+  bottom: -150px;
+  width: 830px;
+  height: 760px;
+  overflow: hidden;
+  border-radius: 0px 200px 200px 0px;
+  -moz-border-radius: 0px 200px 200px 0px;
+  -webkit-border-radius: 0px 200px 200px 0px;
+  border: 0px solid #000000;
+}
+.astma .spray-reveal {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #EEE8D7;
+}
+
+.heart .heart-container {
+  display: block;
+  position: absolute;
+  right: 15vw;
+  margin: 0 auto;
+  width: 250px;
+  height: 380px;
+}
+.heart .heart-container .heart-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9;
+}
+.heart .heart-container .heart-in {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 8;
+}
+.heart .heart-container .heart-in-2 {
+  position: absolute;
+  top: 110px;
+  left: 15px;
+  width: 70px;
+}
+.heart .heart-container .heart-in-3 {
+  position: absolute;
+  top: 130px;
+  right: 25px;
+  width: 70px;
+}
+.heart .text-block-copd {
+  padding-left: 3vw;
+}
+
+.section-decease.lung .container {
+  max-width: 200vw;
+  width: calc(200vw - 10vw);
+}
+.section-decease.lung .container .flex .text-block-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 10;
+}
+.section-decease.lung .container .flex .animation {
+  width: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 0;
+}
+.section-decease.lung .container .flex .animation .text-block-lung {
+  padding-left: 5vw;
+  width: 50%;
+}
+.section-decease.lung .container .flex .animation .lungs-container {
+  width: 500px;
+  height: 600px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.section-decease.lung .container .flex .animation .lung {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  opacity: 1;
+}
+.section-decease.lung .container .flex .animation .lung-flat {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.section-decease.lung .container .flex .animation .no2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.section-decease.lung .container .flex .animation .no2 .n {
+  position: absolute;
+  top: 0px;
+  left: 165px;
+}
+.section-decease.lung .container .flex .animation .no2 .n p {
+  font-size: 2em;
+  font-weight: bold;
+}
+.section-decease.lung .container .flex .animation .no2 .streep1 {
+  position: absolute;
+  top: 65px;
+  left: 150px;
+  transform: rotate(40deg);
+  border-left: 3px solid black;
+  height: 60px;
+}
+.section-decease.lung .container .flex .animation .no2 .streep2 {
+  position: absolute;
+  top: 65px;
+  left: 195px;
+  transform: rotate(-40deg);
+  border-left: 3px solid black;
+  height: 60px;
+}
+.section-decease.lung .container .flex .animation .no2 .streep2:before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: 2px;
+  left: 3px;
+  right: 5px;
+  bottom: -2px;
+  border: 1.5px solid black;
+}
+.section-decease.lung .container .flex .animation .no2 .o1, .section-decease.lung .container .flex .animation .no2 .o2 {
+  position: absolute;
+  top: 130px;
+  width: 20px;
+  height: 20px;
+  border-style: solid;
+  border-color: black;
+  border-width: 4px;
+  border-radius: 50%;
+}
+.section-decease.lung .container .flex .animation .no2 .o1 {
+  left: 100px;
+}
+.section-decease.lung .container .flex .animation .no2 .o2 {
+  left: 225px;
+}
+.section-decease.lung .container .flex .animation .no2 .o {
+  position: absolute;
+}
+.section-decease.lung .container .flex .animation #bubble {
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  background: linear-gradient(to left, #EEE8D7, #FFFFFF);
+  border-radius: 52% 48% 70% 30%/41% 47% 53% 59%;
+  border: solid 5px black;
+  animation: bubble ease-in-out infinite;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.section-decease.lung .container .flex .animation #bubble.not-infected {
+  background: linear-gradient(to left, #EEE8D7, #FFFFFF);
+  animation-duration: 12s;
+}
+.section-decease.lung .container .flex .animation #bubble.infected {
+  background: linear-gradient(to left, #870000, #190A05);
+  animation-duration: 6s;
+}
+@keyframes bubble {
+  25% {
+    border-radius: 45% 55% 58% 42%/30% 49% 51% 70%;
+  }
+  50% {
+    transform: translateY(-46px);
+    border-radius: 36% 64% 29% 71%/63% 71% 29% 37%;
+  }
+  75% {
+    border-radius: 29% 71% 44% 56%/32% 49% 51% 68%;
+  }
+}
+
+.copd .animation {
+  position: relative;
+}
+.copd .animation .running-man-container {
+  position: absolute;
+  overflow: hidden;
+  left: -30vw;
+  bottom: 0;
+  opacity: 0;
+  min-height: 250px;
+  height: 250px;
+  min-width: 180px;
+  width: 180px;
+  visibility: visible;
+}
+.copd .animation .running-man-container #running-man {
+  margin: 0 auto;
+  display: block;
+  height: 220px;
+  width: 350px;
+  position: absolute;
+  top: 30px;
+  background: url(/running_man.654e32c7.png) 0 0 no-repeat;
+  background-size: 3200%;
+}
+.copd .animation .running-man-container #running-man.play {
+  animation: gif steps(63) 7s 1 both;
+}
+
+.testing {
+  height: 100vh;
+}
+
+@keyframes gif {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.point {
+  fill: #F39022;
+}
+
+/*# sourceMappingURL=/scrollMagic.5dd4dfa8.css.map */

@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export function matchData(streets, data) {
   let dataHour = data[0][0].dataArray
 
@@ -22,8 +24,7 @@ export function matchData(streets, data) {
 
 // Google Geocoding async fetch
 async function getAddress (address) {
-  let response = await (await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address},Amsterdam&key=AIzaSyCuMys_inITPT8JGaKQ9SNaKS8EqD7ea2A
-  `))
+  let response = await (await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address},Amsterdam&key=${process.env.key}`))
   let data = await response.json()
   let returnedData = data.results[0]
   if (!returnedData.address_components[6]) {

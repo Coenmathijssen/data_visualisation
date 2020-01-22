@@ -1,10 +1,11 @@
 .chapter-container.intro {
   position: relative;
-  height: 100vh;
   min-height: 90vh;
   width: 100vw;
-  display: flex;
-  align-items: center;
+
+  .section {
+    padding-bottom: 10vh;
+  }
 
   .chapter {
     color: $darkblue;
@@ -20,7 +21,7 @@
       color: $darkblue;
       width: calc(50% - 50px);
       padding-right: 50px;
-      height: 150px;
+      height: 270px;
       overflow: hidden;
 
       span {
@@ -31,6 +32,51 @@
       }
     }
   }
+
+  .top-section {
+    box-sizing: border-box;
+  }
+
+
+  .icon-container {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: space-around;
+    padding: 0 1em;
+  }
+
+
+  .icon-card {
+    padding: 0 2em 2em 2em;
+    margin: 1em 1em 0 1em;
+    width: calc(25% - 6em);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: $darkblue;
+    text-align: center;
+    font-family: open sans;
+    color: white;
+    font-size: .8em;
+    border-radius: 10px;
+  }
+
+
+  .icon-card {
+    img {
+      height: 150px;
+      margin-top: -10px;
+    }
+
+    &:last-of-type img {
+      margin-top: 5px;
+      margin-bottom: -15px;
+    }
+  }
+
+
 
   #canvas {
     position: absolute;
