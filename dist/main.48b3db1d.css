@@ -292,6 +292,10 @@ body {
   position: relative;
 }
 
+.name-holder, .no2-holder, .avg-holder, .route-1-holder, .route-2-holder, .route-3-holder {
+  font-weight: bold;
+}
+
 .chapter-container.intro {
   position: relative;
   min-height: 90vh;
@@ -379,6 +383,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  padding-top: 20vh;
   z-index: 10;
 }
 .chapter-container.amsterdam .flex .map {
@@ -421,6 +426,11 @@ body {
   border-left: 40px solid #f3f2f0;
   width: 0;
 }
+.form-container #contact label {
+  font-family: barlow-bold, arial, sans-serif;
+  color: #000;
+  font-size: 1em;
+}
 .form-container #contact input[type=text], .form-container #contact input[type=email], .form-container #contact input[type=tel], .form-container #contact input[type=url], .form-container #contact textarea, .form-container #contact button[type=submit] {
   font-family: arial, sans-serif;
   font-size: 1em;
@@ -459,24 +469,57 @@ body {
   outline: 0;
   border: 2px solid #000;
 }
-.form-container #contact button[type=button] {
+.form-container #contact .move {
+  margin-bottom: 20px;
+}
+.form-container #contact .move ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.form-container #contact .move ul li {
+  display: inline;
+  margin: 0 10px;
+}
+.form-container #contact .move ul li img {
+  width: 35px;
+  transform: translateY(6px);
+}
+.form-container #contact .move ul li:nth-of-type(2) img {
+  height: 25px;
+  transform: translate(-5px, 1px);
+}
+.form-container #contact .move ul li:nth-of-type(3) img, .form-container #contact .move ul li:last-of-type img {
+  transform: translateY(10px);
+}
+.form-container #contact .move ul li [type=radio]:checked, .form-container #contact .move ul li [type=radio]:not(:checked) {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #000;
+  border-radius: 100%;
+  background-color: #FFF;
+}
+.form-container #contact a {
+  display: block;
+  margin: 0 0 5px;
+  padding: 10px 0;
+  width: 100%;
   font-family: barlow-bold, arial, sans-serif;
   cursor: pointer;
-  width: 100%;
   border: none;
   background: #ED6A63;
   color: #FFF;
-  margin: 0 0 5px;
-  padding: 10px;
   font-size: 1em;
+  text-decoration: none;
+  text-align: center;
 }
-.form-container #contact button[type=button]:hover {
+.form-container #contact a:hover {
   background: #000;
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
 }
-.form-container #contact button[type=button]:active {
+.form-container #contact a:active {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
@@ -487,8 +530,17 @@ body {
 .air-pollution h1, .air-pollution h2, .air-pollution h3 {
   color: #3F4A9A;
 }
+.air-pollution h2 {
+  font-size: 1.5em;
+  text-transform: lowercase;
+  margin-bottom: 5vh;
+}
 .air-pollution .chapter {
   color: #3F4A9A;
+  margin-bottom: 0;
+}
+.air-pollution .locations {
+  margin-bottom: 2vh;
 }
 .air-pollution .x.axis, .air-pollution .y.axis {
   color: #3F4A9A;
@@ -551,10 +603,10 @@ body {
   position: absolute;
   content: "";
   transform: rotate(-20deg);
-  right: 0;
-  bottom: -150px;
-  width: 830px;
-  height: 760px;
+  right: 120px;
+  bottom: -170px;
+  width: 930px;
+  height: 1360px;
   overflow: hidden;
   border-radius: 0px 200px 200px 0px;
   -moz-border-radius: 0px 200px 200px 0px;
@@ -798,9 +850,59 @@ body {
     background-position: 100%;
   }
 }
-.bottom-section {
+.score .flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 15vh 0;
+}
+.score h2, .score p {
+  text-align: center;
+}
+.score .score {
+  margin: 5vh 0 0;
+  padding: 30px 20px;
+  border: solid 8px #000;
+  border-radius: 50%;
+  font-size: 4em;
+  line-height: 1em;
+  font-family: barlow-bold, arial, sans-serif;
+}
+.score .score.second {
+  border: solid 8px #FFF;
+  color: #FFF;
+}
+.score .disclaimer {
+  max-width: 250px;
+}
+.score .disclaimer p:first-of-type {
+  font-size: 0.7em;
+}
+.score .advice {
+  margin: 15vh 0;
+}
+.score .advice ul {
+  list-style-type: none;
+}
+.score .advice ul li {
+  position: relative;
+  margin: 10px 0 10px 30px;
+}
+.score .advice ul li::after {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: -5px;
+  background: url("/check.14ff3e2a.svg") 0 0 no-repeat;
+  width: 25px;
+  height: 25px;
+  background-size: 25px;
+  z-index: 1;
+}
+
+.checkback {
   height: 100%;
-  background-color: #80A2D0;
   min-width: 100vh;
   margin: 0 auto;
   box-sizing: border-box;
@@ -814,7 +916,11 @@ body {
   /*  UPDATED! front pane, placed above back */
   /* back, initially hidden pane */
 }
-.bottom-section .button {
+.checkback .chapter {
+  color: #223984;
+  margin-bottom: 0;
+}
+.checkback .button {
   margin: 0 auto;
   background-color: #80A2D0;
   display: inline-block;
@@ -829,113 +935,116 @@ body {
   width: 60%;
   transition: all 0.3s;
 }
-.bottom-section .button:hover {
+.checkback .button:hover {
   background-color: #223984;
 }
-.bottom-section .container-panel {
+.checkback .container-panel {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 10;
 }
-.bottom-section .panel-container {
+.checkback .panel-container {
   /* text-align: center; */
   cursor: pointer;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.bottom-section .panel-item {
+.checkback .panel-item {
   display: inline-block;
   position: relative;
   flex: 0 0 100%;
   color: #DADEDC;
-  margin: 4em;
+  margin: 0 4em 4em;
   max-width: 300px;
 }
-.bottom-section .front img {
+.checkback .panel-item.last {
+  margin-top: 4em;
+}
+.checkback .front img {
   margin: 0 auto;
   height: 60%;
   padding-top: 3em;
   display: block;
 }
-.bottom-section .front h2 {
+.checkback .front h2 {
   font-family: sans-serif;
   font-size: 1.5em;
   color: #000;
   text-align: center;
 }
-.bottom-section .back h2 {
+.checkback .back h2 {
   font-family: sans-serif;
   font-size: 1.5em;
   color: #000;
   text-align: center;
 }
-.bottom-section .back li {
+.checkback .back li {
   font-family: open-sans, arial, sans-serif;
   font-size: 1em;
   line-height: 1.5em;
   color: #000;
 }
-.bottom-section .back ul {
+.checkback .back ul {
   margin: 1em;
   padding: 0;
   text-align: center;
   list-style: none;
 }
-.bottom-section .flip-container {
+.checkback .flip-container {
   perspective: 1000px;
   cursor: pointer;
 }
-.bottom-section .flip-container:hover .flipper, .bottom-section .flip-container.hover:active .flipper {
+.checkback .flip-container:hover .flipper, .checkback .flip-container.hover:active .flipper {
   transform: rotateY(180deg);
 }
-.bottom-section .flip-container, .bottom-section .front, .bottom-section .back {
+.checkback .flip-container, .checkback .front, .checkback .back {
   width: 300px;
   height: 300px;
   border-radius: 10px;
   cursor: pointer;
   position: relative;
 }
-.bottom-section .flipper {
+.checkback .flipper {
   transition: 0.6s;
   transform-style: preserve-3d;
   position: relative;
 }
-.bottom-section .front, .bottom-section .back {
+.checkback .front, .checkback .back {
   backface-visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
 }
-.bottom-section .front {
+.checkback .front {
   z-index: 2;
   /* for firefox 31 */
   transform: rotateY(0deg);
   background-color: #EFE8D8;
 }
-.bottom-section .back {
+.checkback .back {
   display: flex;
   flex-direction: column;
   justify-content: center;
   transform: rotateY(180deg);
   background-color: #EFE8D8;
 }
-.bottom-section .vertical.flip-container {
+.checkback .vertical.flip-container {
   position: relative;
 }
-.bottom-section .vertical .back {
+.checkback .vertical .back {
   transform: rotateX(180deg);
 }
-.bottom-section .vertical.flip-container .flipper {
+.checkback .vertical.flip-container .flipper {
   transform-origin: 100% 190px;
   /* half of height */
 }
-.bottom-section .vertical.flip-container:hover .flipper {
+.checkback .vertical.flip-container:hover .flipper {
   transform: rotateX(-180deg);
 }
-.bottom-section .front, .bottom-section .back {
+.checkback .front, .checkback .back {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-transition: 0.6s;
@@ -946,22 +1055,22 @@ body {
   top: 0;
   left: 0;
 }
-.bottom-section .front {
+.checkback .front {
   z-index: 2;
   -webkit-transform: rotateY(0deg);
   transform: rotateY(0deg);
 }
-.bottom-section .back {
+.checkback .back {
   -webkit-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
 }
-.bottom-section .eyes {
+.checkback .eyes {
   /* position: absolute; */
   top: 50%;
   width: 100%;
   text-align: center;
 }
-.bottom-section .eye {
+.checkback .eye {
   width: 240px;
   height: 120px;
   background: #ffff;
@@ -971,7 +1080,7 @@ body {
   position: relative;
   overflow: hidden;
 }
-.bottom-section .ball {
+.checkback .ball {
   width: 40px;
   height: 40px;
   background: #000;

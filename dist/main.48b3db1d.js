@@ -189,7 +189,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts/Barlow-Bold.ttf":[["Barlow-Bold.2ae782b3.ttf","styles/fonts/Barlow-Bold.ttf"],"styles/fonts/Barlow-Bold.ttf"],"./fonts/Malayalam.ttf":[["Malayalam.c47a24d6.ttf","styles/fonts/Malayalam.ttf"],"styles/fonts/Malayalam.ttf"],"./../images/gif/powered.gif":[["powered.15b3fcb3.gif","images/gif/powered.gif"],"images/gif/powered.gif"],"./../images/running_man.png":[["running_man.654e32c7.png","images/running_man.png"],"images/running_man.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./fonts/Barlow-Bold.ttf":[["Barlow-Bold.2ae782b3.ttf","styles/fonts/Barlow-Bold.ttf"],"styles/fonts/Barlow-Bold.ttf"],"./fonts/Malayalam.ttf":[["Malayalam.c47a24d6.ttf","styles/fonts/Malayalam.ttf"],"styles/fonts/Malayalam.ttf"],"./../images/gif/powered.gif":[["powered.15b3fcb3.gif","images/gif/powered.gif"],"images/gif/powered.gif"],"./../images/running_man.png":[["running_man.654e32c7.png","images/running_man.png"],"images/running_man.png"],"./../images/svg/check.svg":[["check.14ff3e2a.svg","images/svg/check.svg"],"images/svg/check.svg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

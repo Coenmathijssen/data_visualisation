@@ -1,0 +1,61 @@
+.score {
+  .flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15vh 0;
+  }
+
+  h2, p {
+    text-align: center;
+  }
+
+  .score {
+    margin: 5vh 0 0;
+    padding: 30px 20px;
+    border: solid 8px $black;
+    border-radius: 50%;
+    font-size: 4em;
+    line-height: 1em;
+    font-family: barlow-bold, arial, sans-serif;
+
+    &.second {
+      border: solid 8px $white;
+      color: $white;
+    }
+  }
+
+  .disclaimer {
+    max-width: 250px;
+
+    p:first-of-type {
+      font-size: 0.7em;
+    }
+  }
+
+
+  .advice {
+    margin: 15vh 0;
+    ul {
+      list-style-type: none;
+
+      li {
+        position: relative;
+        margin: 10px 0 10px 30px;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: -30px;
+          top: -5px;
+          background: url("../images/svg/check.svg") 0 0 no-repeat;
+          width: 25px;
+          height: 25px;
+          background-size: 25px;
+          z-index: 1;
+        }
+      }
+    }
+  }
+}

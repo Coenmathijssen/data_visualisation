@@ -15,6 +15,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    padding-top: 20vh;
     z-index: 10;
 
     .map {
@@ -64,6 +65,12 @@
       width: 0;
     }
 
+    label {
+      font-family: barlow-bold, arial, sans-serif;
+      color: $black;
+      font-size: 1em;
+    }
+
     input[type="text"], input[type="email"], input[type="tel"], input[type="url"], textarea, button[type="submit"] {
      font-family: arial, sans-serif;
      font-size: 1em;
@@ -109,16 +116,57 @@
       border: 2px solid $black;
     }
 
-    button[type="button"] {
+    .move {
+      margin-bottom: 20px;
+
+      ul {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        li {
+          display: inline;
+          margin: 0 10px;
+          img {
+            width: 35px;
+            transform: translateY(6px);
+          }
+
+          &:nth-of-type(2) img {
+            height: 25px;
+            transform: translate(-5px, 1px);
+          }
+
+          &:nth-of-type(3) img,  &:last-of-type img {
+            transform: translateY(10px);
+          }
+
+
+          [type="radio"]:checked, [type="radio"]:not(:checked) {
+            width: 18px;
+            height: 18px;
+            border: 1px solid $black;
+            border-radius: 100%;
+            background-color: $white;
+          }
+        }
+      }
+    }
+
+    a {
+      display: block;
+      margin:0 0 5px;
+      padding: 10px 0;
+      width: 100%;
       font-family: barlow-bold, arial, sans-serif;
       cursor: pointer;
-      width: 100%;
       border: none;
       background: $salmon;
       color: #FFF;
-      margin:0 0 5px;
-      padding:10px;
       font-size: 1em;
+      text-decoration: none;
+      text-align: center;
+
 
       &:hover {
         background: $black;

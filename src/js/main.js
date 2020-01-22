@@ -6,7 +6,7 @@ import './intro.js'
 import './backgroundChange.js'
 import './titlesAppear.js'
 import './scrollMagic.js'
-import './form.js'
+import './eyeballs.js'
 
 // Importing polyfill to make async functions work in Parcel
 import 'babel-polyfill'
@@ -35,7 +35,7 @@ async function fetchAndTransformData () {
 
 let transformedData = fetchAndTransformData()
 
-function calcAnaValues (streets) {
+async function calcAnaValues (streets, name, avgAmsterdam) {
   transformedData.then(transformedData => {
     console.log('transformed data: ', transformedData)
 
@@ -67,12 +67,37 @@ function calcAnaValues (streets) {
           }
         ]
         barChartFunctionArray[i](myData)
+        calculateScore(streets, locationAverageDay, name, dayAverageAmsterdam)
       })
     })
   })
 }
 
+function calculateScore (streets, no2, name, avgAmsterdam) {
+  console.log('testieeeee ', streets)
+  no2 = Math.round(no2 * 100) / 100
+  avgAmsterdam = Math.round(avgAmsterdam * 100) / 100
 
+  let nameHolder = document.getElementsByClassName('name-holder')
+  for (let i = 0; i < nameHolder.length; i++) {
+    nameHolder[i].textContent = name
+  }
+
+  let no2Holder = document.getElementsByClassName('no2-holder')
+  no2Holder.textContent = no2
+  for (let i = 0; i < no2Holder.length; i++) {
+    no2Holder[i].textContent = no2
+  }
+
+  let avgHolder = document.getElementsByClassName('avg-holder')
+  for (let i = 0; i < avgHolder.length; i++) {
+    avgHolder[i].textContent = avgAmsterdam
+  }
+
+  document.getElementsByClassName('route-1-holder')[0].textContent = streets[0]
+  document.getElementsByClassName('route-2-holder')[0].textContent = streets[1]
+  document.getElementsByClassName('route-3-holder')[0].textContent = streets[2]
+}
 
 // Run functions with form data
 document.getElementById('form-button').addEventListener('click', calculateData)
@@ -81,21 +106,15 @@ function calculateData () {
   let inputField1 = document.getElementById('street-1')
   let inputField2 = document.getElementById('street-2')
   let inputField3 = document.getElementById('street-3')
+  let name = document.getElementById('name').value
+  console.log(name)
 
   let streets = [inputField1.value, inputField2.value, inputField3.value]
 
-  calcAnaValues(streets)
-}
-
-// EYES CODE
-var balls = document.getElementsByClassName('ball')
-document.onmousemove = function () {
-  var x = event.clientX * 100 / window.innerWidth + '%'
-  var y = event.clientY * 100 / window.innerHeight + '%'
-
-  for (var i = 0; i < 2; i++) {
-    balls[i].style.left = x
-    balls[i].style.top = y
-    balls[i].style.transform = 'translate(-' + x + ',-' + y + ')'
-  }
+  calcAnaValues(streets, name)
+  // let foundDataArray = calcAnaValues(streets)
+  // foundDataArray.then(item => {
+  //   // let total = (foundDataArray[0] + foundDataArray[1] + foundDataArray[2]) / foundDataArray.length
+  //   console.log('pls: ', foundDataArray[0])
+  // })
 }

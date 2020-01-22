@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="./styles/main.scss">
 </head>
 <body class="body">
-  <section class="opening-animation">
+ <!--  <section class="opening-animation">
     <div class="second-color-slide-up"></div>
     <div class="page">
       <div class="powered-container">
@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <div class="chapter-trigger-intro"></div>
   <div class="chapter-container intro">
     <section class="section">
@@ -113,19 +113,74 @@
             <form id="contact" action="#pollution">
               <h2>Gegevens</h2>
               <fieldset>
-                <input placeholder="Jouw naam" type="text"  required>
+                <label for="name">Naam</label>
+                <input type="text" name="name" id="name" required>
               </fieldset>
               <fieldset>
-                <input placeholder="Jouw thuislocatie" type="text"  id="street-1" required>
+                <label for="street-1">Locatie 1</label>
+                <input placeholder="Bijv. jouw thuislocatie" type="text"  id="street-1" name="street-1" required>
               </fieldset>
               <fieldset>
-                <input placeholder="Jouw werk- of studielocatie" type="text"  id="street-2"required>
+                <label for="street-2">Locatie 2</label>
+                <input placeholder="Bijv. jouw werk- of studielocatie" type="text"  id="street-2" name="street-2" required>
               </fieldset>
               <fieldset>
-                <input placeholder="Jouw sportlocatie" type="text" id="street-3" required>
+                <label for="street-3">Locatie 3</label>
+                <input placeholder="Bijv. jouw sportlocatie" type="text" id="street-3" name="street-3" required>
+              </fieldset>
+              <fieldset class="move">
+                <label for="move-1">Hoe beweeg je je meestal tussen locatie 1 en 2?</label>
+                <ul>
+                  <li>
+                    <input type="radio" name="move-1" value="fiets"><img src="./images/svg/bike.svg" alt="fiets">
+                  </li>
+                  <li>
+                    <input type="radio" name="move-1" value="metro"><img src="./images/svg/subway.svg" alt="metro">
+                  </li>
+                  <li>
+                    <input type="radio" name="move-1" value="bus"><img src="./images/svg/bus.svg" alt="bus">
+                  </li>
+                  <li>
+                    <input type="radio" name="move-1" value="auto"><img src="./images/svg/car.svg" alt="auto">
+                  </li>
+                </ul>
+              </fieldset>
+              <fieldset class="move">
+                <label for="move-2">Hoe beweeg je je meestal tussen locatie 1 en 3?</label>
+                <ul>
+                  <li>
+                    <input type="radio" name="move-2" value="fiets"><img src="./images/svg/bike.svg" alt="fiets">
+                  </li>
+                  <li>
+                    <input type="radio" name="move-2" value="metro"><img src="./images/svg/subway.svg" alt="metro">
+                  </li>
+                  <li>
+                    <input type="radio" name="move-2" value="bus"><img src="./images/svg/bus.svg" alt="bus">
+                  </li>
+                  <li>
+                    <input type="radio" name="move-2" value="auto"><img src="./images/svg/car.svg" alt="auto">
+                  </li>
+                </ul>
+              </fieldset>
+               <fieldset class="move">
+                <label for="move-3">Hoe beweeg je je meestal tussen locatie 2 en 3?</label>
+                <ul>
+                  <li>
+                    <input type="radio" name="move-3" value="fiets"><img src="./images/svg/bike.svg" alt="fiets">
+                  </li>
+                  <li>
+                    <input type="radio" name="move-3" value="metro"><img src="./images/svg/subway.svg" alt="metro">
+                  </li>
+                  <li>
+                    <input type="radio" name="move-3" value="bus"><img src="./images/svg/bus.svg" alt="bus">
+                  </li>
+                  <li>
+                    <input type="radio" name="move-3" value="auto"><img src="./images/svg/car.svg" alt="auto">
+                  </li>
+                </ul>
               </fieldset>
               <fieldset>
-                <button name="submit" type="button" id="form-button">Bekijk jouw gezondheidrisico's</button>
+                <a name="submit" id="form-button" href="#pollution">Bekijk jouw gezondheidrisico's</a>
               </fieldset>
             </form>
           </div>
@@ -140,6 +195,8 @@
       <h1 class="chapter">
           <span class="chapter-appear pollution">03 / Luchtvervuiling</span>
       </h1>
+      <h2><span class="name-holder"></span>, dit zijn jouw top 3 locaties door Amsterdam:</h2>
+      <p class="locations">Locatie 1: <span class="route-1-holder"></span> - Locatie 2: <span class="route-2-holder"></span> - Locatie 3: <span class="route-3-holder"></span></p>
       <svg width=300
            height=200
            class="viz1">
@@ -158,7 +215,7 @@
   <div class="chapter-container decease">
     <div class="chapter-trigger-effects"></div>
     <div class="fixed-wrapper">
-      <div id="count"><span id="number-change"> </span> <span> / </span> <span> 05 </span></div>
+      <div id="count"><span id="number-change"> </span> <span> / </span> <span> 06 </span></div>
     </div>
     <section class="section astma" id="astma">
       <h1 class="chapter">
@@ -186,9 +243,9 @@
             <div class="text-block text-block-astma">
               <div class="chance">
                 <p>Gezondheidsscore</p>
-              <h2 class="title">6</h2>
+              <h2 class="score-number">6</h2>
             </div>
-            <p class="explain-text">Astma is een ontsteking van de longen. De ontsteking is bij astma blijvend. Dit betekent dat er altijd kleine ontstekingen zijn in de longen. Stadsbewoners hebben meer kans op astma. Met name oudere en kinderen hebben hier last van. Zelf  1 op de 5 kinderen heeft astma door stikstofdioxide.</p>
+            <p class="explain-text"><span class="name-holder"></span>, op jouw route van A naar B bevindt zich <span class="no2-holder"></span> microgram/m3 NO2 (= uit KNMI dataset). Het amsterdams gemiddelde is <span class="avg-holder"></span> microgram/m3. We geven je daarom het bovenstaande cijfer. Weten wat je kan doen om dit te verbeteren?</p>
             </div>
 
             <div class="inhaler-container">
@@ -211,9 +268,9 @@
             <div class="text-block text-block-heart">
               <div class="chance">
                 <p>Gezondheidsscore</p>
-                <h2 class="title">6</h2>
+                <h2 class="score-number">6</h2>
               </div>
-              <p class="explain-text">In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce ac felis sit amet ligula pharetra condimentum. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Pellentesque commodo eros a enim. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
+              <p class="explain-text"><span class="name-holder"></span>, op jouw route van A naar B bevindt zich <span class="no2-holder"></span> microgram/m3 NO2 (= uit KNMI dataset). Het amsterdams gemiddelde is <span class="avg-holder"></span> microgram/m3. We geven je daarom het bovenstaande cijfer. Weten wat je kan doen om dit te verbeteren?</p>
             </div>
             <div class="heart-container">
               <img src="./images/svg/heart.svg" alt="" class="heart-full">
@@ -229,6 +286,17 @@
               <span class="letter letter-heart">a</span>
               <span class="letter letter-heart">r</span>
               <span class="letter letter-heart">t</span>
+              <span class="letter letter-heart">&</span>
+              <span class="letter letter-heart">v</span>
+              <span class="letter letter-heart">a</span>
+              <span class="letter letter-heart">a</span>
+              <span class="letter letter-heart">t</span>
+              <span class="letter letter-heart">z</span>
+              <span class="letter letter-heart">i</span>
+              <span class="letter letter-heart">e</span>
+              <span class="letter letter-heart">k</span>
+              <span class="letter letter-heart">t</span>
+              <span class="letter letter-heart">e</span>
             </h2>
             <p>
               <span class="body-text body-text-heart">Hartritmestoornissen, hartfalen en slagaderverkalking, dit zijn</span>
@@ -271,9 +339,9 @@
             <div class="text-block text-block-lung">
               <div class="chance">
                 <p>Kans op hartaandoening</p>
-                <h2 class="title">19.3%</h2>
+                <h2 class="score-number">19.3%</h2>
               </div>
-              <p class="explain-text">In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce ac felis sit amet ligula pharetra condimentum. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Pellentesque commodo eros a enim. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
+             <p class="explain-text"><span class="name-holder"></span>, op jouw route van A naar B bevindt zich <span class="no2-holder"></span> microgram/m3 NO2 (= uit KNMI dataset). Het amsterdams gemiddelde is <span class="avg-holder"></span> microgram/m3. We geven je daarom het bovenstaande cijfer. Weten wat je kan doen om dit te verbeteren?</p>
             </div>
             <div class="lungs-container">
               <img src="./images/svg/long_flat.svg" alt="" class="lung-flat">
@@ -299,9 +367,9 @@
             <div class="text-block text-block-copd">
               <div class="chance">
                 <p>gezondheidsscore</p>
-                <h2 class="title">6</h2>
+                <h2 class="score-number">6</h2>
               </div>
-              <p class="explain-text">In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce ac felis sit amet ligula pharetra condimentum. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Pellentesque commodo eros a enim. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
+              <p class="explain-text"><span class="name-holder"></span>, op jouw route van A naar B bevindt zich <span class="no2-holder"></span> microgram/m3 NO2 (= uit KNMI dataset). Het amsterdams gemiddelde is <span class="avg-holder"></span> microgram/m3. We geven je daarom het bovenstaande cijfer. Weten wat je kan doen om dit te verbeteren?</p>
             </div>
             <div class="running-man-container">
               <div id="running-man"></div>
@@ -329,133 +397,169 @@
     </section>
   </div>
 
-  <section class="bottom-section">
-    <div class="container">
-     <div class="flex">
-       <!-- source card code: https://davidwalsh.name/css-flip-->
-       <div class="container-panel">
-          <div class="panel-container">
-            <!-- first card-->
-            <div class="panel-item">
-              <div onclick="" class="flip-container">  <!-- container start-->
-                 <div class="flipper"> <!-- flipper start-->
-                   <!-- front start-->
-                     <div class="front">
-                        <img src="./images/svg/inhaler-shadow.svg" alt=" inhaler ">
-                        <h2 class=""> ASTMA </h2>
-                     </div>
+  <div class="chapter-container score">
+    <section class="section">
+      <div class="chapter-trigger-score"></div>
+      <h1 class="chapter">
+        <span class="chapter-appear score-title">05 / Score en advies</span>
+      </h1>
+      <div class="flex">
+        <h2> JE HUIDIGE SCORE *</h2>
+        <p class="score"> 6.0 </p>
+        <div class="disclaimer">
+          <p>*Is op basis van je ingevoerde gegevens tegenover het amsterdamse gemiddelde </p>
+        </div>
+        <div class="advice">
+          <h2> WAT KUN JE DOEN? </h2>
+          <ul>
+            <li> Verplaats je slim. Ook binnen dezelfde stad kunnen grote verschillen in luchtkwaliteit aangetroffen worden.
+            <li> Probeer op tijdstippen dat het druk is langs jouw route met verkeer een andere route te nemen.</li>
+          </ul>
+        </div>
 
-                    <!-- back start-->
-                     <div class="back">
-                       <h2 class=""> ASTMA </h2>
-                         <ul>
-                            <li> Astma is een ontsteking van de longen. De ontsteking is bij astma blijvend.</li>
-                         </ul>
-                         <a class="button" href="#astma">Meer lezen</a>
-                     </div>
-                   </div> <!-- flipper end-->
-                 </div> <!-- container end-->
-               </div> <!-- first card end-->
+        <h2> ALTERNATIEVE ROUTE </h2>
+        <h2> SCORE NA * </h2>
+        <p class="score second"> 8.5 </p>
+        <div class="disclaimer">
+          <p>*Berekent op hoeveel ruimte voor verbetering er is in route vergeleken met je eerste score</p>
+        </div>
+      </div>
+    </section>
+  </div>
 
-            <div class="panel-container">
-              <!-- second card-->
-              <div class="panel-item">
-                <div onclick="" class="flip-container">  <!-- container start-->
-                  <div class="flipper"> <!-- flipper start-->
-                    <!-- front start-->
-                    <div class="front">
-                      <img src="./images/svg/heart-shadow.svg" alt="">
-                      <h2 class="">HART &#38; VAATZIEKTE </h2>
-                      <!-- front of content -->
-                    </div>
-                           <!-- front end-->
-
-                    <!-- back start-->
-                    <div class="back">
-                      <h2 class=""> HART&#38;VAATZIEKTE </h2>
-                      <ul>
-                        <li>Hartritmestoornissen, hartfalen en slagaderverkalking, dit zijn mogelijke gevolgen van de lucht die je inademt bij een drukke weg.</li>
-                      </ul>
-                      <a class="button" href="#heart">Meer lezen</a>
-                      <!-- back of content -->
-                    </div>
-                    <!-- back end-->
-                  </div> <!-- flipper end-->
-                </div> <!-- container end-->
-              </div> <!-- second card end-->
-            </div>
-
-            <div class="eyes">
-              <div class="eye">
-                <div class="ball"></div>
-              </div>
-
-              <div class="eye">
-                <div class="ball"></div>
-              </div>
-            </div>
-
-            <div class="container-panel">
+  <div class="chapter-container checkback">
+      <section class="section">
+        <div class="chapter-trigger-checkback"></div>
+        <h1 class="chapter">
+          <span class="chapter-appear check">06 / Terugblik</span>
+        </h1>
+        <div class="container">
+         <div class="flex">
+           <!-- source card code: https://davidwalsh.name/css-flip-->
+           <div class="container-panel">
               <div class="panel-container">
                 <!-- first card-->
                 <div class="panel-item">
-                  <div class="flip-container">  <!-- container start-->
-                    <div class="flipper"> <!-- flipper start-->
-                      <!-- front start-->
-                      <div class="front">
-                        <img src="/images/svg/lungs-shadow.svg" alt="">
-                        <h2 class=""> LONGKANKER </h2>
-                        <!-- front of content -->
-                      </div>
-                      <!-- front end-->
-                      <!-- back start-->
-                      <div class="back">
-                        <h2 class=""> LONGKANKER </h2>
-                        <ul>
-                          <li> Zelfs een minimale hoeveelheid luchtvervuiling door fijnstof vergroot de kans op longkanker met ongeveer 20 procent.</li>
-                        </ul>
-                        <a class="button" href="#lung">Meer lezen</a>
-                      <!-- back of content -->
-                      </div>
-                    <!-- back end-->
-                    </div> <!-- flipper end-->
-                  </div> <!-- container end-->
-                </div> <!-- first card end-->
+                  <div onclick="" class="flip-container">  <!-- container start-->
+                     <div class="flipper"> <!-- flipper start-->
+                       <!-- front start-->
+                         <div class="front">
+                            <img src="./images/svg/inhaler-shadow.svg" alt=" inhaler ">
+                            <h2 class=""> ASTMA </h2>
+                         </div>
 
-                <!-- forth card-->
+                        <!-- back start-->
+                         <div class="back">
+                           <h2 class=""> ASTMA </h2>
+                             <ul>
+                                <li> Astma is een ontsteking van de longen. De ontsteking is bij astma blijvend.</li>
+                             </ul>
+                             <a class="button" href="#astma">Meer lezen</a>
+                         </div>
+                       </div> <!-- flipper end-->
+                     </div> <!-- container end-->
+                   </div> <!-- first card end-->
+
                 <div class="panel-container">
+                  <!-- second card-->
                   <div class="panel-item">
                     <div onclick="" class="flip-container">  <!-- container start-->
                       <div class="flipper"> <!-- flipper start-->
                         <!-- front start-->
                         <div class="front">
-                            <img src="./images/svg/man-shadow.svg" alt="">
-                              <h2 class=""> COPD </h2>
-                              <!-- front of content -->
+                          <img src="./images/svg/heart-shadow.svg" alt="">
+                          <h2 class="">HART &#38; VAATZIEKTE </h2>
+                          <!-- front of content -->
                         </div>
-                        <!-- front end-->
+                               <!-- front end-->
+
                         <!-- back start-->
                         <div class="back">
-                          <h2 class=""> COPD </h2>
+                          <h2 class=""> HART&#38;VAATZIEKTE </h2>
                           <ul>
-                            <li> De afkorting COPD staat voor Chronische Obstructieve Long Ziekte.
-                            Hierbij zijn de longen beschadigd en gaat ademen moeilijker.</li>
+                            <li>Hartritmestoornissen, hartfalen en slagaderverkalking, dit zijn mogelijke gevolgen van de lucht die je inademt bij een drukke weg.</li>
                           </ul>
-                          <a class="button" href="#copd">Meer lezen</a>
+                          <a class="button" href="#heart">Meer lezen</a>
                           <!-- back of content -->
                         </div>
                         <!-- back end-->
                       </div> <!-- flipper end-->
                     </div> <!-- container end-->
-                  </div> <!-- forth card end-->
+                  </div> <!-- second card end-->
+                </div>
+
+                <div class="eyes">
+                  <div class="eye">
+                    <div class="ball"></div>
+                  </div>
+
+                  <div class="eye">
+                    <div class="ball"></div>
+                  </div>
+                </div>
+
+                <div class="container-panel">
+                  <div class="panel-container">
+                    <!-- first card-->
+                    <div class="panel-item last">
+                      <div class="flip-container">  <!-- container start-->
+                        <div class="flipper"> <!-- flipper start-->
+                          <!-- front start-->
+                          <div class="front">
+                            <img src="/images/svg/lungs-shadow.svg" alt="">
+                            <h2 class=""> LONGKANKER </h2>
+                            <!-- front of content -->
+                          </div>
+                          <!-- front end-->
+                          <!-- back start-->
+                          <div class="back">
+                            <h2 class=""> LONGKANKER </h2>
+                            <ul>
+                              <li> Zelfs een minimale hoeveelheid luchtvervuiling door fijnstof vergroot de kans op longkanker met ongeveer 20 procent.</li>
+                            </ul>
+                            <a class="button" href="#lung">Meer lezen</a>
+                          <!-- back of content -->
+                          </div>
+                        <!-- back end-->
+                        </div> <!-- flipper end-->
+                      </div> <!-- container end-->
+                    </div> <!-- first card end-->
+
+                    <!-- forth card-->
+                    <div class="panel-container">
+                      <div class="panel-item last">
+                        <div onclick="" class="flip-container">  <!-- container start-->
+                          <div class="flipper"> <!-- flipper start-->
+                            <!-- front start-->
+                            <div class="front">
+                                <img src="./images/svg/man-shadow.svg" alt="">
+                                  <h2 class=""> COPD </h2>
+                                  <!-- front of content -->
+                            </div>
+                            <!-- front end-->
+                            <!-- back start-->
+                            <div class="back">
+                              <h2 class=""> COPD </h2>
+                              <ul>
+                                <li> De afkorting COPD staat voor Chronische Obstructieve Long Ziekte.
+                                Hierbij zijn de longen beschadigd en gaat ademen moeilijker.</li>
+                              </ul>
+                              <a class="button" href="#copd">Meer lezen</a>
+                              <!-- back of content -->
+                            </div>
+                            <!-- back end-->
+                          </div> <!-- flipper end-->
+                        </div> <!-- container end-->
+                      </div> <!-- forth card end-->
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
+  </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.5/gsap.min.js"></script>
 <script src="./js/main.js"></script>
 </body>

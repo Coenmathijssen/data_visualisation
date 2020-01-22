@@ -6,8 +6,19 @@
     color: $purple;
   }
 
+  h2 {
+    font-size: 1.5em;
+    text-transform: lowercase;
+    margin-bottom: 5vh;
+  }
+
   .chapter {
     color: $purple;
+    margin-bottom: 0;
+  }
+
+  .locations {
+    margin-bottom: 2vh;
   }
 
   .x.axis, .y.axis {

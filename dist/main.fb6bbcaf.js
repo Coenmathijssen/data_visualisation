@@ -38503,7 +38503,25 @@ tlEffectsChange.to('.body', 0.3, {
 var sceneEffectsChange = new ScrollMagic.Scene({
   offset: -100,
   triggerElement: '.decease'
-}).setTween(tlEffectsChange).addTo(controllerEffectsChange);
+}).setTween(tlEffectsChange).addTo(controllerEffectsChange); // Chapter score
+
+var tlScoreChange = new TimelineMax({});
+var controllerScoreChange = new ScrollMagic.Controller({});
+tlScoreChange.to('.body', 0.3, {
+  backgroundColor: '#ED6A63'
+}).call(changeNumber, ['05', '#000000']);
+var sceneScoreChange = new ScrollMagic.Scene({
+  triggerElement: '.score'
+}).setTween(tlScoreChange).addTo(controllerScoreChange); // Chapter checkback
+
+var tlCheckbackChange = new TimelineMax({});
+var controllerCheckbackChange = new ScrollMagic.Controller({});
+tlCheckbackChange.to('.body', 0.3, {
+  backgroundColor: '#80A2D0'
+}).call(changeNumber, ['06', '#223984']);
+var sceneCheckbackChange = new ScrollMagic.Scene({
+  triggerElement: '.checkback'
+}).setTween(tlCheckbackChange).addTo(controllerCheckbackChange);
 
 function changeNumber(num, color) {
   document.getElementById('number-change').textContent = num;
@@ -38567,7 +38585,27 @@ tlChapterEffects.to('.effects', 1, {
 });
 var sceneChapterEffects = new ScrollMagic.Scene({
   triggerElement: '.chapter-trigger-effects'
-}).setTween(tlChapterEffects).addTo(controllerChapterEffects);
+}).setTween(tlChapterEffects).addTo(controllerChapterEffects); // Chapter score
+
+var tlChapterScore = new TimelineMax({});
+var controllerChapterScore = new ScrollMagic.Controller({});
+tlChapterScore.to('.score-title', 1, {
+  y: -100,
+  ease: Power4.easeOut
+});
+var sceneChapterScore = new ScrollMagic.Scene({
+  triggerElement: '.chapter-trigger-score'
+}).setTween(tlChapterScore).addTo(controllerChapterScore); // Chapter checkback
+
+var tlChapterCheckback = new TimelineMax({});
+var controllerChapterCheckback = new ScrollMagic.Controller({});
+tlChapterCheckback.to('.check', 1, {
+  y: -100,
+  ease: Power4.easeOut
+});
+var sceneChapterCheckback = new ScrollMagic.Scene({
+  triggerElement: '.chapter-trigger-checkback'
+}).setTween(tlChapterCheckback).addTo(controllerChapterCheckback);
 },{"scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap":"../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js","scrollmagic":"../node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js","scrollmagic-plugin-gsap":"../node_modules/scrollmagic-plugin-gsap/index.js"}],"js/scrollMagic.js":[function(require,module,exports) {
 "use strict";
 
@@ -38726,8 +38764,20 @@ var sceneCopd2 = new ScrollMagic.Scene({
 }).setTween(tlCopd2).addTo(controllerCopd2).setClassToggle('#running-man', 'play').on('start', function (event) {
   tlCopd2.time(0);
 });
-},{"scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap":"../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js","scrollmagic":"../node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js","scrollmagic-plugin-gsap":"../node_modules/scrollmagic-plugin-gsap/index.js"}],"js/form.js":[function(require,module,exports) {
+},{"scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap":"../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js","scrollmagic":"../node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js","scrollmagic-plugin-gsap":"../node_modules/scrollmagic-plugin-gsap/index.js"}],"js/eyeballs.js":[function(require,module,exports) {
+// EYES CODE
+var balls = document.getElementsByClassName('ball');
 
+document.onmousemove = function () {
+  var x = event.clientX * 100 / window.innerWidth + '%';
+  var y = event.clientY * 100 / window.innerHeight + '%';
+
+  for (var i = 0; i < 2; i++) {
+    balls[i].style.left = x;
+    balls[i].style.top = y;
+    balls[i].style.transform = 'translate(-' + x + ',-' + y + ')';
+  }
+};
 },{}],"../node_modules/core-js/modules/_global.js":[function(require,module,exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -46737,99 +46787,6 @@ exports.calcMaximumAverage = calcMaximumAverage;
 exports.calcAverage = calcAverage;
 exports.getAvg = getAvg;
 
-// import '../styles/main.scss'
-// export { transformData, calcMaximumAverage, calcAverage, getAvg }
-// function transformData (data) {
-//   let transformedDataArray = []
-//   data.forEach(dataItem => {
-//     const chunck = 42128
-//     let concChunkArray = []
-//     for (let i = 1; i <= 24; i++) {
-//       let concChunk = dataItem.conc_ana.slice(i - 1, chunck * i)
-//       concChunkArray.push(concChunk)
-//     }
-//     console.log(dataItem)
-//     let day = []
-//     for (let i = 1; i <= 24; i++) {
-//       let hour = {
-//         'id': i,
-//         'time': dataItem.time[i - 1],
-//         'temperature': dataItem.temperature[i - 1],
-//         'uWind': dataItem.uWind[i - 1],
-//         'vWind': dataItem.vWind[i - 1],
-//         'dataArray': []
-//       }
-//       dataItem.lon.forEach((item, index) => {
-//         if (index % 100 === 0) {
-//           let obj = {
-//             'id': (index / 100) + 1,
-//             'long': item,
-//             'lat': dataItem.lat[index],
-//             'concAna': concChunkArray[i - 1][index]
-//           }
-//           hour.dataArray.push(obj)
-//         }
-//       })
-//       day.push(hour)
-//     }
-//     transformedDataArray.push(day)
-//   })
-//   return transformedDataArray
-// }
-// function calcMaximumAverage (transformedData) {
-//   // Calculate the highest value in the array
-//   // transformedData[0].forEach(hour => {
-//   //   console.log('hour: ', hour)
-//   //   let maxValue = Math.max.apply(Math, hour.dataArray.map(function(o) { return o.concAna }))
-//   //   let index = hour.dataArray.indexOf(maxValue)
-//   //   console.log('value: ', maxValue)
-//   // })
-//   let maximumArray = []
-//   if (transformedData.length === 24) {
-//     let maximumDay = transformedData.map(hour => {
-//       return hour.dataArray[359].concAna
-//     })
-//     return getAvg(maximumDay)
-//   } else {
-//     transformedData.forEach(dataDay => {
-//       let maximumDay = dataDay.map(hour => {
-//         return hour.dataArray[359].concAna
-//       })
-//       maximumDay = getAvg(maximumDay)
-//       maximumArray.push(maximumDay)
-//     })
-//     return getAvg(maximumArray)
-//   }
-// }
-// function calcAverage (transformedData) {
-//   let averagePerHour = []
-//   if (transformedData.length === 24) {
-//     transformedData.forEach(hour => {
-//       let hourConcAna = hour.dataArray.map(item => {
-//         return item.concAna
-//       })
-//       let hourConcAnaAverage = getAvg(hourConcAna)
-//       averagePerHour.push(hourConcAnaAverage)
-//     })
-//   } else {
-//     transformedData.forEach(dayItem => {
-//       dayItem.forEach(hour => {
-//         let hourConcAna = hour.dataArray.map(item => {
-//           return item.concAna
-//         })
-//         let hourConcAnaAverage = getAvg(hourConcAna)
-//         averagePerHour.push(hourConcAnaAverage)
-//       })
-//     })
-//   }
-//   let totalAverage = getAvg(averagePerHour)
-//   return totalAverage
-// }
-// function getAvg (array) {
-//   const total = array.reduce((acc, c) => acc + c, 0)
-//   return total / array.length
-// }
-// import '../styles/main.scss'
 function transformData(data) {
   var transformedDataArray = [];
   data.forEach(function (dataItem) {
@@ -46925,7 +46882,13 @@ function calcAverage(transformedData) {
 
   var totalAverage = getAvg(averagePerHour);
   return totalAverage;
-}
+} // const array = []
+// callAsyncFunc().then(data => {
+//   callAsyncFunc2().then(data2 => {
+//     array.push(data, data2)
+//   })
+// })
+
 
 function getAvg(array) {
   var total = array.reduce(function (acc, c) {
@@ -47816,7 +47779,7 @@ require("./titlesAppear.js");
 
 require("./scrollMagic.js");
 
-require("./form.js");
+require("./eyeballs.js");
 
 require("babel-polyfill");
 
@@ -47865,33 +47828,82 @@ function _fetchAndTransformData() {
 
 var transformedData = fetchAndTransformData();
 
-function calcAnaValues(streets) {
-  transformedData.then(function (transformedData) {
-    console.log('transformed data: ', transformedData);
-    var foundData = (0, _fetchAndFind.matchData)(streets, transformedData);
-    var weekAverageAmsterdam = (0, _transformData.calcAverage)(transformedData);
-    console.log('week average Amsterdam', weekAverageAmsterdam);
-    var dayAverageAmsterdam = (0, _transformData.calcAverage)(transformedData[0]);
-    console.log('day average Amsterdam', dayAverageAmsterdam);
-    var barChartFunctionArray = [_barChart.update1, _barChart.update2, _barChart.update3];
-    foundData.forEach(function (item, i) {
-      item.then(function (result) {
-        console.log('matching data: ', result);
-        var locationAverageWeek = (0, _transformData.calcMaximumAverage)(transformedData, result.id);
-        var locationAverageDay = (0, _transformData.calcMaximumAverage)(transformedData[0], result.id);
-        console.log('locationAverageWeek', locationAverageWeek);
-        console.log('locationAverageDay', locationAverageDay);
-        var myData = [{
-          name: 'Amsterdams gemiddelde',
-          avg: dayAverageAmsterdam
-        }, {
-          name: "Locatie ".concat(i + 1),
-          avg: locationAverageDay
-        }];
-        barChartFunctionArray[i](myData);
-      });
-    });
-  });
+function calcAnaValues(_x, _x2, _x3) {
+  return _calcAnaValues.apply(this, arguments);
+}
+
+function _calcAnaValues() {
+  _calcAnaValues = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee2(streets, name, avgAmsterdam) {
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            transformedData.then(function (transformedData) {
+              console.log('transformed data: ', transformedData);
+              var foundData = (0, _fetchAndFind.matchData)(streets, transformedData);
+              var weekAverageAmsterdam = (0, _transformData.calcAverage)(transformedData);
+              console.log('week average Amsterdam', weekAverageAmsterdam);
+              var dayAverageAmsterdam = (0, _transformData.calcAverage)(transformedData[0]);
+              console.log('day average Amsterdam', dayAverageAmsterdam);
+              var barChartFunctionArray = [_barChart.update1, _barChart.update2, _barChart.update3];
+              foundData.forEach(function (item, i) {
+                item.then(function (result) {
+                  console.log('matching data: ', result);
+                  var locationAverageWeek = (0, _transformData.calcMaximumAverage)(transformedData, result.id);
+                  var locationAverageDay = (0, _transformData.calcMaximumAverage)(transformedData[0], result.id);
+                  console.log('locationAverageWeek', locationAverageWeek);
+                  console.log('locationAverageDay', locationAverageDay);
+                  var myData = [{
+                    name: 'Amsterdams gemiddelde',
+                    avg: dayAverageAmsterdam
+                  }, {
+                    name: "Locatie ".concat(i + 1),
+                    avg: locationAverageDay
+                  }];
+                  barChartFunctionArray[i](myData);
+                  calculateScore(streets, locationAverageDay, name, dayAverageAmsterdam);
+                });
+              });
+            });
+
+          case 1:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _calcAnaValues.apply(this, arguments);
+}
+
+function calculateScore(streets, no2, name, avgAmsterdam) {
+  console.log('testieeeee ', streets);
+  no2 = Math.round(no2 * 100) / 100;
+  avgAmsterdam = Math.round(avgAmsterdam * 100) / 100;
+  var nameHolder = document.getElementsByClassName('name-holder');
+
+  for (var i = 0; i < nameHolder.length; i++) {
+    nameHolder[i].textContent = name;
+  }
+
+  var no2Holder = document.getElementsByClassName('no2-holder');
+  no2Holder.textContent = no2;
+
+  for (var _i = 0; _i < no2Holder.length; _i++) {
+    no2Holder[_i].textContent = no2;
+  }
+
+  var avgHolder = document.getElementsByClassName('avg-holder');
+
+  for (var _i2 = 0; _i2 < avgHolder.length; _i2++) {
+    avgHolder[_i2].textContent = avgAmsterdam;
+  }
+
+  document.getElementsByClassName('route-1-holder')[0].textContent = streets[0];
+  document.getElementsByClassName('route-2-holder')[0].textContent = streets[1];
+  document.getElementsByClassName('route-3-holder')[0].textContent = streets[2];
 } // Run functions with form data
 
 
@@ -47901,24 +47913,16 @@ function calculateData() {
   var inputField1 = document.getElementById('street-1');
   var inputField2 = document.getElementById('street-2');
   var inputField3 = document.getElementById('street-3');
+  var name = document.getElementById('name').value;
+  console.log(name);
   var streets = [inputField1.value, inputField2.value, inputField3.value];
-  calcAnaValues(streets);
-} // EYES CODE
-
-
-var balls = document.getElementsByClassName('ball');
-
-document.onmousemove = function () {
-  var x = event.clientX * 100 / window.innerWidth + '%';
-  var y = event.clientY * 100 / window.innerHeight + '%';
-
-  for (var i = 0; i < 2; i++) {
-    balls[i].style.left = x;
-    balls[i].style.top = y;
-    balls[i].style.transform = 'translate(-' + x + ',-' + y + ')';
-  }
-};
-},{"d3":"../node_modules/d3/index.js","./openingAnimation.js":"js/openingAnimation.js","./intro.js":"js/intro.js","./backgroundChange.js":"js/backgroundChange.js","./titlesAppear.js":"js/titlesAppear.js","./scrollMagic.js":"js/scrollMagic.js","./form.js":"js/form.js","babel-polyfill":"../node_modules/babel-polyfill/lib/index.js","./transformData.js":"js/transformData.js","./fetchAndFind.js":"js/fetchAndFind.js","./barChart.js":"js/barChart.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  calcAnaValues(streets, name); // let foundDataArray = calcAnaValues(streets)
+  // foundDataArray.then(item => {
+  //   // let total = (foundDataArray[0] + foundDataArray[1] + foundDataArray[2]) / foundDataArray.length
+  //   console.log('pls: ', foundDataArray[0])
+  // })
+}
+},{"d3":"../node_modules/d3/index.js","./openingAnimation.js":"js/openingAnimation.js","./intro.js":"js/intro.js","./backgroundChange.js":"js/backgroundChange.js","./titlesAppear.js":"js/titlesAppear.js","./scrollMagic.js":"js/scrollMagic.js","./eyeballs.js":"js/eyeballs.js","babel-polyfill":"../node_modules/babel-polyfill/lib/index.js","./transformData.js":"js/transformData.js","./fetchAndFind.js":"js/fetchAndFind.js","./barChart.js":"js/barChart.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

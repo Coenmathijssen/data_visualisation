@@ -61,6 +61,34 @@ const sceneEffectsChange = new ScrollMagic.Scene({
   .setTween(tlEffectsChange)
   .addTo(controllerEffectsChange)
 
+// Chapter score
+const tlScoreChange = new TimelineMax({})
+const controllerScoreChange = new ScrollMagic.Controller({})
+
+tlScoreChange
+  .to('.body', 0.3, { backgroundColor: '#ED6A63' })
+  .call(changeNumber, ['05', '#000000'])
+
+const sceneScoreChange = new ScrollMagic.Scene({
+  triggerElement: '.score'
+})
+  .setTween(tlScoreChange)
+  .addTo(controllerScoreChange)
+
+
+// Chapter checkback
+const tlCheckbackChange = new TimelineMax({})
+const controllerCheckbackChange = new ScrollMagic.Controller({})
+
+tlCheckbackChange
+  .to('.body', 0.3, { backgroundColor: '#80A2D0' })
+  .call(changeNumber, ['06', '#223984'])
+
+const sceneCheckbackChange = new ScrollMagic.Scene({
+  triggerElement: '.checkback'
+})
+  .setTween(tlCheckbackChange)
+  .addTo(controllerCheckbackChange)
 
   function changeNumber(num, color) {
     document.getElementById('number-change').textContent = num

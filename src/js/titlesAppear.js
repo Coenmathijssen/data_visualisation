@@ -58,3 +58,32 @@ const sceneChapterEffects = new ScrollMagic.Scene({
 })
   .setTween(tlChapterEffects)
   .addTo(controllerChapterEffects)
+
+
+  // Chapter score
+const tlChapterScore = new TimelineMax({})
+const controllerChapterScore = new ScrollMagic.Controller({})
+
+tlChapterScore
+  .to('.score-title', 1, { y: -100, ease: Power4.easeOut })
+
+const sceneChapterScore = new ScrollMagic.Scene({
+  triggerElement: '.chapter-trigger-score'
+})
+  .setTween(tlChapterScore)
+  .addTo(controllerChapterScore)
+
+
+  // Chapter checkback
+const tlChapterCheckback = new TimelineMax({})
+const controllerChapterCheckback = new ScrollMagic.Controller({})
+
+tlChapterCheckback
+  .to('.check', 1, { y: -100, ease: Power4.easeOut })
+
+const sceneChapterCheckback = new ScrollMagic.Scene({
+  triggerElement: '.chapter-trigger-checkback'
+})
+  .setTween(tlChapterCheckback)
+  .addTo(controllerChapterCheckback)
+
