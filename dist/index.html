@@ -1,4 +1,456 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Index</title><link rel="stylesheet" href="/main.8bc7469f.css"><link rel="stylesheet" href="/main.6faa51e1.css"></head><body class="body"> <section class="opening-animation"> <div class="second-color-slide-up"></div> <div class="page"> <div class="powered-container"> <div class="reveal-container"> <a href="#" class="credits creators">Made by Coen Mathijssen - Anna Koopmans - Lisa Marsman</a> <div class="reveal-first"></div> </div> <div class="reveal-container"> <a href="#" class="credits knmi">Powered by KNMI</a> <div class="reveal-second"></div> </div> </div> <div class="flex"> <div class="container"> <h1 class="headertj"> <span class="hide" id="hide">Wat betekent de</span> </h1> <h1 class="headertj"> <span class="hide">luchtvervuiling</span> </h1> <h1 class="headertj"> <span class="hide">in Amsterdam voor</span> </h1> <h1 class="headertj"> <span class="hide">jouw gezondheid?</span> </h1> </div> </div> </div> </section> <div class="chapter-trigger-intro"></div> <div class="chapter-container intro"> <section class="section"> <h1 class="chapter"> <span class="chapter-appear pollution-adam">01 / Luchtvervuiling in A'dam</span> </h1> <div class="text-flex"> <p> <span class="explain-text-appear-1">In Amsterdam wonen lijkt misschien de droom van velen. Maar de prijs die je betaalt is hoog. Niet alleen voor je portemonnee, maar ook voor je gezondheid. De concentraties fijnstof en stikstofdioxide zijn op de meeste plaatsen hoger dan de Europese toegestane norm. Dit heeft niet alleen effect op dier en natuur, maar ook op jou. Want de gemiddelde Amsterdammer leeft hierdoor 9 maanden korter. En dat is nog niet alles. Ook de kans op hart-en vaatziekte, longkaker, astma en COPD neemt toe. Met deze website nemen door de gevaren en risico’s van luchtvervuiling. Op maat gemaakt zodat je écht weet hoe je er voor staat en wat je eventueel kan doen. </span> </p> <p> <span class="explain-text-appear-2">In deze website maken we gebruik van de data van het KNMI op basis van metingen afkomstig van het meetnetwerk van GGD. De data bestaat uit meerdere variabelen: tijd, NO2 concentraties, windsnelheden en geolocatie. Deze data gebruiken we om langs de opgegeven route de NO2 waardes te op te vragen. Naar aanleiding hiervan kunnen we een schatting maken van de hoeveelheid schadelijke stoffen die je inademt langs die route en geven we een gezondheids cijfer. </span> </p> </div> </section> <canvas id="canvas"></canvas> <section class="top-section"> <div class="icon-container"> <div class="icon-card"> <img src="/no2.3de65831.svg" alt=""> <h2> NO2</h2> <p> NO2 wordt gebruikt als indicator voor luchtvervuiling. De molecuul is daarnaast ook schadelijk voor de gezondheid. </p> </div> <div class="icon-card"> <img src="/pm2,5.dd8fe439.svg" alt=""> <h2> PM2,5</h2> <p> PM2,5 is kleiner dan 2,5 micrometer. Deze bestaat vooral uit deeltjes die het gevolg zijn van verbrandingsprocessen. De deeltjes dringen het diepst door in de longen en richten de meeste schade aan. </p> </div> <div class="icon-card"> <img src="/pm10.da5175b3.svg" alt=""> <h2> PM10</h2> <p> De grovere fractie uit het PM10-stof (tussen de 2,5 µm en de 10 μm) bestaat vooral uit deeltjes die het gevolg zijn van mechanische processen en opwaaiend bodemstof. </p> </div> <div class="icon-card"> <img src="/roet.5d0ee906.svg" alt=""> <h2> ROET</h2> <p>Roet komt o.a. vrij bij de onvolledige verbranding van fossiele brandstoffen. Roet ontstaat als ultrafijnstof samenklontert en is kleiner dan 10 micrometer. </p> </div> </div> </section> <div class="trigger-numberchange-1"></div> </div> <div class="chapter-container amsterdam"> <section class="section"> <div class="chapter-trigger-amsterdam"></div> <div class="flex"> <div class="map"> <h1 class="chapter"> <span class="chapter-appear adam">02 / Amsterdam</span> </h1> <img src="/kaart.7bd9618e.png" alt="kaart Amsterdam"> </div> <div class="form-container"> <form id="contact" action="#pollution"> <h2>Gegevens</h2> <fieldset> <input placeholder="Jouw naam" type="text" required=""> </fieldset> <fieldset> <input placeholder="Jouw thuislocatie" type="text" id="street-1" required=""> </fieldset> <fieldset> <input placeholder="Jouw werk- of studielocatie" type="text" id="street-2" required=""> </fieldset> <fieldset> <input placeholder="Jouw sportlocatie" type="text" id="street-3" required=""> </fieldset> <fieldset> <button name="submit" type="button" id="form-button">Bekijk jouw gezondheidrisico's</button> </fieldset> </form> </div> </div> </section></div>   <div class="chapter-container air-pollution" id="pollution"> <section class="section"> <div class="chapter-trigger-pollution"></div> <h1 class="chapter"> <span class="chapter-appear pollution">03 / Luchtvervuiling</span> </h1> <svg width="300" height="200" class="viz1"></svg> <svg width="300" height="200" class="viz2"></svg> <svg width="300" height="200" class="viz3"></svg> </section> </div> <div class="chapter-container decease"> <div class="chapter-trigger-effects"></div> <div class="fixed-wrapper"> <div id="count"><span id="number-change"> </span> <span> / </span> <span> 05 </span></div> </div> <section class="section astma" id="astma"> <h1 class="chapter"> <span class="chapter-appear effects">04 / Gevolgen</span> </h1> <div class="container"> <div class="flex"> <div class="text-block"> <h2 class="title"> <span class="letter letter-astma">A</span> <span class="letter letter-astma">s</span> <span class="letter letter-astma">t</span> <span class="letter letter-astma">m</span> <span class="letter letter-astma">a</span> </h2> <p> <span class="body-text body-text-astma">Astma is een ontsteking van de longen. De ontsteking is bij</span> <span class="body-text body-text-astma">astma blijvend. Dit betekent dat er altijd kleine ontstekingen</span> <span class="body-text body-text-astma"> zijn in de longen. Stadsbewoners hebben meer kans op astma.</span> <span class="body-text body-text-astma">Met name ouderen en kinderen hebben hier last van. </span> <span class="body-text body-text-astma">Zelfs 1 op de 5 kinderen heeft astma door stikstofdioxide.</span> </p> </div> <div class="animation"> <div class="text-block text-block-astma"> <div class="chance"> <p>Gezondheidsscore</p> <h2 class="title">6</h2> </div> <p class="explain-text">Astma is een ontsteking van de longen. De ontsteking is bij astma blijvend. Dit betekent dat er altijd kleine ontstekingen zijn in de longen. Stadsbewoners hebben meer kans op astma. Met name oudere en kinderen hebben hier last van. Zelf 1 op de 5 kinderen heeft astma door stikstofdioxide.</p> </div> <div class="inhaler-container"> <img class="inhaler-top" src="/inhaler_button.3ae2b200.svg" alt="inhaler press button"> <img class="inhaler" src="/body_inhaler.96538159.svg" alt="inhaler"> </div> <img class="spray" src="/spray_blue.1858127e.png" alt="spray"> <div class="spray-container"> <div class="spray-reveal"></div> </div> </div> </div> </div> </section> <section class="section heart" id="heart"> <div class="container"> <div class="flex"> <div class="animation"> <div class="text-block text-block-heart"> <div class="chance"> <p>Gezondheidsscore</p> <h2 class="title">6</h2> </div> <p class="explain-text">In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce ac felis sit amet ligula pharetra condimentum. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Pellentesque commodo eros a enim. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p> </div> <div class="heart-container"> <img src="/heart.eb609e8e.svg" alt="" class="heart-full"> <img src="/heart_open.d518c47d.svg" alt="" class="heart-in"> <img src="/heart_hartkamer-links.283988ef.svg" alt="" class="heart-in-2"> <img src="/heart_hartkamer-rechts.861313c5.svg" alt="" class="heart-in-3"> </div> </div> <div class="text-block"> <h2 class="title"> <span class="letter letter-heart">H</span> <span class="letter letter-heart">a</span> <span class="letter letter-heart">r</span> <span class="letter letter-heart">t</span> </h2> <p> <span class="body-text body-text-heart">Hartritmestoornissen, hartfalen en slagaderverkalking, dit zijn</span> <span class="body-text body-text-heart">mogelijke gevolgen van de lucht die je inademt bij een drukke weg.</span> <span class="body-text body-text-heart">Wanneer je bij een drukke weg woont heb je twee keer zoveel kans</span> <span class="body-text body-text-heart">komen te overlijden aan hart-en vaatziekten. Een van de meest</span> <span class="body-text body-text-heart">voorkomende hartziektes door luchtvervuiling is de vergroting</span> <span class="body-text body-text-heart">van de hartkamers. Vergrote hartkamers zijn een signaal dat het</span> <span class="body-text body-text-heart">hart onder stress staat en het is vaak een eerste teken in de </span> <span class="body-text body-text-heart">aanloop naar hartfalen.</span> </p> </div> </div> </div> </section> <section class="section lung" id="lung"> <div class="container horizontal"> <div class="flex"> <div class="text-block-container"> <div class="text-block"> <h2 class="title"> <span class="letter letter-lung">l</span> <span class="letter letter-lung">o</span> <span class="letter letter-lung">n</span> <span class="letter letter-lung">g</span> </h2> <p> <span class="body-text body-text-lung">Zelfs een minimale hoeveelheid luchtvervuiling door fijnstof vergroot</span> <span class="body-text body-text-lung">de kans op longkanker met ongeveer 20 procent. Longkanker onder</span> <span class="body-text body-text-lung">niet-rokers neemt toe door luchtvervuiling met name door de fijnstof</span> <span class="body-text body-text-lung">in de lucht. Het inademen van fijnstof is slechter voor je dan de</span> <span class="body-text body-text-lung">rook inademen van een ander dit heeft als gevolg dat er wereldwijd</span> <span class="body-text body-text-lung">ongeveer 223.000 longkankerdoden zijn met als oorzaak luchtvervuiling.</span> </p> </div> </div> <div class="animation"> <div class="text-block text-block-lung"> <div class="chance"> <p>Kans op hartaandoening</p> <h2 class="title">19.3%</h2> </div> <p class="explain-text">In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce ac felis sit amet ligula pharetra condimentum. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Pellentesque commodo eros a enim. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p> </div> <div class="lungs-container"> <img src="/long_flat.bacce2ed.svg" alt="" class="lung-flat"> <img src="/long.56ced3ae.svg" alt="" class="lung-color"> </div> <div class="no2"> <span class="n"> <p>N</p></span> <span class="streep1"></span> <span class="streep2"></span> <span class="o1"></span> <span class="o2"></span> </div> <div id="bubble" class="not-infected"></div> </div> </div> </div> </section> <section class="section copd" id="copd"> <div class="container"> <div class="flex"> <div class="animation"> <div class="text-block text-block-copd"> <div class="chance"> <p>gezondheidsscore</p> <h2 class="title">6</h2> </div> <p class="explain-text">In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce ac felis sit amet ligula pharetra condimentum. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Pellentesque commodo eros a enim. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p> </div> <div class="running-man-container"> <div id="running-man"></div> </div> </div> <div class="text-block"> <h2 class="title"> <span class="letter letter-copd">c</span> <span class="letter letter-copd">o</span> <span class="letter letter-copd">p</span> <span class="letter letter-copd">d</span> </h2> <p> <span class="body-text body-text-copd">De afkorting COPD staat voor Chronische Obstructieve Long Ziekte.</span> <span class="body-text body-text-copd">Hierbij zijn de longen beschadigd en gaat ademen moeilijker.</span> <span class="body-text body-text-copd">De longen zijn continu ontstoken of u hebt last van een vermindering</span> <span class="body-text body-text-copd">longblaasjes wat ademhalen moeilijker maakt. Vaak is roken de oorzaak,</span> <span class="body-text body-text-copd">maar luchtvervuiling kan ook de oorzaak zijn. COPD staat op plek 6</span> <span class="body-text body-text-copd">van ziektes met de meeste sterfgevallen.</span> </p> </div> </div> </div> </section> </div> <section class="bottom-section"> <div class="container"> <div class="flex">  <div class="container-panel"> <div class="panel-container">  <div class="panel-item"> <div class="flip-container">  <div class="flipper">   <div class="front"> <img src="/inhaler-shadow.d988c2ac.svg" alt=" inhaler "> <h2> ASTMA </h2> </div>  <div class="back"> <h2> ASTMA </h2> <ul> <li> Astma is een ontsteking van de longen. De ontsteking is bij astma blijvend.</li> </ul> <a class="button" href="#astma">Meer lezen</a> </div> </div>  </div>  </div>  <div class="panel-container">  <div class="panel-item"> <div class="flip-container">  <div class="flipper">   <div class="front"> <img src="/heart-shadow.0d839112.svg" alt=""> <h2>HART &#38; VAATZIEKTE </h2>  </div>   <div class="back"> <h2> HART&#38;VAATZIEKTE </h2> <ul> <li>Hartritmestoornissen, hartfalen en slagaderverkalking, dit zijn mogelijke gevolgen van de lucht die je inademt bij een drukke weg.</li> </ul> <a class="button" href="#heart">Meer lezen</a>  </div>  </div>  </div>  </div>  </div> <div class="eyes"> <div class="eye"> <div class="ball"></div> </div> <div class="eye"> <div class="ball"></div> </div> </div> <div class="container-panel"> <div class="panel-container">  <div class="panel-item"> <div class="flip-container">  <div class="flipper">   <div class="front"> <img src="/lungs-shadow.a58e0d40.svg" alt=""> <h2> LONGKANKER </h2>  </div>   <div class="back"> <h2> LONGKANKER </h2> <ul> <li> Zelfs een minimale hoeveelheid luchtvervuiling door fijnstof vergroot de kans op longkanker met ongeveer 20 procent.</li> </ul> <a class="button" href="#lung">Meer lezen</a>  </div>  </div>  </div>  </div>   <div class="panel-container"> <div class="panel-item"> <div class="flip-container">  <div class="flipper">   <div class="front"> <img src="/man-shadow.b394cb44.svg" alt=""> <h2> COPD </h2>  </div>   <div class="back"> <h2> COPD </h2> <ul> <li> De afkorting COPD staat voor Chronische Obstructieve Long Ziekte. Hierbij zijn de longen beschadigd en gaat ademen moeilijker.</li> </ul> <a class="button" href="#copd">Meer lezen</a>  </div>  </div>  </div>  </div>  </div> </div> </div> </div> </div> </div> </div> </section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Index</title>
+  <link rel="stylesheet" href="/main.48b3db1d.css">
+<script src="/main.48b3db1d.js"></script><link rel="stylesheet" href="/main.fb6bbcaf.css"></head>
+<body class="body">
+  <section class="opening-animation">
+    <div class="second-color-slide-up"></div>
+    <div class="page">
+      <div class="powered-container">
+        <div class="reveal-container">
+          <a href="#" class="credits creators">Made by Coen Mathijssen - Anna Koopmans - Lisa Marsman</a>
+          <div class="reveal-first"></div>
+        </div>
+        <div class="reveal-container">
+          <a href="#" class="credits knmi">Powered by KNMI</a>
+          <div class="reveal-second"></div>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="container">
+          <h1 class="headertj">
+            <span class="hide" id="hide">Wat betekent de</span>
+          </h1>
+          <h1 class="headertj">
+            <span class="hide">luchtvervuiling</span>
+          </h1>
+          <h1 class="headertj">
+            <span class="hide">in Amsterdam voor</span>
+          </h1>
+          <h1 class="headertj">
+            <span class="hide">jouw gezondheid?</span>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="chapter-trigger-intro"></div>
+  <div class="chapter-container intro">
+    <section class="section">
+      <h1 class="chapter">
+          <span class="chapter-appear pollution-adam">01 / Luchtvervuiling in A'dam</span>
+      </h1>
+      <div class="text-flex">
+        <p>
+          <span class="explain-text-appear-1">In Amsterdam wonen lijkt misschien de droom van velen.
+          Maar de prijs die je betaalt is hoog. Niet alleen voor je portemonnee, maar ook voor je gezondheid.
+
+          De concentraties fijnstof en stikstofdioxide zijn op de meeste plaatsen hoger dan de Europese toegestane norm. Dit heeft niet alleen effect op dier en natuur, maar ook op jou.
+          Want de gemiddelde Amsterdammer leeft hierdoor 9 maanden korter. En dat is nog niet alles. Ook de kans op hart-en vaatziekte, longkaker, astma en COPD neemt toe.
+          Met deze website nemen door de gevaren en risico’s van luchtvervuiling. Op maat gemaakt zodat je écht weet hoe je er voor staat en wat je eventueel kan doen.
+          </span>
+        </p>
+        <p>
+          <span class="explain-text-appear-2">In deze website maken we gebruik van de data van het KNMI op basis van metingen afkomstig van het meetnetwerk van GGD. De data bestaat uit meerdere variabelen: tijd, NO2 concentraties, windsnelheden en geolocatie. Deze data gebruiken we om langs de opgegeven route de NO2 waardes te op te vragen. Naar aanleiding hiervan kunnen we een schatting maken van de hoeveelheid schadelijke stoffen die je inademt langs die route en geven we een gezondheids cijfer.
+          </span>
+        </p>
+      </div>
+    </section>
+      <canvas id="canvas"></canvas>
+      <section class="top-section">
+      <div class="icon-container">
+        <div class="icon-card">
+          <img src="/no2.cef91dab.svg" alt="" class="">
+          <h2> NO2</h2>
+          <p> NO2 wordt gebruikt als indicator voor luchtvervuiling.
+          De molecuul is daarnaast ook schadelijk voor de gezondheid.
+          </p>
+        </div>
+
+        <div class="icon-card">
+          <img src="/pm2,5.6ff21b89.svg" alt="" class="">
+          <h2> PM2,5</h2>
+          <p> PM2,5 is kleiner dan 2,5 micrometer. Deze bestaat vooral uit deeltjes die het gevolg zijn van verbrandingsprocessen.
+          De deeltjes dringen het diepst door in de longen en richten de meeste schade aan.
+          </p>
+        </div>
+
+        <div class="icon-card">
+          <img src="/pm10.4956c315.svg" alt="" class="">
+          <h2> PM10</h2>
+          <p>
+            De grovere fractie uit het PM10-stof (tussen de 2,5 µm en de 10 μm) bestaat vooral uit deeltjes die het gevolg zijn van mechanische processen en opwaaiend bodemstof.
+          </p>
+        </div>
+
+        <div class="icon-card">
+          <img src="/roet.dee5a53a.svg" alt="" class="">
+          <h2> ROET</h2>
+          <p>Roet komt o.a. vrij bij de onvolledige verbranding van fossiele brandstoffen.
+          Roet ontstaat als ultrafijnstof samenklontert en is kleiner dan 10 micrometer.
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="trigger-numberchange-1"></div>
+  </div>
+
+  <div class="chapter-container amsterdam">
+    <section class="section">
+      <div class="chapter-trigger-amsterdam"></div>
+      <div class="flex">
+        <div class="map">
+          <h1 class="chapter">
+            <span class="chapter-appear adam">02 / Amsterdam</span>
+          </h1>
+          <img src="/kaart.402df441.png" alt="kaart Amsterdam">
+        </div>
+          <div class="form-container">
+            <form id="contact" action="#pollution">
+              <h2>Gegevens</h2>
+              <fieldset>
+                <input placeholder="Jouw naam" type="text" required="">
+              </fieldset>
+              <fieldset>
+                <input placeholder="Jouw thuislocatie" type="text" id="street-1" required="">
+              </fieldset>
+              <fieldset>
+                <input placeholder="Jouw werk- of studielocatie" type="text" id="street-2" required="">
+              </fieldset>
+              <fieldset>
+                <input placeholder="Jouw sportlocatie" type="text" id="street-3" required="">
+              </fieldset>
+              <fieldset>
+                <button name="submit" type="button" id="form-button">Bekijk jouw gezondheidrisico's</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </section></div>
+    
+  
+
+  <div class="chapter-container air-pollution" id="pollution">
+    <section class="section">
+      <div class="chapter-trigger-pollution"></div>
+      <h1 class="chapter">
+          <span class="chapter-appear pollution">03 / Luchtvervuiling</span>
+      </h1>
+      <svg width="300" height="200" class="viz1">
+      </svg>
+      <svg width="300" height="200" class="viz2">
+      </svg>
+       <svg width="300" height="200" class="viz3">
+      </svg>
+    </section>
+  </div>
+
+  <div class="chapter-container decease">
+    <div class="chapter-trigger-effects"></div>
+    <div class="fixed-wrapper">
+      <div id="count"><span id="number-change"> </span> <span> / </span> <span> 05 </span></div>
+    </div>
+    <section class="section astma" id="astma">
+      <h1 class="chapter">
+          <span class="chapter-appear effects">04 / Gevolgen</span>
+      </h1>
+      <div class="container">
+        <div class="flex">
+          <div class="text-block">
+            <h2 class="title">
+              <span class="letter letter-astma">A</span>
+              <span class="letter letter-astma">s</span>
+              <span class="letter letter-astma">t</span>
+              <span class="letter letter-astma">m</span>
+              <span class="letter letter-astma">a</span>
+            </h2>
+            <p>
+              <span class="body-text body-text-astma">Astma is een ontsteking van de longen. De ontsteking is bij</span>
+              <span class="body-text body-text-astma">astma blijvend. Dit betekent dat er altijd kleine ontstekingen</span>
+              <span class="body-text body-text-astma">   zijn in de longen. Stadsbewoners hebben meer kans op astma.</span>
+              <span class="body-text body-text-astma">Met name ouderen en kinderen hebben hier last van. </span>
+              <span class="body-text body-text-astma">Zelfs  1 op de 5 kinderen heeft astma door stikstofdioxide.</span>
+            </p>
+          </div>
+          <div class="animation">
+            <div class="text-block text-block-astma">
+              <div class="chance">
+                <p>Gezondheidsscore</p>
+              <h2 class="title">6</h2>
+            </div>
+            <p class="explain-text">Astma is een ontsteking van de longen. De ontsteking is bij astma blijvend. Dit betekent dat er altijd kleine ontstekingen zijn in de longen. Stadsbewoners hebben meer kans op astma. Met name oudere en kinderen hebben hier last van. Zelf  1 op de 5 kinderen heeft astma door stikstofdioxide.</p>
+            </div>
+
+            <div class="inhaler-container">
+              <img class="inhaler-top" src="/inhaler_button.b39d3a4b.svg" alt="inhaler press button">
+              <img class="inhaler" src="/body_inhaler.87644df0.svg" alt="inhaler">
+            </div>
+            <img class="spray" src="/spray_blue.f9f59cc9.png" alt="spray">
+            <div class="spray-container">
+              <div class="spray-reveal"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section heart" id="heart">
+      <div class="container">
+        <div class="flex">
+          <div class="animation">
+            <div class="text-block text-block-heart">
+              <div class="chance">
+                <p>Gezondheidsscore</p>
+                <h2 class="title">6</h2>
+              </div>
+              <p class="explain-text">In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce ac felis sit amet ligula pharetra condimentum. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Pellentesque commodo eros a enim. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
+            </div>
+            <div class="heart-container">
+              <img src="/heart.e639b89b.svg" alt="" class="heart-full">
+              <img src="/heart_open.f0a1d20a.svg" alt="" class="heart-in">
+              <img src="/heart_hartkamer-links.1dbaab86.svg" alt="" class="heart-in-2">
+              <img src="/heart_hartkamer-rechts.60a5e4bd.svg" alt="" class="heart-in-3">
+            </div>
+          </div>
+
+          <div class="text-block">
+            <h2 class="title">
+              <span class="letter letter-heart">H</span>
+              <span class="letter letter-heart">a</span>
+              <span class="letter letter-heart">r</span>
+              <span class="letter letter-heart">t</span>
+            </h2>
+            <p>
+              <span class="body-text body-text-heart">Hartritmestoornissen, hartfalen en slagaderverkalking, dit zijn</span>
+              <span class="body-text body-text-heart">mogelijke gevolgen van de lucht die je inademt bij een drukke weg.</span>
+              <span class="body-text body-text-heart">Wanneer je bij een drukke weg woont heb je twee keer zoveel kans</span>
+              <span class="body-text body-text-heart">komen te overlijden aan hart-en vaatziekten. Een van de meest</span>
+              <span class="body-text body-text-heart">voorkomende hartziektes door luchtvervuiling is de vergroting</span>
+              <span class="body-text body-text-heart">van de hartkamers. Vergrote hartkamers zijn een signaal dat het</span>
+              <span class="body-text body-text-heart">hart onder stress staat en het is vaak een eerste teken in de </span>
+              <span class="body-text body-text-heart">aanloop naar hartfalen.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lung" id="lung">
+      <div class="container horizontal">
+        <div class="flex">
+          <div class="text-block-container">
+            <div class="text-block">
+              <h2 class="title">
+                <span class="letter letter-lung">l</span>
+                <span class="letter letter-lung">o</span>
+                <span class="letter letter-lung">n</span>
+                <span class="letter letter-lung">g</span>
+              </h2>
+              <p>
+                <span class="body-text body-text-lung">Zelfs een minimale hoeveelheid luchtvervuiling door fijnstof vergroot</span>
+                <span class="body-text body-text-lung">de kans op longkanker met ongeveer 20 procent. Longkanker onder</span>
+                <span class="body-text body-text-lung">niet-rokers neemt toe door luchtvervuiling met name door de fijnstof</span>
+                <span class="body-text body-text-lung">in de lucht. Het inademen van fijnstof is slechter voor je dan de</span>
+                <span class="body-text body-text-lung">rook inademen van een ander dit heeft als gevolg dat er wereldwijd</span>
+                <span class="body-text body-text-lung">ongeveer 223.000 longkankerdoden zijn met als oorzaak luchtvervuiling.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="animation">
+            <div class="text-block text-block-lung">
+              <div class="chance">
+                <p>Kans op hartaandoening</p>
+                <h2 class="title">19.3%</h2>
+              </div>
+              <p class="explain-text">In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce ac felis sit amet ligula pharetra condimentum. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Pellentesque commodo eros a enim. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
+            </div>
+            <div class="lungs-container">
+              <img src="/long_flat.7aa06c4b.svg" alt="" class="lung-flat">
+              <img src="/long.cbd5c7f2.svg" alt="" class="lung-color">
+            </div>
+            <div class="no2">
+              <span class="n"> <p>N</p></span>
+              <span class="streep1"></span>
+              <span class="streep2"></span>
+              <span class="o1"></span>
+              <span class="o2"></span>
+            </div>
+            <div id="bubble" class="not-infected"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section copd" id="copd">
+      <div class="container">
+        <div class="flex">
+          <div class="animation">
+            <div class="text-block text-block-copd">
+              <div class="chance">
+                <p>gezondheidsscore</p>
+                <h2 class="title">6</h2>
+              </div>
+              <p class="explain-text">In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce ac felis sit amet ligula pharetra condimentum. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Pellentesque commodo eros a enim. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
+            </div>
+            <div class="running-man-container">
+              <div id="running-man"></div>
+            </div>
+          </div>
+
+          <div class="text-block">
+            <h2 class="title">
+              <span class="letter letter-copd">c</span>
+              <span class="letter letter-copd">o</span>
+              <span class="letter letter-copd">p</span>
+              <span class="letter letter-copd">d</span>
+            </h2>
+            <p>
+              <span class="body-text body-text-copd">De afkorting COPD staat voor Chronische Obstructieve Long Ziekte.</span>
+              <span class="body-text body-text-copd">Hierbij zijn de longen beschadigd en gaat ademen moeilijker.</span>
+              <span class="body-text body-text-copd">De longen zijn continu ontstoken of u hebt last van een vermindering</span>
+              <span class="body-text body-text-copd">longblaasjes wat ademhalen moeilijker maakt. Vaak is roken de oorzaak,</span>
+              <span class="body-text body-text-copd">maar luchtvervuiling kan ook de oorzaak zijn. COPD staat op plek 6</span>
+              <span class="body-text body-text-copd">van ziektes met de meeste sterfgevallen.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="bottom-section">
+    <div class="container">
+     <div class="flex">
+       <!-- source card code: https://davidwalsh.name/css-flip-->
+       <div class="container-panel">
+          <div class="panel-container">
+            <!-- first card-->
+            <div class="panel-item">
+              <div onclick="" class="flip-container">  <!-- container start-->
+                 <div class="flipper"> <!-- flipper start-->
+                   <!-- front start-->
+                     <div class="front">
+                        <img src="/inhaler-shadow.9930ae4e.svg" alt=" inhaler ">
+                        <h2 class=""> ASTMA </h2>
+                     </div>
+
+                    <!-- back start-->
+                     <div class="back">
+                       <h2 class=""> ASTMA </h2>
+                         <ul>
+                            <li> Astma is een ontsteking van de longen. De ontsteking is bij astma blijvend.</li>
+                         </ul>
+                         <a class="button" href="#astma">Meer lezen</a>
+                     </div>
+                   </div> <!-- flipper end-->
+                 </div> <!-- container end-->
+               </div> <!-- first card end-->
+
+            <div class="panel-container">
+              <!-- second card-->
+              <div class="panel-item">
+                <div onclick="" class="flip-container">  <!-- container start-->
+                  <div class="flipper"> <!-- flipper start-->
+                    <!-- front start-->
+                    <div class="front">
+                      <img src="/heart-shadow.02677528.svg" alt="">
+                      <h2 class="">HART &#38; VAATZIEKTE </h2>
+                      <!-- front of content -->
+                    </div>
+                           <!-- front end-->
+
+                    <!-- back start-->
+                    <div class="back">
+                      <h2 class=""> HART&#38;VAATZIEKTE </h2>
+                      <ul>
+                        <li>Hartritmestoornissen, hartfalen en slagaderverkalking, dit zijn mogelijke gevolgen van de lucht die je inademt bij een drukke weg.</li>
+                      </ul>
+                      <a class="button" href="#heart">Meer lezen</a>
+                      <!-- back of content -->
+                    </div>
+                    <!-- back end-->
+                  </div> <!-- flipper end-->
+                </div> <!-- container end-->
+              </div> <!-- second card end-->
+            </div>
+
+            <div class="eyes">
+              <div class="eye">
+                <div class="ball"></div>
+              </div>
+
+              <div class="eye">
+                <div class="ball"></div>
+              </div>
+            </div>
+
+            <div class="container-panel">
+              <div class="panel-container">
+                <!-- first card-->
+                <div class="panel-item">
+                  <div class="flip-container">  <!-- container start-->
+                    <div class="flipper"> <!-- flipper start-->
+                      <!-- front start-->
+                      <div class="front">
+                        <img src="/lungs-shadow.dc5e294c.svg" alt="">
+                        <h2 class=""> LONGKANKER </h2>
+                        <!-- front of content -->
+                      </div>
+                      <!-- front end-->
+                      <!-- back start-->
+                      <div class="back">
+                        <h2 class=""> LONGKANKER </h2>
+                        <ul>
+                          <li> Zelfs een minimale hoeveelheid luchtvervuiling door fijnstof vergroot de kans op longkanker met ongeveer 20 procent.</li>
+                        </ul>
+                        <a class="button" href="#lung">Meer lezen</a>
+                      <!-- back of content -->
+                      </div>
+                    <!-- back end-->
+                    </div> <!-- flipper end-->
+                  </div> <!-- container end-->
+                </div> <!-- first card end-->
+
+                <!-- forth card-->
+                <div class="panel-container">
+                  <div class="panel-item">
+                    <div onclick="" class="flip-container">  <!-- container start-->
+                      <div class="flipper"> <!-- flipper start-->
+                        <!-- front start-->
+                        <div class="front">
+                            <img src="/man-shadow.c672808a.svg" alt="">
+                              <h2 class=""> COPD </h2>
+                              <!-- front of content -->
+                        </div>
+                        <!-- front end-->
+                        <!-- back start-->
+                        <div class="back">
+                          <h2 class=""> COPD </h2>
+                          <ul>
+                            <li> De afkorting COPD staat voor Chronische Obstructieve Long Ziekte.
+                            Hierbij zijn de longen beschadigd en gaat ademen moeilijker.</li>
+                          </ul>
+                          <a class="button" href="#copd">Meer lezen</a>
+                          <!-- back of content -->
+                        </div>
+                        <!-- back end-->
+                      </div> <!-- flipper end-->
+                    </div> <!-- container end-->
+                  </div> <!-- forth card end-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.5/gsap.min.js"></script>
-<script src="/main.431e4f05.js"></script>
-</body></html>
+<script src="/main.fb6bbcaf.js"></script>
+</body>
+</html>

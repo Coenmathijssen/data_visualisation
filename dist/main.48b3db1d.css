@@ -154,6 +154,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   background-color: #80A2D0;
+  overflow-x: hidden;
 }
 
 .practice {
