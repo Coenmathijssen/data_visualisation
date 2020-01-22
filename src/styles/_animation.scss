@@ -1,0 +1,127 @@
+@font-face {
+  font-family: barlow-bold;
+  src: url(fonts/Barlow-Bold.ttf);
+}
+
+@import '_colors.scss';
+
+.page {
+  position: absolute;
+  z-index: 11;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 90vw;
+  background: #0c0c0c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.powered-container {
+  margin-bottom: 50px;
+  width: calc(100% - 10vw);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  .reveal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    z-index: 5;
+    position: relative;
+    overflow: hidden;
+
+     &:first-of-type {
+      width: 450px;
+    }
+
+    &:last-of-type {
+      width: 195px;
+    }
+
+    .reveal-first, .reveal-second {
+      width: 0;
+      height: 40px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #E7174C;
+    }
+
+    .credits {
+      display: inline;
+      position: relative;
+      font-family: barlow-bold;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1em;
+      margin-left: 0;
+      margin-right: 0;
+      padding: 5px 0;
+      z-index: 0;
+      visibility: hidden;
+
+      &.knmi {
+        margin-left: 30px;
+        margin-right: 5px;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: -30px;
+          top: 0;
+          background: url('../images/gif/powered.gif') no-repeat;
+          z-index: 1;
+          width: 30px;
+          height: 30px;
+          background-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    padding: 0 5vw;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    h1 {
+      position: relative;
+      overflow: hidden;
+      height: 120px;
+      width: 100vw;
+      margin: 0;
+      font-size: 90px;
+      color: #E7174C;
+      font-family: barlow-bold;
+      text-transform: uppercase;
+
+      .hide {
+        position: absolute;
+        z-index: 99;
+        top: 120px;
+        left: 0;
+      }
+    }
+  }
+}
+
+.second-color-slide-up {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ED6A63;
+  z-index: 11;
+}

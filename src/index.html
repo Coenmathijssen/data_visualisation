@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Index</title>
+  <link rel="stylesheet" href="./styles/main.scss">
+</head>
+<body class="body">
+  <div class="chapter-container intro">
+    <section class="section">
+      <div class="chapter-trigger-intro"></div>
+      <h1 class="chapter">
+          <span class="chapter-appear pollution-adam">01 / Luchtvervuiling in A'dam</span>
+      </h1>
+      <div class="text-flex">
+        <p>
+          <span class="explain-text-appear-1">Je verkeert je in een vervuilde omgeving.
+          Ik bedoel niet de mensen om je heen, maar wel de atmosfeer.
+          Om jou heen hangt stikstof, fijnstof, stikstofoxiden, zuurstof en CO2.
+          Adem diep in en bekijk de invloed van jouw omgeving.
+          In Amsterdam wonen lijkt misschien de droom van velen.
+          Maar de prijs die je betaalt is hoog.
+          Niet alleen voor je portemonnee, maar ook voor je gezondheid.
+          </span>
+        </p>
+        <p>
+          <span class="explain-text-appear-2">Je verkeert je in een vervuilde omgeving.
+          Ik bedoel niet de mensen om je heen, maar wel de atmosfeer.
+          Om jou heen hangt stikstof, fijnstof, stikstofoxiden, zuurstof en CO2.
+          Adem diep in en bekijk de invloed van jouw omgeving.
+          In Amsterdam wonen lijkt misschien de droom van velen.
+          Maar de prijs die je betaalt is hoog.
+          Niet alleen voor je portemonnee, maar ook voor je gezondheid.
+          </span>
+        </p>
+      </div>
+    </section>
+    <canvas id="canvas"></canvas>
+    <div class="trigger-numberchange-1"></div>
+  </div>
+
+  <div class="chapter-container amsterdam">
+    <section class="section">
+      <div class="chapter-trigger-amsterdam"></div>
+      <div class="flex">
+        <div class="map">
+          <h1 class="chapter">
+            <span class="chapter-appear adam">02 / Amsterdam</span>
+          </h1>
+          <img src="./images/kaart.png" alt="kaart Amsterdam">
+        </div>
+          <div class="form-container">
+            <form id="contact">
+              <h2>Gegevens</h2>
+              <fieldset>
+                <input placeholder="Jouw naam" type="text" tabindex="1" required autofocus>
+              </fieldset>
+              <fieldset>
+                <input placeholder="Jouw thuislocatie" type="text" tabindex="2" id="street-1" required>
+              </fieldset>
+              <fieldset>
+                <input placeholder="Jouw werk- of studielocatie" type="text" tabindex="3" id="street-2"required>
+              </fieldset>
+              <fieldset>
+                <input placeholder="Jouw sportlocatie" type="text" tabindex="3" id="street-3" required>
+              </fieldset>
+              <fieldset>
+                <button name="submit" type="button" id="form-button">Bekijk jouw gezondheidrisico's</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="chapter-container air-pollution">
+    <section class="section">
+      <div class="chapter-trigger-pollution"></div>
+      <h1 class="chapter">
+          <span class="chapter-appear pollution">03 / Luchtvervuiling</span>
+      </h1>
+      <svg width=300
+           height=200
+           class="viz1">
+      </svg>
+      <svg width=300
+           height=200
+           class="viz2">
+      </svg>
+       <svg width=300
+           height=200
+           class="viz3">
+      </svg>
+    </section>
+  </div>
+
+  <div class="chapter-container decease">
+    <div class="chapter-trigger-effects"></div>
+    <div class="fixed-wrapper">
+      <div id="count"><span id="number-change"> </span> <span> / </span> <span> 05 </span></div>
+    </div>
+    <section class="section astma">
+      <h1 class="chapter">
+          <span class="chapter-appear effects">04 / Gevolgen</span>
+      </h1>
+      <div class="container">
+        <div class="flex">
+          <div class="text-block">
+            <h2 class="title">
+              <span class="letter letter-astma">A</span>
+              <span class="letter letter-astma">s</span>
+              <span class="letter letter-astma">t</span>
+              <span class="letter letter-astma">m</span>
+              <span class="letter letter-astma">a</span>
+            </h2>
+            <p>
+            <span class="body-text body-text-astma">Stadsbewoners hebben meer kans op astma.</span>
+            <span class="body-text body-text-astma">Zelfs 1 op de 5 kinderen heeft astma door stikstofdioxide.</span>
+            <span class="body-text body-text-astma">De luchtvervuiling draagt evenveel bij aan astma als roken.</span>
+            </p>
+          </div>
+          <div class="animation">
+            <div class="text-block text-block-astma">
+              <div class="chance">
+                <p>Kans op astma</p>
+              <h2 class="title">23.3%</h2>
+            </div>
+            <p class="explain-text">In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce ac felis sit amet ligula pharetra condimentum. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Pellentesque commodo eros a enim. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
+            </div>
+
+            <div class="inhaler-container">
+              <img class="inhaler-top" src="images/svg/inhaler_button.svg" alt="inhaler press button">
+              <img class="inhaler" src="images/svg/body_inhaler.svg" alt="inhaler">
+            </div>
+            <img class="spray" src="images/spray_blue.png" alt="spray">
+            <div class="spray-container">
+              <div class="spray-reveal"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section heart">
+      <div class="container">
+        <div class="flex">
+          <div class="animation">
+            <div class="text-block text-block-heart">
+              <div class="chance">
+                <p>Kans op hartaandoening</p>
+                <h2 class="title">19.3%</h2>
+              </div>
+              <p class="explain-text">In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce ac felis sit amet ligula pharetra condimentum. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Pellentesque commodo eros a enim. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
+            </div>
+            <div class="heart-container">
+              <img src="./images/svg/heart.svg" alt="" class="heart-full">
+              <img src="./images/svg/heart_open.svg" alt="" class="heart-in">
+              <img src="./images/svg/heart_hartkamer-links.svg" alt="" class="heart-in-2">
+              <img src="./images/svg/heart_hartkamer-rechts.svg" alt="" class="heart-in-3">
+            </div>
+          </div>
+
+          <div class="text-block">
+            <h2 class="title">
+              <span class="letter letter-heart">H</span>
+              <span class="letter letter-heart">a</span>
+              <span class="letter letter-heart">r</span>
+              <span class="letter letter-heart">t</span>
+            </h2>
+            <p>
+            <span class="body-text body-text-heart">Hartritmestoornissen, hartfalen en slagaderverkalking.</span>
+            <span class="body-text body-text-heart">Dit zijn gevolgen van de lucht die jij inademt bij een drukkeweg.</span>
+            <span class="body-text body-text-heart">Een van de meest voorkomende hartziektes door luchtvervuilin</span>
+            <span class="body-text body-text-heart">is de vergroting van de hartkamers.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lung">
+      <div class="container horizontal">
+        <div class="flex">
+          <div class="text-block-container">
+            <div class="text-block">
+              <h2 class="title">
+                <span class="letter letter-lung">l</span>
+                <span class="letter letter-lung">o</span>
+                <span class="letter letter-lung">n</span>
+                <span class="letter letter-lung">g</span>
+              </h2>
+              <p>
+              <span class="body-text body-text-lung">Hartritmestoornissen, hartfalen en slagaderverkalking.</span>
+              <span class="body-text body-text-lung">Dit zijn gevolgen van de lucht die jij inademt bij een drukkeweg.</span>
+              <span class="body-text body-text-lung">Een van de meest voorkomende hartziektes door luchtvervuilin</span>
+              <span class="body-text body-text-lung">is de vergroting van de hartkamers.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="animation">
+            <div class="text-block text-block-lung">
+              <div class="chance">
+                <p>Kans op hartaandoening</p>
+                <h2 class="title">19.3%</h2>
+              </div>
+              <p class="explain-text">In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce ac felis sit amet ligula pharetra condimentum. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Pellentesque commodo eros a enim. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
+            </div>
+            <div class="lungs-container">
+              <img src="./images/svg/long_flat.svg" alt="" class="lung-flat">
+              <img src="./images/svg/long.svg" alt="" class="lung-color">
+            </div>
+            <div class="no2">
+              <span class="n"> <p>N</p></span>
+              <span class="streep1"></span>
+              <span class="streep2"></span>
+              <span class="o1"></span>
+              <span class="o2"></span>
+            </div>
+            <div id="bubble" class="not-infected"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section copd">
+      <div class="container">
+        <div class="flex">
+          <div class="animation">
+            <div class="text-block text-block-copd">
+              <div class="chance">
+                <p>Kans op COPD</p>
+                <h2 class="title">13.3%</h2>
+              </div>
+              <p class="explain-text">In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce ac felis sit amet ligula pharetra condimentum. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Pellentesque commodo eros a enim. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
+            </div>
+            <div class="running-man-container">
+              <div id="running-man"></div>
+            </div>
+          </div>
+
+          <div class="text-block">
+            <h2 class="title">
+              <span class="letter letter-copd">c</span>
+              <span class="letter letter-copd">o</span>
+              <span class="letter letter-copd">p</span>
+              <span class="letter letter-copd">d</span>
+            </h2>
+            <p>
+              <span class="body-text body-text-copd">Een Chronische Obstructieve Long Ziekte.</span>
+              <span class="body-text body-text-copd">Hierbij zijn de longen beschadigd en gaat ademen moeilijker.</span>
+              <span class="body-text body-text-copd">COPD staat op plek 6 van ziektes met de meeste sterfgevallen.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="bottom-section">
+    <div class="container">
+     <div class="flex">
+       <!-- source card code: https://davidwalsh.name/css-flip-->
+       <div class="container-panel">
+          <div class="panel-container">
+            <!-- first card-->
+            <div class="panel-item">
+              <div onclick="" class="flip-container">  <!-- container start-->
+                 <div class="flipper"> <!-- flipper start-->
+                   <!-- front start-->
+                     <div class="front">
+                        <img src="./images/svg/inhaler-shadow.svg" alt=" inhaler ">
+                        <h2 class=""> ASTMA </h2>
+                     </div>
+
+                    <!-- back start-->
+                     <div class="back">
+                       <h2 class=""> ASTMA </h2>
+                         <ul>
+                            <li> Astma is een ontsteking van de longen. De ontsteking is bij astma blijvend.</li>
+                         </ul>
+                         <a class="button" href="#middle">Meer lezen</a>
+                     </div>
+                   </div> <!-- flipper end-->
+                 </div> <!-- container end-->
+               </div> <!-- first card end-->
+
+            <div class="panel-container">
+              <!-- second card-->
+              <div class="panel-item">
+                <div onclick="" class="flip-container">  <!-- container start-->
+                  <div class="flipper"> <!-- flipper start-->
+                    <!-- front start-->
+                    <div class="front">
+                      <img src="./images/svg/heart-shadow.svg" alt="">
+                      <h2 class=""> HART&#38;VAATZIEKTE </h2>
+                      <!-- front of content -->
+                    </div>
+                           <!-- front end-->
+
+                    <!-- back start-->
+                    <div class="back">
+                      <h2 class=""> HART&#38;VAATZIEKTE </h2>
+                      <ul>
+                        <li>Hartritmestoornissen, hartfalen en slagaderverkalking, dit zijn mogelijke gevolgen van de lucht die je inademt bij een drukke weg.</li>
+                      </ul>
+                      <a class="button" href="#middle">Meer lezen</a>
+                      <!-- back of content -->
+                    </div>
+                    <!-- back end-->
+                  </div> <!-- flipper end-->
+                </div> <!-- container end-->
+              </div> <!-- second card end-->
+            </div>
+
+            <div class="eyes">
+              <div class="eye">
+                <div class="ball"></div>
+              </div>
+
+              <div class="eye">
+                <div class="ball"></div>
+              </div>
+            </div>
+
+            <div class="container-panel">
+              <div class="panel-container">
+                <!-- first card-->
+                <div class="panel-item">
+                  <div onclick="" class="flip-container">  <!-- container start-->
+                    <div class="flipper"> <!-- flipper start-->
+                      <!-- front start-->
+                      <div class="front">
+                        <img src="/images/svg/lungs-shadow.svg" alt="">
+                        <h2 class=""> LONGKANKER </h2>
+                        <!-- front of content -->
+                      </div>
+                      <!-- front end-->
+                      <!-- back start-->
+                      <div class="back">
+                        <h2 class=""> LONGKANKER </h2>
+                        <ul>
+                          <li> Zelfs een minimale hoeveelheid luchtvervuiling door fijnstof vergroot de kans op longkanker met ongeveer 20 procent.</li>
+                        </ul>
+                        <a class="button" href="#middle">Meer lezen</a>
+                      <!-- back of content -->
+                      </div>
+                    <!-- back end-->
+                    </div> <!-- flipper end-->
+                  </div> <!-- container end-->
+                </div> <!-- first card end-->
+
+                <!-- forth card-->
+                <div class="panel-container">
+                  <div class="panel-item">
+                    <div onclick="" class="flip-container">  <!-- container start-->
+                      <div class="flipper"> <!-- flipper start-->
+                        <!-- front start-->
+                        <div class="front">
+                            <img src="./images/svg/man-shadow.svg" alt="">
+                              <h2 class=""> COPD </h2>
+                              <!-- front of content -->
+                        </div>
+                        <!-- front end-->
+                        <!-- back start-->
+                        <div class="back">
+                          <h2 class=""> COPD </h2>
+                          <ul>
+                            <li> De afkorting COPD staat voor Chronische Obstructieve Long Ziekte.
+                            Hierbij zijn de longen beschadigd en gaat ademen moeilijker.</li>
+                          </ul>
+                          <a class="button" href="#middle">Meer lezen</a>
+                          <!-- back of content -->
+                        </div>
+                        <!-- back end-->
+                      </div> <!-- flipper end-->
+                    </div> <!-- container end-->
+                  </div> <!-- forth card end-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.5/gsap.min.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>

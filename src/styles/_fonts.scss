@@ -1,0 +1,35 @@
+@font-face {
+  font-family: barlow-bold;
+  src: url(./fonts/Barlow-Bold.ttf);
+}
+
+@font-face {
+  font-family: malayalam;
+  src: url(./fonts/Malayalam.ttf);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: barlow-bold;
+  text-transform: uppercase;
+}
+
+.count span {
+  font-family: malayalam;
+}
+
+h1 {
+  font-size: 4em;
+  margin: 0;
+}
+
+h2 {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+p {
+  font-family: open-sans, arial, sans-serif;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 0;
+}
