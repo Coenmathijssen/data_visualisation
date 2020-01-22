@@ -28,7 +28,7 @@ async function getAddress (address) {
   let data = await response.json()
   let returnedData = data.results[0]
   if (!returnedData.address_components[6]) {
-    window.alert('Adres niet gevonden. Zorg dat het adres goed is geschreven en zich binnen Amsterdam bevindt.')
+    window.alert('Één of meerdere addressen niet gevonden. Zorg dat het adres goed is geschreven en zich binnen Amsterdam bevindt.')
     return null
   } else {
     return returnedData

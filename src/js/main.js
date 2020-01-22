@@ -66,12 +66,13 @@ function calcAnaValues (streets) {
             avg: locationAverageDay
           }
         ]
-        console.log('werkt? ', myData)
         barChartFunctionArray[i](myData)
       })
     })
   })
 }
+
+
 
 // Run functions with form data
 document.getElementById('form-button').addEventListener('click', calculateData)

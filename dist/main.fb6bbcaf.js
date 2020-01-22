@@ -28962,7 +28962,12 @@ module.hot.accept(reloadCSS);
 require("../styles/_animation.scss");
 
 // import { gsap } from "gsap/all"
-var tl = new TimelineMax({});
+var tl = new TimelineMax({}); // Scroll to top
+
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
+
 tl.staggerTo('.hide', 1.5, {
   delay: 1,
   y: -120,
@@ -28995,10 +29000,7 @@ tl.staggerTo('.hide', 1.5, {
   delay: 1,
   x: '100%',
   ease: Power4.easeOut
-}, 3).to('.body', {
-  heigth: 'auto',
-  overflow: 'visible'
-}).to('.page', 1.5, {
+}, 3).to('.page', 1.5, {
   y: '-100%',
   ease: Power3.easeIn
 }, 7.5) // 6.5
@@ -47641,7 +47643,7 @@ function _getAddress() {
               break;
             }
 
-            window.alert('Adres niet gevonden. Zorg dat het adres goed is geschreven en zich binnen Amsterdam bevindt.');
+            window.alert('Één of meerdere addressen niet gevonden. Zorg dat het adres goed is geschreven en zich binnen Amsterdam bevindt.');
             return _context.abrupt("return", null);
 
           case 12:
@@ -47886,7 +47888,6 @@ function calcAnaValues(streets) {
           name: "Locatie ".concat(i + 1),
           avg: locationAverageDay
         }];
-        console.log('werkt? ', myData);
         barChartFunctionArray[i](myData);
       });
     });
@@ -47945,7 +47946,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61215" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63751" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
