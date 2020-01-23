@@ -78,18 +78,19 @@ body {
 
           .chance {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
 
             h2 {
-              background-color: $black;
-              padding: 0 10px 3px 10px;
               margin-left: 10px;
-              color: $red;
+              padding: 23px 10px;
+              border: solid 6px $black;
+              border-radius: 50%;
+              color: $black;
             }
 
             p {
               font-weight: 900;
-              transform: translateY(4px);
+              transform: translateY(-5px);
               color: $red;
             }
           }

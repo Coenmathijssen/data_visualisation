@@ -219,17 +219,18 @@ body {
 }
 .section .container .flex .animation .text-block .chance {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 .section .container .flex .animation .text-block .chance h2 {
-  background-color: #000;
-  padding: 0 10px 3px 10px;
   margin-left: 10px;
-  color: #E73A4D;
+  padding: 23px 10px;
+  border: solid 6px #000;
+  border-radius: 50%;
+  color: #000;
 }
 .section .container .flex .animation .text-block .chance p {
   font-weight: 900;
-  transform: translateY(4px);
+  transform: translateY(-5px);
   color: #E73A4D;
 }
 .section .container .flex .animation .text-block .explain-text {
@@ -878,6 +879,15 @@ body {
 }
 .score .disclaimer p:first-of-type {
   font-size: 0.7em;
+}
+.score h2:nth-of-type(2) {
+  margin-bottom: 3vh;
+}
+.score #map {
+  position: relative;
+  width: 50vw;
+  height: 60vh;
+  margin-bottom: 15vh;
 }
 .score .advice {
   margin: 15vh 0;

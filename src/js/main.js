@@ -7,6 +7,7 @@ import './backgroundChange.js'
 import './titlesAppear.js'
 import './scrollMagic.js'
 import './eyeballs.js'
+import './maps.js'
 
 // Importing polyfill to make async functions work in Parcel
 import 'babel-polyfill'
@@ -57,6 +58,14 @@ async function calcAnaValues (streets, name, avgAmsterdam) {
         console.log('locationAverageWeek', locationAverageWeek)
         console.log('locationAverageDay', locationAverageDay)
 
+        // Formula based on WHO. Which says 40 ug/m3 no2 is the guideline, bringing that to a 5.5
+        let score = 10 - (locationAverageDay / 8.888)
+        score = Math.round(score * 100) / 100
+        let scoreHolder = document.getElementsByClassName('score-number')
+        for (let i = 0; i < scoreHolder.length; i++) {
+          scoreHolder[i].textContent = score
+        }
+
         let myData = [
           {
             name: 'Amsterdams gemiddelde',
@@ -74,7 +83,6 @@ async function calcAnaValues (streets, name, avgAmsterdam) {
 }
 
 function calculateScore (streets, no2, name, avgAmsterdam) {
-  console.log('testieeeee ', streets)
   no2 = Math.round(no2 * 100) / 100
   avgAmsterdam = Math.round(avgAmsterdam * 100) / 100
 
@@ -107,7 +115,6 @@ function calculateData () {
   let inputField2 = document.getElementById('street-2')
   let inputField3 = document.getElementById('street-3')
   let name = document.getElementById('name').value
-  console.log(name)
 
   let streets = [inputField1.value, inputField2.value, inputField3.value]
 

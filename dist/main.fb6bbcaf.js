@@ -38778,6 +38778,171 @@ document.onmousemove = function () {
     balls[i].style.transform = 'translate(-' + x + ',-' + y + ')';
   }
 };
+},{}],"js/maps.js":[function(require,module,exports) {
+function initMap() {
+  var directionsService = new google.maps.DirectionsService();
+  var directionsRenderer = new google.maps.DirectionsRenderer();
+  var styledMapType = new google.maps.StyledMapType([{
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#212121"
+    }]
+  }, {
+    "elementType": "labels.icon",
+    "stylers": [{
+      "visibility": "off"
+    }]
+  }, {
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#757575"
+    }]
+  }, {
+    "elementType": "labels.text.stroke",
+    "stylers": [{
+      "color": "#212121"
+    }]
+  }, {
+    "featureType": "administrative",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#757575"
+    }]
+  }, {
+    "featureType": "administrative.country",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#9e9e9e"
+    }]
+  }, {
+    "featureType": "administrative.locality",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#bdbdbd"
+    }]
+  }, {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#757575"
+    }]
+  }, {
+    "featureType": "poi.park",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#181818"
+    }]
+  }, {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#616161"
+    }]
+  }, {
+    "featureType": "poi.park",
+    "elementType": "labels.text.stroke",
+    "stylers": [{
+      "color": "#1b1b1b"
+    }]
+  }, {
+    "featureType": "road",
+    "elementType": "geometry.fill",
+    "stylers": [{
+      "color": "#2c2c2c"
+    }]
+  }, {
+    "featureType": "road",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#8a8a8a"
+    }]
+  }, {
+    "featureType": "road.arterial",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#373737"
+    }]
+  }, {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#3c3c3c"
+    }]
+  }, {
+    "featureType": "road.highway.controlled_access",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#4e4e4e"
+    }]
+  }, {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#616161"
+    }]
+  }, {
+    "featureType": "transit",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#757575"
+    }]
+  }, {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#ED6A63"
+    }]
+  }, {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#3d3d3d"
+    }]
+  }], {
+    name: 'Styled Map'
+  });
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 11,
+    center: {
+      lat: 52.37403,
+      lng: 4.88969
+    },
+    mapTypeControlOptions: {
+      mapTypeIds: ['styled_map']
+    }
+  });
+  map.mapTypes.set('styled_map', styledMapType);
+  map.setMapTypeId('styled_map');
+  directionsRenderer.setMap(map);
+  document.getElementById('form-button').addEventListener('click', function () {
+    calculateAndDisplayRoute(directionsService, directionsRenderer);
+  });
+}
+
+initMap();
+
+function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+  var street2 = document.getElementById('street-2');
+  var waypts = [{
+    location: street2.value,
+    stopover: true
+  }];
+  console.log(waypts);
+  directionsService.route({
+    origin: document.getElementById('street-1').value,
+    destination: document.getElementById('street-3').value,
+    waypoints: waypts,
+    optimizeWaypoints: true,
+    travelMode: 'DRIVING'
+  }, function (response, status) {
+    if (status === 'OK') {
+      directionsRenderer.setDirections(response);
+      var route = response.routes[0];
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+  });
+}
 },{}],"../node_modules/core-js/modules/_global.js":[function(require,module,exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -47781,6 +47946,8 @@ require("./scrollMagic.js");
 
 require("./eyeballs.js");
 
+require("./maps.js");
+
 require("babel-polyfill");
 
 var _transformData = require("./transformData.js");
@@ -47854,7 +48021,16 @@ function _calcAnaValues() {
                   var locationAverageWeek = (0, _transformData.calcMaximumAverage)(transformedData, result.id);
                   var locationAverageDay = (0, _transformData.calcMaximumAverage)(transformedData[0], result.id);
                   console.log('locationAverageWeek', locationAverageWeek);
-                  console.log('locationAverageDay', locationAverageDay);
+                  console.log('locationAverageDay', locationAverageDay); // Formula based on WHO. Which says 40 ug/m3 no2 is the guideline, bringing that to a 5.5
+
+                  var score = 10 - locationAverageDay / 8.888;
+                  score = Math.round(score * 100) / 100;
+                  var scoreHolder = document.getElementsByClassName('score-number');
+
+                  for (var _i3 = 0; _i3 < scoreHolder.length; _i3++) {
+                    scoreHolder[_i3].textContent = score;
+                  }
+
                   var myData = [{
                     name: 'Amsterdams gemiddelde',
                     avg: dayAverageAmsterdam
@@ -47879,7 +48055,6 @@ function _calcAnaValues() {
 }
 
 function calculateScore(streets, no2, name, avgAmsterdam) {
-  console.log('testieeeee ', streets);
   no2 = Math.round(no2 * 100) / 100;
   avgAmsterdam = Math.round(avgAmsterdam * 100) / 100;
   var nameHolder = document.getElementsByClassName('name-holder');
@@ -47914,7 +48089,6 @@ function calculateData() {
   var inputField2 = document.getElementById('street-2');
   var inputField3 = document.getElementById('street-3');
   var name = document.getElementById('name').value;
-  console.log(name);
   var streets = [inputField1.value, inputField2.value, inputField3.value];
   calcAnaValues(streets, name); // let foundDataArray = calcAnaValues(streets)
   // foundDataArray.then(item => {
@@ -47922,7 +48096,7 @@ function calculateData() {
   //   console.log('pls: ', foundDataArray[0])
   // })
 }
-},{"d3":"../node_modules/d3/index.js","./openingAnimation.js":"js/openingAnimation.js","./intro.js":"js/intro.js","./backgroundChange.js":"js/backgroundChange.js","./titlesAppear.js":"js/titlesAppear.js","./scrollMagic.js":"js/scrollMagic.js","./eyeballs.js":"js/eyeballs.js","babel-polyfill":"../node_modules/babel-polyfill/lib/index.js","./transformData.js":"js/transformData.js","./fetchAndFind.js":"js/fetchAndFind.js","./barChart.js":"js/barChart.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"d3":"../node_modules/d3/index.js","./openingAnimation.js":"js/openingAnimation.js","./intro.js":"js/intro.js","./backgroundChange.js":"js/backgroundChange.js","./titlesAppear.js":"js/titlesAppear.js","./scrollMagic.js":"js/scrollMagic.js","./eyeballs.js":"js/eyeballs.js","./maps.js":"js/maps.js","babel-polyfill":"../node_modules/babel-polyfill/lib/index.js","./transformData.js":"js/transformData.js","./fetchAndFind.js":"js/fetchAndFind.js","./barChart.js":"js/barChart.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -47950,7 +48124,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54952" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61850" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
