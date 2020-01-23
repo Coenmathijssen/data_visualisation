@@ -1,7 +1,7 @@
 import * as d3 from 'd3'
 
 // Importing whole files
-import './openingAnimation.js'
+// import './openingAnimation.js'
 import './intro.js'
 import './backgroundChange.js'
 import './titlesAppear.js'
@@ -119,9 +119,4 @@ function calculateData () {
   let streets = [inputField1.value, inputField2.value, inputField3.value]
 
   calcAnaValues(streets, name)
-  // let foundDataArray = calcAnaValues(streets)
-  // foundDataArray.then(item => {
-  //   // let total = (foundDataArray[0] + foundDataArray[1] + foundDataArray[2]) / foundDataArray.length
-  //   console.log('pls: ', foundDataArray[0])
-  // })
 }

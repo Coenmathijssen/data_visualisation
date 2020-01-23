@@ -51,15 +51,15 @@
   .icon-card {
     padding: 0 2em 2em 2em;
     margin: 1em 1em 0 1em;
-    width: calc(25% - 6em);
+    width: calc(25% - 6em - 8px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background-color: $darkblue;
     text-align: center;
     font-family: open sans;
     color: white;
     font-size: .8em;
+    border: solid 4px $white;
     border-radius: 10px;
   }
 

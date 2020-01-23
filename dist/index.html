@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Index</title>
   <link rel="stylesheet" href="/main.48b3db1d.css">
-<script src="/main.48b3db1d.js"></script><link rel="stylesheet" href="/main.fb6bbcaf.css"></head>
+<script src="/main.48b3db1d.js"></script></head>
 <body class="body">
-  <section class="opening-animation">
+  <!-- <section class="opening-animation">
     <div class="second-color-slide-up"></div>
     <div class="page">
       <div class="powered-container">
@@ -25,19 +25,19 @@
           <h1 class="headertj">
             <span class="hide" id="hide">Wat betekent de</span>
           </h1>
-          <h1 class="headertj">
+          <h1  class="headertj">
             <span class="hide">luchtvervuiling</span>
           </h1>
-          <h1 class="headertj">
+          <h1  class="headertj">
             <span class="hide">in Amsterdam voor</span>
           </h1>
-          <h1 class="headertj">
+          <h1  class="headertj">
             <span class="hide">jouw gezondheid?</span>
           </h1>
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <div class="chapter-trigger-intro"></div>
   <div class="chapter-container intro">
     <section class="section">
@@ -195,13 +195,13 @@
       <h1 class="chapter">
           <span class="chapter-appear pollution">03 / Luchtvervuiling</span>
       </h1>
-      <h2><span class="name-holder"></span>, dit zijn jouw top 3 locaties door Amsterdam:</h2>
+      <h2><span class="name-holder"></span>, dit zijn jouw top 3 locaties in Amsterdam:</h2>
       <p class="locations">Locatie 1: <span class="route-1-holder"></span> - Locatie 2: <span class="route-2-holder"></span> - Locatie 3: <span class="route-3-holder"></span></p>
-      <svg width="300" height="200" class="viz1">
+      <svg width="300" height="400" class="viz1">
       </svg>
-      <svg width="300" height="200" class="viz2">
+      <svg width="300" height="400" class="viz2">
       </svg>
-       <svg width="300" height="200" class="viz3">
+       <svg width="300" height="400" class="viz3">
       </svg>
     </section>
   </div>
@@ -317,6 +317,12 @@
                 <span class="letter letter-lung">o</span>
                 <span class="letter letter-lung">n</span>
                 <span class="letter letter-lung">g</span>
+                <span class="letter letter-lung">k</span>
+                <span class="letter letter-lung">a</span>
+                <span class="letter letter-lung">n</span>
+                <span class="letter letter-lung">k</span>
+                <span class="letter letter-lung">e</span>
+                <span class="letter letter-lung">r</span>
               </h2>
               <p>
                 <span class="body-text body-text-lung">Zelfs een minimale hoeveelheid luchtvervuiling door fijnstof vergroot</span>
@@ -332,7 +338,7 @@
           <div class="animation">
             <div class="text-block text-block-lung">
               <div class="chance">
-                <p>Kans op hartaandoening</p>
+                <p>Gezondheidsscore</p>
                 <h2 class="score-number"></h2>
               </div>
              <p class="explain-text"><span class="name-holder"></span>, op jouw route van A naar B bevindt zich <span class="no2-holder"></span> microgram/m3 NO2 (= uit KNMI dataset). Het amsterdams gemiddelde is <span class="avg-holder"></span> microgram/m3. We geven je daarom het bovenstaande cijfer. Weten wat je kan doen om dit te verbeteren?</p>
@@ -360,7 +366,7 @@
           <div class="animation">
             <div class="text-block text-block-copd">
               <div class="chance">
-                <p>gezondheidsscore</p>
+                <p>Gezondheidsscore</p>
                 <h2 class="score-number"></h2>
               </div>
               <p class="explain-text"><span class="name-holder"></span>, op jouw route van A naar B bevindt zich <span class="no2-holder"></span> microgram/m3 NO2 (= uit KNMI dataset). Het amsterdams gemiddelde is <span class="avg-holder"></span> microgram/m3. We geven je daarom het bovenstaande cijfer. Weten wat je kan doen om dit te verbeteren?</p>
@@ -401,22 +407,29 @@
         <h2> JE HUIDIGE SCORE *</h2>
         <p class="score"> 6.0 </p>
         <div class="disclaimer">
-          <p>*Is op basis van je ingevoerde gegevens tegenover het amsterdamse gemiddelde </p>
+          <p>*Is op basis van je ingevoerde gegevens tegenover het Amsterdamse gemiddelde.</p>
         </div>
         <div class="advice">
           <h2> WAT KUN JE DOEN? </h2>
           <ul>
-            <li> Verplaats je slim. Ook binnen dezelfde stad kunnen grote verschillen in luchtkwaliteit aangetroffen worden.
-            </li><li> Probeer op tijdstippen dat het druk is langs jouw route met verkeer een andere route te nemen.</li>
+            <li>Probeer routes te volgen met zo min mogelijk verkeer.</li>
+            <li>Pak de fiets of het OV.</li>
+            <li>Vertrek indien mogelijk op tijdstippen dat het minder druk is langs je route</li>
+            <li>Ventileer met een laaghangende afzuigkap na het koken op gas.</li>
+            <li>Koken op inductie indien mogelijk.</li>
+            <li>Eet minder vlees en eieren. Veebedrijven veroorzaken veel luchtverontreiniging.</li>
+            <li>Het aanschaffen van een elektrische auto.</li>
           </ul>
+
+          <p>Nu hoef je natuurlijk niet in een keer aan al deze punten te gaan werken. Al lukt het al om af en toe een andere route te fietsen of de auto te laten staan, doet dat je zelf en andere goed.</p>
         </div>
 
         <h2> ALTERNATIEVE ROUTE </h2>
         <div id="map"></div>
-        <h2> SCORE NA * </h2>
+        <h2 class="alternate"> SCORE NA * </h2>
         <p class="score second"> 8.5 </p>
         <div class="disclaimer">
-          <p>*Berekent op hoeveel ruimte voor verbetering er is in route vergeleken met je eerste score</p>
+          <p>*Is berekent op basis van je optimale route tussen locatie 1, 2 en 3.</p>
         </div>
       </div>
     </section>

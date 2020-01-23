@@ -230,6 +230,7 @@ body {
 }
 .section .container .flex .animation .text-block .chance p {
   font-weight: 900;
+  font-size: 1.5em;
   transform: translateY(-5px);
   color: #E73A4D;
 }
@@ -341,15 +342,15 @@ body {
 .chapter-container.intro .icon-card {
   padding: 0 2em 2em 2em;
   margin: 1em 1em 0 1em;
-  width: calc(25% - 6em);
+  width: calc(25% - 6em - 8px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: #223984;
   text-align: center;
   font-family: open sans;
   color: white;
   font-size: 0.8em;
+  border: solid 4px #FFF;
   border-radius: 10px;
 }
 .chapter-container.intro .icon-card img {
@@ -542,6 +543,7 @@ body {
 }
 .air-pollution .locations {
   margin-bottom: 2vh;
+  color: #3F4A9A;
 }
 .air-pollution .x.axis, .air-pollution .y.axis {
   color: #3F4A9A;
@@ -889,10 +891,17 @@ body {
   height: 60vh;
   margin-bottom: 15vh;
 }
+.score .alternate {
+  color: #FFF;
+}
 .score .advice {
   margin: 15vh 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .score .advice ul {
+  display: inline-block;
   list-style-type: none;
 }
 .score .advice ul li {
@@ -909,6 +918,9 @@ body {
   height: 25px;
   background-size: 25px;
   z-index: 1;
+}
+.score .advice p {
+  max-width: 600px;
 }
 
 .checkback {
