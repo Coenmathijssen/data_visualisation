@@ -28884,7 +28884,135 @@ Object.keys(_d3Zoom).forEach(function (key) {
     }
   });
 });
-},{"./dist/package.js":"../node_modules/d3/dist/package.js","d3-array":"../node_modules/d3-array/src/index.js","d3-axis":"../node_modules/d3-axis/src/index.js","d3-brush":"../node_modules/d3-brush/src/index.js","d3-chord":"../node_modules/d3-chord/src/index.js","d3-collection":"../node_modules/d3-collection/src/index.js","d3-color":"../node_modules/d3-color/src/index.js","d3-contour":"../node_modules/d3-contour/src/index.js","d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-dsv":"../node_modules/d3-dsv/src/index.js","d3-ease":"../node_modules/d3-ease/src/index.js","d3-fetch":"../node_modules/d3-fetch/src/index.js","d3-force":"../node_modules/d3-force/src/index.js","d3-format":"../node_modules/d3-format/src/index.js","d3-geo":"../node_modules/d3-geo/src/index.js","d3-hierarchy":"../node_modules/d3-hierarchy/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-path":"../node_modules/d3-path/src/index.js","d3-polygon":"../node_modules/d3-polygon/src/index.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js","d3-random":"../node_modules/d3-random/src/index.js","d3-scale":"../node_modules/d3-scale/src/index.js","d3-scale-chromatic":"../node_modules/d3-scale-chromatic/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-shape":"../node_modules/d3-shape/src/index.js","d3-time":"../node_modules/d3-time/src/index.js","d3-time-format":"../node_modules/d3-time-format/src/index.js","d3-timer":"../node_modules/d3-timer/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","d3-voronoi":"../node_modules/d3-voronoi/src/index.js","d3-zoom":"../node_modules/d3-zoom/src/index.js"}],"../node_modules/smoke-effect/dist/smoke.js":[function(require,module,exports) {
+},{"./dist/package.js":"../node_modules/d3/dist/package.js","d3-array":"../node_modules/d3-array/src/index.js","d3-axis":"../node_modules/d3-axis/src/index.js","d3-brush":"../node_modules/d3-brush/src/index.js","d3-chord":"../node_modules/d3-chord/src/index.js","d3-collection":"../node_modules/d3-collection/src/index.js","d3-color":"../node_modules/d3-color/src/index.js","d3-contour":"../node_modules/d3-contour/src/index.js","d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-dsv":"../node_modules/d3-dsv/src/index.js","d3-ease":"../node_modules/d3-ease/src/index.js","d3-fetch":"../node_modules/d3-fetch/src/index.js","d3-force":"../node_modules/d3-force/src/index.js","d3-format":"../node_modules/d3-format/src/index.js","d3-geo":"../node_modules/d3-geo/src/index.js","d3-hierarchy":"../node_modules/d3-hierarchy/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-path":"../node_modules/d3-path/src/index.js","d3-polygon":"../node_modules/d3-polygon/src/index.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js","d3-random":"../node_modules/d3-random/src/index.js","d3-scale":"../node_modules/d3-scale/src/index.js","d3-scale-chromatic":"../node_modules/d3-scale-chromatic/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-shape":"../node_modules/d3-shape/src/index.js","d3-time":"../node_modules/d3-time/src/index.js","d3-time-format":"../node_modules/d3-time-format/src/index.js","d3-timer":"../node_modules/d3-timer/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","d3-voronoi":"../node_modules/d3-voronoi/src/index.js","d3-zoom":"../node_modules/d3-zoom/src/index.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"styles/_animation.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"./fonts/Barlow-Bold.ttf":[["Barlow-Bold.2ae782b3.ttf","styles/fonts/Barlow-Bold.ttf"],"styles/fonts/Barlow-Bold.ttf"],"./../images/gif/powered.gif":[["powered.15b3fcb3.gif","images/gif/powered.gif"],"images/gif/powered.gif"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/openingAnimation.js":[function(require,module,exports) {
+"use strict";
+
+require("../styles/_animation.scss");
+
+// import { gsap } from "gsap/all"
+var tl = new TimelineMax({}); // Scroll to top
+
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
+
+tl.staggerTo('.hide', 1.5, {
+  delay: 1,
+  y: -120,
+  ease: Power4.easeOut
+}, 0.3).staggerTo('.hide', 1, {
+  delay: 3,
+  opacity: 0,
+  ease: Power4.easeOut
+}, 0.3).to('.reveal-first', 0.8, {
+  delay: 1,
+  width: '450px',
+  ease: Power4.easeIn
+}, 1).to('.reveal-second', 0.8, {
+  delay: 1,
+  width: '195px',
+  ease: Power4.easeIn
+}, 2).to('.creators', 0, {
+  delay: 1,
+  visibility: 'visible',
+  ease: Power1.easeIn
+}, 2).to('.knmi', 0, {
+  delay: 1,
+  visibility: 'visible',
+  ease: Power1.easeIn
+}, 3).to('.reveal-first', 0.8, {
+  delay: 1,
+  x: '100%',
+  ease: Power4.easeOut
+}, 2).to('.reveal-second', 0.8, {
+  delay: 1,
+  x: '100%',
+  ease: Power4.easeOut
+}, 3).to('.page', 1.5, {
+  y: '-100%',
+  ease: Power3.easeIn
+}, 7.5) // 6.5
+.to('.second-color-slide-up', 1.6, {
+  y: '-100%',
+  ease: Power4.easeIn
+}, 8) // 8
+.to('.page', 1.5, {
+  visibility: 'hidden',
+  ease: Power3.easeIn
+}, 11); // 11
+},{"../styles/_animation.scss":"styles/_animation.scss"}],"../node_modules/smoke-effect/dist/smoke.js":[function(require,module,exports) {
 var define;
 parcelRequire = function (e, r, n, t) {
   var i = "function" == typeof parcelRequire && parcelRequire,
@@ -47806,6 +47934,8 @@ function update3(myData) {
 
 var d3 = _interopRequireWildcard(require("d3"));
 
+require("./openingAnimation.js");
+
 require("./intro.js");
 
 require("./backgroundChange.js");
@@ -47962,7 +48092,7 @@ function calculateData() {
   var streets = [inputField1.value, inputField2.value, inputField3.value];
   calcAnaValues(streets, name);
 }
-},{"d3":"../node_modules/d3/index.js","./intro.js":"js/intro.js","./backgroundChange.js":"js/backgroundChange.js","./titlesAppear.js":"js/titlesAppear.js","./scrollMagic.js":"js/scrollMagic.js","./eyeballs.js":"js/eyeballs.js","./maps.js":"js/maps.js","babel-polyfill":"../node_modules/babel-polyfill/lib/index.js","./transformData.js":"js/transformData.js","./fetchAndFind.js":"js/fetchAndFind.js","./barChart.js":"js/barChart.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"d3":"../node_modules/d3/index.js","./openingAnimation.js":"js/openingAnimation.js","./intro.js":"js/intro.js","./backgroundChange.js":"js/backgroundChange.js","./titlesAppear.js":"js/titlesAppear.js","./scrollMagic.js":"js/scrollMagic.js","./eyeballs.js":"js/eyeballs.js","./maps.js":"js/maps.js","babel-polyfill":"../node_modules/babel-polyfill/lib/index.js","./transformData.js":"js/transformData.js","./fetchAndFind.js":"js/fetchAndFind.js","./barChart.js":"js/barChart.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -47990,7 +48120,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65114" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56745" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
